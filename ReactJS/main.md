@@ -111,4 +111,13 @@ of elements. It is used to optimize the performance of rendering by allowing Rea
 elements have changed, and to update only those elements instead of re-rendering the entire list. The “key”
 prop should be unique stable identifier for each element, such as an ID or index.
 
+
+## React Best Practices:
+
+**What would be a common mistake of function being called every time the component renders?**  
+A common mistake that can cause a function to be called every time the component renders is declaring the
+function inside the component's render method. This can cause the function to be recreated every time the
+component renders, even if the function's dependencies have not changed. To avoid this problem, function
+should be declared outside the render method, or in a separate file if they are reused across multiple
+components.
 </div>
