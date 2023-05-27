@@ -31,7 +31,7 @@ reliance on javascript can make it less friendly to search engines. React can al
 performance on large datasets or complex UI components. React is primarily used for frontend development
 and does not have built-in support for backend development.
 
-**What is children prop?**  
+**What are children prop?**  
 The children prop is a special prop in React that contains the child components of a component. It allows
 component to render their child components directly without having to pass them down through props. The
 children prop can be used with any component, including functional components.
@@ -50,7 +50,7 @@ to test than stateless components.
 React has several major features, including a virtual DOM, server-side rendering and component reusablity.
 The virtual DOM helps improve performance by minimizing the number of updates to the actual DOM. 
 Server-side rendering allows React to render components on the server before sending them to the client,
-improving performance and SEO. Components reusability allows developers to create reusable UI components 
+improving performance and SEO. Component reusability allows developers to create reusable UI components 
 using javascript. One-way data binding is not a major feature of React.
 
 **What are the advantages of React?**  
@@ -101,5 +101,14 @@ Class components in React are used when handling a complex state and lifecycle m
 additional functionality over function components, such as the ability to use lifecycle methods like
 componentDidMount and componentDidUpdate to maintain internal state. Function components are generally
 used for rendering simple UI components, while class components are used for more complex functionality.
+
+
+## React Arrays and Lists:
+
+**What is *key* prop and what is the benefit of using it in arrays of elements?**  
+The “key” prop in React is a special prop that provides a unique identifier for each element in an array
+of elements. It is used to optimize the performance of rendering by allowing React to identify, which 
+elements have changed, and to update only those elements instead of re-rendering the entire list. The “key”
+prop should be unique stable identifier for each element, such as an ID or index.
 
 </div>
