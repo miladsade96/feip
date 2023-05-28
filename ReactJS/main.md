@@ -120,4 +120,14 @@ function inside the component's render method. This can cause the function to be
 component renders, even if the function's dependencies have not changed. To avoid this problem, function
 should be declared outside the render method, or in a separate file if they are reused across multiple
 components.
+
+
+## React Conditional Rendering:
+
+**What are inline conditional expressions?**
+Inline conditional expressions in React are expressions that are used to conditionally render components
+based on a certain condition. They are typically used in JSX and are written using the ternary operator.
+Inline conditional expressions are simple and effective way to conditionally render components without
+a need for additional logic.
+
 </div>
