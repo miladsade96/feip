@@ -133,4 +133,41 @@ creates separate scope for declarations existing in that block.
 
 **What is scope of a variable?**  
 It is the availability or visibility or lifetime of a variable.
+
+
+### What is Automatic Semicolon Insertion(ASI)?  
+
+You must have used ";" many times in javascript code. Almost all lines are terminated by a ";". If you forget to
+write ";" then also javascript will not show any error. The reason for not showing error is that, the compiler 
+automatically adds a semicolon at the end of those lines.
+```javascript
+console.log("Hi")   // javascript inserts ";" at the end of line. aka ASI
+console.log("There");
+```
+Writing a ";" at the end of line is optional in javascript. Javascript does not insert a ";" on every line break
+that is on every new line.
+```javascript
+let a = 4 *
+5
+console.log(a);     // 20
+```
+Let's see another example:
+```javascript
+function test() {
+    return      // ASI is happened here - there is a semicolon here.
+    {
+        a:5
+    }
+}
+
+const obj = test();
+console.log(obj);   // undefined
+```
+
+
+**Should you terminate all lines by a ";"?**  
+It is a good practice to have a ";" at the end.
+
+**Can "use strict" statement or the strict mode change the behavior of ASI?**  
+No, It does not change the behavior, if you write "use strict" it does not mean you have to end all lines with ";".
 </div>
