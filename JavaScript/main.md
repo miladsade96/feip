@@ -48,4 +48,48 @@ Yes, because undefined itself is a kind of keyword in javascript, which you can 
 let x = undefined;
 console.log(x);     // undefined
 ```
+
+
+### What is the difference between function scope and block scope?  
+First, we need to understand what is the scope of a variable? The scope can be of a variable and function, so
+the logic remains the same. The Scope of a variable is the lifetime or availability of a variable.
+```javascript
+function first() {
+    let x = 3;
+}
+
+function second() {
+    console.log(x); // Uncaught ReferenceError: x is not defined
+    /* Variable x is not available because it is defined inside first function, and we are trying to access
+    it inside second function. This means the scope of variable 'x' is limited to first function, in the 
+    other words, variable x is local to function first().
+    * */
+}
+
+first();
+second();
+```
+The Scope of a variable can be local or global. Let's make x variable global. Global variable will be accessible
+for all functions.
+```javascript
+let x = 10;
+
+function first() {
+    x += 5;     // 10 + 5
+}
+
+function second() {
+    console.log(x);     // 15
+}
+
+first();
+second();
+```
+Both function first and second are referring to the same variable. X variable is global and available for an entire
+piece of code.
+
+
+### Function scope vs. Block scope:
+ES5 has function scope, and that is because of hoisting, But ES6 does not have hoisting, It has block scope. If you
+declare a variable with “var” keyword, then hoisting will be there.
 </div>
