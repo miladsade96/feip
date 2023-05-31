@@ -92,4 +92,45 @@ piece of code.
 ### Function scope vs. Block scope:
 ES5 has function scope, and that is because of hoisting, But ES6 does not have hoisting, It has block scope. If you
 declare a variable with “var” keyword, then hoisting will be there.
+```javascript
+console.log(x);     // undefined
+var x;
+```
+What if we have this piece of code:
+```javascript
+console.log(x);     // undefined
+var x = 10;
+```
+It is still undefined because javascript compiler internally transforms code above(finds all variable declarations
+which are declared with var keyword and brings all the declarations to the top) to this one:
+```javascript
+var x;
+console.log(x);     // undefined
+x = 10;
+```
+At a time with "var" keyword, you can declare only one variable in a function with the same name.  
+Hoisting means bringing the declarations on top. Block scope is introduced from ES6 onwards.
+```javascript
+let x = 9;
+{
+    let x = 8;
+    console.log(x);     // 8
+}
+console.log(x);     // 9
+```
+Javascript compiler does not hoist variables declared with "let" keyword.
+```javascript
+console.log(x);     // Uncaught ReferenceError: Cannot access "x" before initialization.
+let x;
+```
+
+**What is hoisting in javascript?**  
+A process which is happening behind the scene, internally it is bringing the declarations on top.
+
+**How does block scope work?**  
+It is nothing but the brackets {}, in if conditions, for loop, doo while loop, etc. That is block created which
+creates separate scope for declarations existing in that block.
+
+**What is scope of a variable?**  
+It is the availability or visibility or lifetime of a variable.
 </div>
