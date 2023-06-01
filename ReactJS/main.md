@@ -148,4 +148,22 @@ The callback function as an argument of the setState method in React is used to 
 asynchronously. When the setState() method is called, the state update may not happen immediately, which
 can cause issues when trying to access to updated state. The callback function is called after the state
 has been updated, ensuring that the updated state is available to use.
+
+
+## React State and Props:
+
+**What is the difference between state and props?**  
+The main difference between state and props in React is that state is managed within a component, while props are
+passed down from a parent component. State is used to manage a component's internal data, which can change over
+time, while props are used to customize a component's behavior and appearance.
+
+
+## React Performance:
+
+**What are pure components?**  
+Pure components in React are components that implement the shouldComponentUpdate lifecycle method to improve 
+performance. This method compares the current props and state to the next props and state, and determines whether
+the component needs to be re-rendered. If the props and state have not changed, the component can skip the rendering
+process.
+
 </div>
