@@ -274,4 +274,15 @@ function test(...a, b) {
 We can not have rest parameter in the beginning of the parameter list.
 If we have just the parameter list, it is ok, but if we have more parameters then, the rest parameter
 should be at the last position because it is the rest of the parameters.
+
+---
+
+### When do you get infinity or (-infinity) as output?  
+Infinity is a special integer value, which is greater than any value or in other words, it is the highest possible value
+available in javascript.
+There are two possibilities for infinity:  
+1. Positive infinity(POSITIVE_INFINITY)
+2. Negative infinity(NEGATIVE_INFINITY)  
+
+
 </div>
