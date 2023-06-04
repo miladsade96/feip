@@ -283,6 +283,40 @@ available in javascript.
 There are two possibilities for infinity:  
 1. Positive infinity(POSITIVE_INFINITY)
 2. Negative infinity(NEGATIVE_INFINITY)  
+```javascript
+console.log(Number.POSITIVE_INFINITY);      // Infinity
+console.log(Number.NEGATIVE_INFINITY);      // -Infinity
+```
+In javascript the numbers are stored in 64-bit format. It means any value which cannot fit in the 64-bit format will
+return infinity. It cannot hold the value, value is larger than 64-bit.
+```javascript
+console.log(9e4);       // 90000
+console.log(-9e4);      // -90000
+console.log(9e400);     // Infinity
+console.log(-9e400);    // -Infinity
+console.log(Number.MAX_VALUE);      // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);      // 5e-324
+console.log(Number.MAX_VALUE * 2);      // Infinity
+console.log(-Number.MAX_VALUE * 2);     // -Infinity
+```
+All codes above are generating the infinity, but this is not the purpose. Ideally when you expect that in some 
+calculation you might get some huge value, and you want to put a validation, then it is useful. For example:
+```javascript
+if (num === Number.NEGATIVE_INFINITY) return "Negative Infinite Value";
+else return num;    // Or some calculation on num
+```
 
+**How will you go put a validation for positive or negative infinity?**  
+```javascript
+if (num === Number.POSITIVE_INFINITY) return "Positive Infinite Value";
+else return num;    // Or some calculation on num
 
+if (num === Number.NEGATIVE_INFINITY) return "Negative Infinite Value";
+else return num;    // Or some calculation on num
+```
+
+**What is the output of the following code?**  
+```javascript
+console.log(1/0);   // Infinity
+```
 </div>
