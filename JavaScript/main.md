@@ -48,6 +48,7 @@ Yes, because undefined itself is a kind of keyword in javascript, which you can 
 let x = undefined;
 console.log(x);     // undefined
 ```
+
 ---
 
 ### What is the difference between function scope and block scope?  
