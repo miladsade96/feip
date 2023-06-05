@@ -319,4 +319,49 @@ else return num;    // Or some calculation on num
 ```javascript
 console.log(1/0);   // Infinity
 ```
+
+---
+
+### When do you get NaN as output?  
+NaN is a global property representing "Not-A-Number". You normally get this error when there is a non-numeric value or
+operation performed.
+```javascript
+const a = 5;
+const b = "javascript";
+console.log(a * b);     // NaN - Because number and string cannot perform mathematical operations
+```
+How will you make sure that you always have validation on such values?  
+By using a method called *isNaN()*. This method is a function which returns true or false depending on the expression:
+```javascript
+if (isNaN(a * b)) return "Invalid";
+else if (!isNaN(a * b)) return "Valid";
+```
+NaN is a unique value in the other words, NaN does not match with itself. NaN return a unique value each time you refer
+it:
+```javascript
+console.log(NaN == NaN);    // false
+console.log(NaN === NaN);   // false
+```
+We prefer to write isFinite() method which not only checks for NaN but also checks for infinity and -infinity as well.
+isFinite() method checks whether the value is a regular number or not:
+```javascript
+const a = 4;
+const b = "test string";
+console.log(isFinite(a * b));       // false
+console.log(isFinite(4 * 5));       // true
+console.log(isFinite(Number.MAX_VALUE * 5));        // false
+console.log(isFinite(Infinity));        // flase
+```
+
+**What will be the output of the below statement?**  
+```javascript
+console.log(NaN == NaN);        // false
+console.log(NaN === NaN);       // false
+```
+
+**What is the difference between isNaN() and isFinite()?**  
+isNan() method is going to check whether the value is Not-a-number or not, while isFinite() method checks for NaN as
+well as infinity values.
+
+---
 </div>
