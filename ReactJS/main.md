@@ -166,4 +166,38 @@ performance. This method compares the current props and state to the next props 
 the component needs to be re-rendered. If the props and state have not changed, the component can skip the rendering
 process.
 
+
+## React Advanced Concepts:
+
+**What are forward refs?**  
+Forward refs are a way to pass a ref from parent component to a child component. This allows the parent component to 
+access and manipulate the child component's DOM node. Forward refs are created using the React.forwardRef() function.
+
+**What is React Fiber?**  
+React Fiber is a new rendering engine for react that was introduced in React 16. It is designed to improve performance
+and enable more flexibility in scheduling updates. With React Fiber, React can break up large updates into smaller
+chunks , prioritize updates, pause and resume updates as needed.
+
+**What is the difference between createElement and cloneElement?**  
+createElement is a method used to create new React elements, while cloneElement is a method used to clone existing React
+elements and pass new props to the cloned element.
+
+**What are String Refs Legacy?**  
+String refs which allow developers to set refs using a string identifier, are considered legacy because they can cause
+naming conflicts and bugs. They have been replaced with callback refs and React.createRef() API.
+
+**Why fragments are better than container divs?**  
+Because they are more performant. Using a container div adds an extra DOM node which can slow down rendering and create
+problems with styling. Fragments, on the other hand, allow you to group elements without adding an extra nodes to the
+DOM.
+
+**What is Context?**  
+Context is a way to pass data down to the child components without using props. It is useful for data that needs to be
+accessed by many components at different levels of the component hierarchy. Context provides a way to avoid the "prop
+drilling" problem, where props need to be passed down through many layers of components.
+
+**What is Lifting State Up in React?**  
+Lifting State Up is a technique in React for passing data up from child components to parent components. This is useful
+when multiple components need to share the same state or when a child component needs to update the state of a parent
+component.
 </div>
