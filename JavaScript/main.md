@@ -140,10 +140,10 @@ It is the availability or visibility or lifetime of a variable.
 
 ### What is Automatic Semicolon Insertion(ASI)?  
 
-You must have used ";” many times in javascript code.
+You must have used ";" many times in javascript code.
 Almost all lines are terminated by a “;”.
 If you forget to
-write ";” then also javascript will not show any error.
+write ";" then also javascript will not show any error.
 The reason for not showing error is that the compiler 
 automatically adds a semicolon at the end of those lines.
 ```javascript
@@ -268,9 +268,9 @@ func(1, 2, 3, 4, 5);
 
 **Is this piece of code valid? Give a reason.**  
 ```javascript
-function test(...a, b) {
-    console.log(a,  b);
-}
+// function test(...a, b) {
+//     console.log(a,  b);
+// }
 ```
 We can not have rest parameter in the beginning of the parameter list.
 If we have just the parameter list, it is ok, but if we have more parameters then, the rest parameter
