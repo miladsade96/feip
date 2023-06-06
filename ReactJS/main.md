@@ -200,4 +200,56 @@ drilling" problem, where props need to be passed down through many layers of com
 Lifting State Up is a technique in React for passing data up from child components to parent components. This is useful
 when multiple components need to share the same state or when a child component needs to update the state of a parent
 component.
+
+**What are error boundaries in React v16?**  
+Error boundaries are a way to handle errors in React components. In React v16, error boundaries are special components
+that catch and handle errors that occur during rendering. This can help to prevent entire application from crashing due
+to an error in a single component.
+
+**What is virtual DOM?**  
+The virtual DOM is a representation of the browser's DOM in memory. It is used by React to optimize and speed up
+updates to the actual DOM by minimizing the number of changes that need to be made. When a component's state is 
+changes, React updates the virtual DOM and compares it to the previous version. It then calculates the most efficient
+way to update the actual DOM based on the differences between the two versions.
+
+**How to apply validation on props in React?**  
+In React, you can apply validation on props using the PropTypes library. PropTypes allow you to define the type and
+shape of a component's props, which helps to catch errors and bugs early in development.
+
+**What are Higher-Order components?**  
+They are components that enhance the behaviour of other components by adding additional functionality or props. HOCs
+take a component as input and return a new component that includes the additional behaviour. This allows developers
+to reuse code and separate concerns in their applications.
+
+**How to create props proxy for HOC component?**  
+To create a props proxy for a HOC component, you can wrap the component with another component that adds the additional
+props. This is done by defining a new component that takes the original component as input and returns a new component
+that includes the additional props.
+
+**How virtual DOM works?**  
+When a component's state changes in React, it updates the virtual DOM and calculates the most efficient way to update
+the actual DOM based on the differences between the two versions. This approach minimizes the number of changes that
+need to be made to the actual DOM and improves performance.
+
+**What is the difference between shadow DOM and virtual DOM?**  
+Shadow DOM and virtualDOM are two different concepts. Shadow DOM is a browser feature that allows developers encapsulate
+styles and markup within components. Virtual DOM on the other hand is React feature that allows for performance
+optimization by minimizing changes to the actual DOM.
+
+**What is reconciliation?**  
+Reconciliation is the process of comparing two versions of a component and updating the DOM with the changes. When a 
+component's state or props change, React compares the new version of the component to the previous version and 
+calculates the minimum number of changes needed to update the DOM. This process is called reconciliation and is one of
+the key features of Rect that makes it so efficient.
+
+**What is the main goal of React Fiber?**  
+The main goal of React Fiber is to improve client-side rendering performance. It does this by introducing a new 
+algorithm for rendering updates that is more efficient and flexible than the previous algorithm. With React Fiber,
+React can break up large updates into smaller chunks, prioritize, pause and resume updates as needed.
+
+**What are portals in React?**  
+Portals in React provide a way to render a component's children in a different part of the DOM. This can be useful
+for creating modal dialogs, tooltips and other UI components that need to be positioned outside the normal flow of the
+page.
+
 </div>
