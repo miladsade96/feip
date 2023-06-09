@@ -32,6 +32,9 @@ let y;
 console.log(x==y);  // True, Because null and undefined both represent nothing-ness
 console.log(x===y); // False, Bacause null and undefined have different data types
 ```
+
+#### *Relative Questions*:
+
 **What is undefined in javascript?**  
 A variable, which is not assigned a value is undefined.
 ```javascript
@@ -126,6 +129,8 @@ console.log(x);     // Uncaught ReferenceError: Cannot access “x” before ini
 let x;
 ```
 
+#### *Relative Questions*:
+
 **What is hoisting in javascript?**  
 A process, which is happening behind the scene, internally it is bringing the declarations on top.
 
@@ -170,6 +175,7 @@ const obj = test();
 console.log(obj);   // undefined
 ```
 
+#### *Relative Questions*:
 
 **Should you terminate all lines by a ";"?**  
 It is a good practice to have a ";" at the end.
@@ -245,6 +251,8 @@ const array = [2, 6, 12, 97, 1, 0, 999, 567, 254];
 console.log(Math.max(...array));    /// 999
 ```
 
+#### *Relative Questions*:
+
 **Can we use arguments object in arrow functions?**  
 It cannot be used.
 If it is the traditional way, it works, otherwise it won't.
@@ -307,6 +315,8 @@ if (num === Number.NEGATIVE_INFINITY) return "Negative Infinite Value";
 else return num;    // Or some calculation on num
 ```
 
+#### *Relative Questions*:
+
 **How will you go put a validation for positive or negative infinity?**  
 ```javascript
 if (num === Number.POSITIVE_INFINITY) return "Positive Infinite Value";
@@ -354,6 +364,8 @@ console.log(isFinite(Number.MAX_VALUE * 5));        // false
 console.log(isFinite(Infinity));        // flase
 ```
 
+#### *Relative Questions*:
+
 **What will be the output of the below statement?**  
 ```javascript
 console.log(NaN == NaN);        // false
@@ -365,4 +377,160 @@ isNan() method is going to check whether the value is Not-a-number or not, while
 well as infinity values.
 
 ---
+
+### Explain must know points of arrow function:
+In most javascript interviews, you will be asked about arrow functions. You should talk about functional behaviour
+aspects rather than just the syntax. Three functional behaviour that you must discuss is:
+1. "this" object doesn't work with arrow function
+2. "arguments" object doesn't work with arrow function
+3. You can't use "new" to call arrow functions
+
+```javascript
+// Function definition
+function test1() {
+    // code is here
+}
+test1();
+
+// Function expression
+const test2 = function() {
+    // code is here
+}
+test2();
+```
+
+Arrow function is a function expression:
+
+```javascript
+// An arrow function without any parameter:
+const test3 = () => {
+    console.log("Without any parameter");
+}
+test3();
+
+// An arrow function with a single parameter:
+const test4 = greetMessage => {
+    console.log(greetMessage);
+}
+test4("Hi");
+
+// An arrow function with multiple parameters:
+const test5 = (a, b) => {
+    console.log(a + b);
+}
+test5(8, 5);
+```
+If our arrow function is a one liner single return statement function, we can write it this way:
+```javascript
+const sum = (a, b) => a + b;
+sum(2, 5);  // 7
+```
+We can build IIFE(immediately Invoked Function Expression) using arrow functions:
+```javascript
+// Regular IIFE:
+(function IIFE() {
+    console.log("IIFE");
+})();
+
+// IIFE using arrow function(IIAF - Immediately Invoked Arrow Function):
+(() => {
+    console.log("IIAF");
+})();
+```
+
+Let's talk about those three functional behaviours:
+Assume the following function: 
+```javascript
+const test6 = () => {
+    console.log(this);  // window
+}
+```
+If we run code above on the browser, we get the *window*.  
+If we write the following code, it means that, "this" object can have the local reference in this type of function; if
+this function be called with "new" keyword:
+```javascript
+function test7() {
+    console.log(this);
+}
+```
+But if we use arrow function, we can not have current reference, I will always point to global envirenment:
+```javascript
+const test8 = () => {
+    console.log(this);
+}
+```
+The following code is a clear explanation to what i've mentioned above:
+```javascript
+const obj = {
+    test() {
+        console.log(this);  // {test: f}
+    }
+}
+
+obj.test();
+
+
+const otherObj = {
+    test: () => {
+        console.log(this);  // Window
+    }
+}
+
+otherObj.test();
+```
+The reason is earlier the function also had a job of class. That is the function used to act as a class also, depending
+on the way it is called. If you call the function with the *new* keyword, then it will behaves as a class; But arrow
+function does not have that duty, it is just a function.
+
+The *arguments* object does not work with arrow functions:
+```javascript
+function test() {
+    console.log(arguments);     // [1, 2, 3, 4]
+}
+test(1, 2, 3, 4);
+
+const testArrow = () => {
+    console.log(arguments);     // Uncaught ReferenceError: arguments isn't defined
+}
+testArrow(1, 2, 3, 4);
+```
+We can use *rest* operator, in order to fix this issue:
+```javascript
+const testArrow = (...args) => {
+    console.log(args);      // [1, 2, 3, 4]
+}
+testArrow(1, 2, 3, 4);
+```
+
+You can't use "new" to call arrow functions:
+```javascript
+const test = () => {
+    console.log("Test function ran!");
+}
+
+const obj = new test();     // Uncaught TypeError: test10 is not a constructor
+```
+
+#### *Relative Questions*:
+
+**Explain the syntactical features of arrow function?**  
+Already discussed above.  
+
+**Why "this" does not work in arrow functions?**  
+Already discussed above.  
+
+**Explain the output of the following code with a reason:**  
+```javascript
+const obj = {
+    method: () => {
+        console.log(this);  // Already discussed above
+    }
+}
+```
+
+**How can you handle arguments object like functionality in arrow function?**  
+Already discussed above.  
+**Can you write IIFE with arrow function syntax?**  
+Already discussed above.
+
 </div>
