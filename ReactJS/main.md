@@ -80,6 +80,91 @@ javascript. These components can then be combined to create complex user interfa
 JSX is a javascript syntax extension that allows developers to write HTML-like code in javascript. JSX is
 not required in React, but it is commonly used because it makes writing and managing UI components easier.
 
+**What is the lifecycle methods order in mounting?**  
+The lifecycle methods for mounting a component in React are as follows:  
+ComponentWillMount, render, componentDidMount. The *componentWillMount* method is called before the component is
+mounted to the DOM, *render* is called to render the component, and *componentDidMount* is called after the component
+is mounted to the DOM.
+
+**How to use styles in React?**  
+In React, you can use style attribute to apply styles to the component. The style attribute takes an object that
+contains css properties and values, Similar to inline styles in  HTML.
+
+**What is CRA and its benefits?**  
+CRA stands for Create React App, which is a boilerplate for creating React applications. It provides pre-configured
+setup for building, testing and deploying React applications, allowing developers to focus on writing code rather than
+setting up the build toolchain. Some benefits of using CRA include easy setup, automatic configuration and a built-in
+development server.
+
+**How to combine multiple inline style objects?**  
+In React, you can combine multiple inline style objects using spread operator. This allows you to merge the properties
+of multiple style objects into a single object that can be applied to a component
+```jsx
+<div style={{...style1, ...style2}}>My Component</div>
+```
+This will create a new style object that contains the properties of both style1 and style2.
+
+**What is the use of react-dom package?**  
+The react-dom package is used to render React components to the DOM. The react-dom package provides several methods
+for rendering components, including the render method and the hydrate method.
+
+**What is the purpose of render method of react-dom?**  
+The render method of the react-dom package is used to render a React component to the client-side DOM. The render
+method takes two arguments: the component to render and the DOM element to render it to.
+
+**What is the difference between React and ReactDOM?**  
+React is a library for creating components and managing state and events of those components, while ReactDOM is a 
+library for rendering those components to the DOM. React provide the programming interface for working with components
+, While ReactDOM provides the methods for rendering and updating the components in the browser.
+
+**Why you can't update props in React?**  
+In React, props are immutable and cannot be changed directly. Because React is designed to be a one-way data flow,
+where data is passed down from parent components to child components through props. If you need to update the data, 
+you should do so in the parent component and pass the updated data down as props to the child components.
+
+**How do you conditionally render components?**  
+You can use ternary operator in JSX. This allows you to specify a condition and render one component if condition is
+true, and another component if condition is false. You can use other conditional statements such as *if* statements or
+*switch* statements, outside the JSX to determine which component to render.
+
+**How to conditionally apply class attributes?**  
+In React, You can conditionally apply class attributes using the *className* and the ternary operator. This allows you
+to add or remove classes based on some condition, such as the state of the component. The *className* is used instead
+of the *class* attribute in React, because *class* is reserved in javascript.
+
+**How to enable production mode in React?**  
+To enable production mode in React, you can set NODE_ENV environment variable to *production*. This will trigger
+various optimizations anf remove development-only code from the bundle. You can also use the *process.env.NODE_ENV* 
+variable in the code to conditionally enable certain features. 
+
+**How do you access props in attribute quotes?**  
+In React, you can access props in attribute quotes using the *this.props* syntax and the name of the prop. For example
+to access the props named *someProp*, you would use syntax "{this.props.someProp}" inside the attribute quotes.
+
+**How to loop inside JSX?**  
+To loop inside JSX, you can use map() method to map an array of data to a set of React elements. This allows you to
+dynamically generate UI elements based on data, such as a list of items or a set of images.
+
+**How to focus an input element on page load?**  
+In  React, You can focus an input element on page load using the *focus()* method in the *componentDidMount()*
+lifecycle method. This will set the focus to the input element after the component has been mounted in the DOM. For 
+example:
+```javascript
+componentDidMount() {
+    this.myInput.focus();
+}
+```
+
+**What is the difference between constructor and getInitialState?**  
+The *constructor* method and *getInitialState* are both used to initialize the state of a component in React, but they
+are used in different class styles. The *constructor* method is used in ES6 classes, while *getInitialState* method is
+used in ES5 classes. In general, it is recommended to use the *constructor* method in modern React code.
+
+**How to use React label element?**  
+You can use the standard HTML label element to associate a label with an input field or other form element. To do this,
+you can use the *for* attribute on the label element and set it to the id of the input field. In JSX, you can use the
+*htmlFor* attribute instead of *for*, because *for* is a reserved keyword in javascript.
+
 
 ## React Props:
 
