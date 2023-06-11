@@ -533,4 +533,85 @@ Already discussed above.
 **Can you write IIFE with arrow function syntax?**  
 Already discussed above.
 
+---
+
+### How does the closure work in javascript?
+When a function comes under another function, a closure is created. Closure pattern remembers outer variable and also
+helps to access outer scope members:
+```javascript
+function outer() {
+    function inner() {
+        console.log("Inner called!");
+    }
+}
+inner();    // ReferenceError: inner is not defined.
+```
+we should write this instead in order to call inner function:
+```javascript
+function outer() {
+    function inner() {
+        console.log("Inner called!");
+    }
+}
+outer();    // Inner called!
+```
+Running inner function using closure:
+```javascript
+function outer() {
+    function inner() {
+        console.log("Inner called!");
+    }
+    return inner;
+}
+const inFunc = outer();
+inFunc();   // Inner called!
+```
+or in ES6 syntax:
+```javascript
+const outer = () => {
+    return () => {
+        console.log("Inner called!");
+    }
+}
+const inFunc = outer();
+inFunc();   // Inner called!
+```
+Let's see another example:
+```javascript
+const addOne = () => {
+    let counter = 0;
+    counter++;
+    return counter;
+}
+console.log(addOne());      // 1
+console.log(addOne());      // 1
+console.log(addOne());      // 1
+```
+Because we reinitialize counter variable every time we call the *addOne* function. We can fix it using the following
+code:
+```javascript
+const addOne = () => {
+    let counter = 0;    // this is kind of global variable for arrow function below
+    return () => {
+        return counter++;
+    }
+}
+const clb = addOne();
+console.log(clb());     // 0
+console.log(clb());     // 1
+console.log(clb());     // 2
+```
+It is going to keep the last value of *counter* variable inside javascript environment. When we use closure, we are
+making private members globally available. Closure is useful when we want to make few private members available globally
+when needed.
+
+#### *Relative Questions*:
+
+**How can you access private variable or a function outside the scope?**  
+We can do this using closure. Using returning a function without parentheses.
+
+**Explain the advantages of the closure?**  
+The main advantage of closure is that any member which is private for certain scope, can be accessed keeping it private
+so that the variable is away from any accidental change of value. Accessing private members with a closure pattern
+assure better approach of making a variable global.
 </div>
