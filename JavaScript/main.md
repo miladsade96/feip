@@ -614,4 +614,74 @@ We can do this using closure. Using returning a function without parentheses.
 The main advantage of closure is that any member which is private for certain scope, can be accessed keeping it private
 so that the variable is away from any accidental change of value. Accessing private members with a closure pattern
 assure better approach of making a variable global.
+
+
+### How can sum(5)(6) return 11?
+This way is actually call as currying. Currying is supported by many programming languages. It's a unique way to call
+inner functions where you can pass arguments partially or pass multiple arguments in a function but 1 argument at a 
+time.
+```javascript
+sum(5, 6);  // two arguments
+sum(5)(6);  // one argument at a time
+```
+Let's see how actual code can be:
+```javascript
+const sum = function (a) {
+    return function (b) {
+        return a + b;
+    }
+}
+
+const cl = sum(5);  // 5 is passed to a and cl has the reference of inner function and stored in lexical environment
+const answer = cl(6);   // 6 is passed to b
+console.log(answer);    // 11
+```
+Simplifying the code above using currying:
+```javascript
+const sum = a => b => a + b;
+
+const answer = sum(5)(6);   // Currying happens here
+console.log(answer);    // 11
+```
+So the question is what is the practical use of currying?  
+Let's see an example:
+```javascript
+const priceCalculator = function (price) {
+    return (discountPercentage) => {
+        return price * discountPercentage;
+    }
+}
+
+const discountAmount = priceCalculator(300);
+console.log(discountAmount(0.1));       // 30
+console.log(discountAmount(0.2));       // 60
+console.log(discountAmount(0.3));       // 90
+console.log(discountAmount(0.4));       // 120
+console.log(discountAmount(0.5));       // 150
+```
+
+#### *Relative Questions*:
+
+**What is function currying?**  
+It is a way to call functions where you can pass arguments partially or pass multiple arguments in a function but one
+argument at a time.
+
+**What will this statement do? Explain in detail.**  
+```javascript
+const multiplication = a => b => c => a * b * c;
+```
+Code above is the simplified version of the following code using currying:
+```javascript
+const multiplication = a => {
+    return b => {
+        return c => {
+            return a * b * c;
+        }
+    }
+}
+```
+
+**Explain practical usage of function currying?**  
+Currying is an incredible useful technique of functional programming which solves various purposes like passing partial
+parameters or avoiding unwanted repetitions.
 </div>
