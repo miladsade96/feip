@@ -366,6 +366,36 @@ Portals in React provide a way to render a component's children in a different p
 for creating modal dialogs, tooltips and other UI components that need to be positioned outside the normal flow of the
 page.
 
+**What is ReactDOMServer?**  
+This is a module that allows you to render react components on the server. It is provided several methods for rendering
+components, including the renderToString method and the renderToStaticMarkup method.
+
+**How are error boundaries handled in React v15?**  
+Error boundaries were not supported in React v15. Error handling in React v15 was less robust and could lead to entire
+application crashing if an error occurred during rendering.
+
+**What are the recommended ways for static type checking?**  
+There are several recommended ways to implement static type checking in React, including using Typescript or Flow.
+Typescript and Flow are both static type checkers that can help to catch errors and bugs before they happen. The
+PropTypes library is another way to perform type checking, but it is less powerful than Typescript and Flow. ESLint is
+a code linter that can help to catch errors and enforce best practices, but it is not a type checker.
+
+**How to use InnerHTML in React?**  
+You can use *dangerouslySetInnerHTML* prop to set the inner HTML of a component. The *dangerouslySetInnerHTML* prop is
+used to bypass React's built-in sanitization and allow arbitrary HTML to be injected into a component. However, this
+should be used with caution, as it can pose a security risk.
+
+**What will happen if you use setState in constructor?**  
+If you use *setState* in a component's constructor, It will update the component's state. However, this is generally
+not recommended, as it can cause problems with initialization and lead to confusing code. It is bette to set the initial
+state in the constructor using *this.state* property.
+
+**How events are different in React?**  
+Events in React are different from native events in several ways. React events are synthetic events that are 
+cross-browser compatible and have the same API across all browsers. React events are also camelCase instead of
+lowercase. Finally, React event are different API than native events, including the ability to call *preventDefault*
+and *stopPropagation* on the event object.
+
 
 ## React Refs:
 
