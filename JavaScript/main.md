@@ -615,6 +615,7 @@ The main advantage of closure is that any member which is private for certain sc
 so that the variable is away from any accidental change of value. Accessing private members with a closure pattern
 assure better approach of making a variable global.
 
+---
 
 ### How can sum(5)(6) return 11?
 This way is actually call as currying. Currying is supported by many programming languages. It's a unique way to call
@@ -684,4 +685,104 @@ const multiplication = a => {
 **Explain practical usage of function currying?**  
 Currying is an incredible useful technique of functional programming which solves various purposes like passing partial
 parameters or avoiding unwanted repetitions.
+
+---
+
+### Iterable & Iterators:
+The iterator concept is newly introduced in ES6. It is kind of new mechanism to iterate or traverse through data
+structures. As you know Array is an iterable. It means if you want to put a *for ... of* loop on an array, you can
+easily do that.
+```javascript
+const arr = [4, 5, 6, 7];
+for (let i of arr) {
+    console.log(i);
+}
+/*
+4
+5
+6
+7
+ */
+```
+Similarly, strings, maps, sets, etc are all iterables.  
+But image you have an object literal such as the following code:
+```javascript
+let obj = {
+    val1: 10,
+    val2: 20,
+}
+```
+And you want to use *for ... of* loop on this object; In short, you want to make this object literal an iterable object.
+You can do this in ES6 using *Symbol.iterator* . Let's see an example:
+```javascript
+let arr = [4, 5, 6, 7];
+let itr = arr[Symbol.iterator]();   // returns iterable object
+console.log(itr);   // Object [Array Iterator] {}
+itr.next();     // {value: 4, done: false}
+itr.next();     // {value: 5, done: false}
+itr.next();     // {value: 6, done: false}
+itr.next();     // {value: 7, done: false}
+itr.next();     // {value: undefined, done: true}
+```
+Now we are going to iterate over an object literal:
+```javascript
+let obj = {
+    start: 10,
+    end: 15,
+}
+
+for (let i of obj) {
+    console.log(i);     // TypeError: obj is not iterable
+}
+```
+Let's see the rules first of all:
+* When you want to make an object literal iterable, it should have method having key value as *Symbol.iterator*.
+* The object literal should also have the *next()* method.
+```javascript
+let obj = {
+    start: 10,
+    end: 15,
+}
+
+obj[Symbol.iterator] = function () {
+    const itr = {
+        next() {
+            if (obj.start <= obj.end) return {value: obj.start++, done: false};
+            else return {done: true};
+        }
+    }
+    return itr;
+}
+
+for (let i of obj) {
+    console.log(i);
+}
+
+/*
+10
+11
+12
+13
+14
+15
+ */
+```
+The key part is you put a method inside the object, which returns an iterable object. *Symbol.iterator* must return
+the object itself because there won't be any reference otherwise.  
+
+#### *Relative Questions*:
+
+**What is the purpose of the iterator?**  
+The use of an iterator is to make a data structure iterable which is not. When you create an object which should have
+facility of putting *for ... of* loop on it, then you need to create the iterator.
+
+**How do you create an iterator?**  
+The *Symbol.iterator* method must be implemented which should return an iterator object and should also have a next()
+method which returns the object.
+
+**Explain the practical use of an iterator?**  
+The use of an iterator is not very prompt when you use it in the same scope as we have seen earlier. As the custom data
+structure needs to have a provision of *for ... of* kind of loop then if your object is not iterable then it won't work.
+You are creating a pointer to move in data structure which you have provided to the end user who is actually a
+programmer.
 </div>
