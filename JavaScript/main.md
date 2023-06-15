@@ -785,4 +785,126 @@ The use of an iterator is not very prompt when you use it in the same scope as w
 structure needs to have a provision of *for ... of* kind of loop then if your object is not iterable then it won't work.
 You are creating a pointer to move in data structure which you have provided to the end user who is actually a
 programmer.
+
+---
+
+### Generators:
+Generators can help you to pause and resume the code. Normally when you write a function, it returns a single value.
+You can think of generators as a kind of functions which can return multiple values in phases.  
+The function* is the keyword used to define a generator function and yield is an operator which pauses the generator;
+yield also helps to receive input and send output.
+```javascript
+const genFunction = function* () {
+    console.log("Hello");
+    yield "YieldedValue.";  // At this time the function will be paused
+    console.log("World!");
+    yield;  // yield itself is capable of returning any value
+    console.log("JavaScript");
+}
+
+const gObj = genFunction();
+console.log(gObj);      // Object [Generator] {}
+```
+When a generator function is called, It does not call the function, instead it returns a generator object. There is a
+*next()* method which starts the execution till the yield operator.
+```javascript
+console.log(gObj.next());       // Hello  {value: "YieldedValue.", done: false}
+console.log(gObj.next());       // World! {value: undefined, done: false}
+console.log(gObj.next());       // JavaScript {value: undefined, done: true}
+console.log(gObj.next());       // {value: undefined, done: true}
+```
+Generators are iterable, So we can put *for ... of* loop on them:
+```javascript
+for (let o of gObj) console.log(o);
+/*
+Hello
+YieldedValue.
+World!
+undefined
+JavaScript
+ */
+```
+Since generators are iterable, So we can use spread operator with them:
+```javascript
+const gArr = [...genFunction()];    // This will create an array with returned values
+console.log(gArr);
+/*
+Hello
+World!
+JavaScript
+[ 'YieldedValue.', undefined ]
+ */
+```
+We can refactor our previous code related to iterator section using generators:
+```javascript
+let obj = {
+    start: 10,
+    end: 15,
+    *[Symbol.iterator]() {
+        for (let i = this.start; i <= this.end; i++) yield i;
+    }
+}
+
+for (let i of obj) console.log(i);
+
+/*
+10
+11
+12
+13
+14
+15
+ */
+```
+We can also get all values as an array:
+```javascript
+let obj = {
+    start: 10,
+    end: 15,
+    *[Symbol.iterator]() {
+        for (let i = this.start; i <= this.end; i++) yield i;
+    }
+}
+
+console.log([...obj]);  // [10, 11, 12, 13, 14, 15]
+```
+Generators work well with iterators. The yield operator is only used in generator functions. When it comes to recursive
+functions or calling one generator function from another, yield* syntax is used:
+```javascript
+function* gen1() {
+    console.log("Hello")
+}
+
+function* gen2() {
+    const g1 = gen1();
+    g1.next();   // We need to move the function pointer using the next() method
+}
+
+const g2 = gen2();
+g2.next();      // Hello
+```
+We can summarize code snippet above like the following code:
+```javascript
+function* gen1() {
+    console.log("Hello")
+}
+
+function* gen2() {
+    yield* gen1();
+}
+
+const g2 = gen2();
+g2.next();      // Hello
+```
+In case we have a recursive function:
+```javascript
+function* factorial() {
+    const certainCondition = true;
+    if (certainCondition) {
+        // Exit Code
+    }
+    yield* factorial();
+}
+```
+
 </div>
