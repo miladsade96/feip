@@ -397,6 +397,35 @@ lowercase. Finally, React event are different API than native events, including 
 and *stopPropagation* on the event object.
 
 
+## React Advanced:
+
+**What are React Mixins?**  
+React Mixins are reusable code snippets that can be applied to multiple components in order to provide shared
+functionality. They are a way to encapsulate logic and behaviour that cn be used across multiple components, allowing
+for code reuse and reducing duplication. However, they are not recommended in modern versions of React and have been
+largely replaced by higher-order components and render props.
+
+**What id the difference between super() and super(props) in React using ES6 classes?**  
+In React using ES6 classes, super() is used to call the constructor of the superclass, while super(props) is used to 
+pass props to the constructor of the superclass. The super(props) syntax is necessary if you need to access props in
+the constructor of a subclass.
+
+**How to listen to state changes?**  
+You can listen to state changes by using the *componentDidUpdate* lifecycle method. This method is called after a
+component's state has been updated, and you can use it to perform additional actions or update the UI based on the new
+state, For example you can use this method to update the DOM, call a web API or trigger an animation.
+
+**Do Hooks replace render props and higher-order components?**  
+Hooks in React can replace both render props and higher-order components in some cases. Hooks can provide same
+functionality to both of these patterns, while also simplifying the code and making it more reusable. For example, the
+*useEffect* Hook can replace the *componentDidMount* and *componentDidUpdate* lifecycle methods as well as some uses
+of higher-order components.
+
+**What is a switching component?**  
+A switching component in React is a component that renders one of several child components based on some condition or
+state. This is commonly used to switch between different views or user interface elements in response to user input
+or other events.
+
 ## React Refs:
 
 **How to create refs?**  
