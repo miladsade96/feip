@@ -426,6 +426,27 @@ A switching component in React is a component that renders one of several child 
 state. This is commonly used to switch between different views or user interface elements in response to user input
 or other events.
 
+**How to re-render the view when then browser is resized?**  
+In React, you can re-render the view when the browser is resized by using a state variable and updating it on resize.
+This will trigger a re-render of the component and allow you to update the layout or other properties based on the new
+size of browser window. You can use the *windowAddEventListener* method to listen for the *resize* event and update the
+state variable accordingly.
+
+**What are the lifecycle methods going to be deprecated in React v16?**  
+The *componentWillReceiveProps* and *componentWillUpdate* lifecycle methods are going to be deprecated in React v16.
+These methods will be replaced with new lifecycle methods that are more efficient and easier to reason about. The new
+methods are: *getDerivedStateFromProps* and *getSnapshotBeforeUpdate*.
+
+**Why we need to pass a function to setState?**  
+This is because in order to avoid infinite loops. If we pass an object directly, it can cause the component to
+re-render and update the state endlessly. By passing a function, we can ensure that the state is updated correctly and
+avoid these issues.
+
+**What is React PropType array with shape?**  
+The *shape* propType in React allows you to validate an object with a specific shape, while the *arrayOf* propType
+allows you to validate an array of values. The *arrayOf* propType can be combined with the *shape* propType to validate
+an array of objects with a specific shape. This is useful for validating data structures in React components.
+
 ## React Refs:
 
 **How to create refs?**  
