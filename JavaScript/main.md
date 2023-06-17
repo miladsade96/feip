@@ -906,5 +906,143 @@ function* factorial() {
     yield* factorial();
 }
 ```
+The generator object has next() method which we have already seen and it returns an object like the following:
+```javascript
+/*
+{value: val, done: true/false}
+ */
+```
+It also has two other methods; return() and throw(). return() method is similar to next() method, but it returns object
+like the following:
+```javascript
+/*
+{value: val, done: true}
+ */
+```
+And it terminates the generator. So return method is used to terminate the generator. Let's see an example:
+```javascript
+function* gen() {
+    yield "One";
+    yield "Two";
+}
 
+const gObj = gen();
+console.log(gObj.next());       // {value: "One", done: false}
+console.log(gObj.next());       // {value: "Two", done: false}
+console.log(gObj.next());       // {value: undefined, done: true}
+```
+But if we use return() method:
+```javascript
+function* gen() {
+    yield "One";
+    yield "Two";
+}
+
+const gObj = gen();
+console.log(gObj.return());         // {value: undefined, done: true}
+console.log(gObj.next());           // {value: undefined, done: true}
+console.log(gObj.next());           // {value: undefined, done: true}
+```
+So when you want to come out of generator function or terminate it, you can use return() method. We can also pass the
+condition message to return method in order to terminate generator function:
+```javascript
+function* gen() {
+    yield "One";
+    yield "Two";
+}
+
+const gObj = gen();
+console.log(gObj.return("Condition Done!"));         // {value: "Condition Done!", done: true}
+console.log(gObj.next());           // {value: undefined, done: true}
+console.log(gObj.next());           // {value: undefined, done: true}
+```
+We can also suspend the termination using try...finally block:
+```javascript
+function* gen() {
+    try {
+        yield "One";
+        yield "Two";
+    } finally {
+        yield "Finally";
+    }
+}
+
+const gObj = gen();
+console.log(gObj.next());       // {value: "One", done: false}
+console.log(gObj.return());     // {value: "Finally", done: false}
+console.log(gObj.next());       // {value: undefined, done: true}
+```
+Writing *yield* inside *finally* block won't allow the return() to terminate.
+
+---
+
+The throw() method throws an exception at the location of yield which made the last suspension in the generator
+function.
+```javascript
+function* gen() {
+    try {
+        yield "One";
+        yield "Two";
+    } catch (err) {
+        console.log(`Error is ${err}`);
+    }
+}
+
+const gObj = gen();
+console.log(gObj.next());       // {value: "One", done: false}
+console.log(gObj.throw());      // Error is undefined   {value: undefined, done: true}
+```
+
+If there is an error condition, you will use throw() or return() methods. The methods shown earlier are used in some
+situations only, with *if* condition or *switch* case, etc.  
+
+---
+
+Generator functions are rarely used in javascript code, but for asynchronous processes, iterators and generators
+combined call work well.
+
+#### *Relative Questions*:
+
+**What are generator functions? Explain the syntax.**  
+Generator functions give you a way where you can pause a process and continue from there after some time.
+
+**Which is the right syntax?**  
+```javascript
+function* first() {
+    // Some Code
+}
+
+// or
+
+function *second() {
+    // Some other code
+}
+```
+Both are valid. You can write any syntax from blow:
+1. function* (){}
+2. function *(){}
+3. function*(){}
+
+But the first one is commonly used syntax.
+
+**Explain all methods of generator object?**  
+1. next(): It moves the function pointer to the next line from last suspended yield
+2. return(): It allows to terminate the generator function
+3. throw(): It can help to raise an error with the generator object
+
+**Explain the use of `yield*` syntax?**  
+It is used to call generator function from another generator function or even to call recursive generator function.
+
+**Can you prevent return() from terminating the generator function?**  
+Yes, by using yield statement inside try...finally block:
+```javascript
+function* gen() {
+    try {
+        yield "One";
+        yield "Two";
+    } finally {
+        yield "Finally";
+    }
+}
+```
 </div>
