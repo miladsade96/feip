@@ -447,6 +447,17 @@ The *shape* propType in React allows you to validate an object with a specific s
 allows you to validate an array of values. The *arrayOf* propType can be combined with the *shape* propType to validate
 an array of objects with a specific shape. This is useful for validating data structures in React components.
 
+**What is the purpose of getSnapshotBeforeUpdate() lifecycle method?**  
+In React this method is used to capture information from the DOM before it changes. This method is called right before
+the DOM is updated and can return a value that will be passed to the componentDidUpdate method. It is commonly used 
+to preserve scroll position or other user interface during updates.
+
+**Is it possible to use React without rendering HTML?**  
+In React, It is possible to use the library for non-HTML rendering, such as SVG or Canvas. React provides a flexible
+programming interface for creating components and managing state, and it can be used to generate any kind of output,
+not just HTML. React is also used for building mobile applications with React Native, which uses same programming
+model as React for building UIs on iOS and Android platform.
+
 ## React Refs:
 
 **How to create refs?**  
