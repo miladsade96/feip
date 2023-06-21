@@ -458,6 +458,12 @@ programming interface for creating components and managing state, and it can be 
 not just HTML. React is also used for building mobile applications with React Native, which uses same programming
 model as React for building UIs on iOS and Android platform.
 
+**What is the recommended approach of removing an array element in react state?**  
+The recommended approach is to use *filter()* method. This allows you to create a new array that contains all the 
+elements of original array except the one you want to remove. This a safer and more efficient approach than using the
+*splice()* method, which mutates the original array and can cause unexpected side effects.
+
+
 ## React Refs:
 
 **How to create refs?**  
