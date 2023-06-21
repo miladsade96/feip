@@ -1290,4 +1290,122 @@ student = null;     // The reference is lost(unreachable)
 student.teacher = teacher;
 ```
 
+---
+
+### Handling Errors in JavaScript:
+
+Error handling is one of the very important concepts in any programming language. When you write the code, it may have
+errors in runtime. In case if error is appeared, the program will break. It will stop execution in between. Ideally
+you should write code with proper validations but still there are some unforeseen situations where the program breaks
+in between. In such cases the end user is stuck. Ideally what should happen is that when the program faces errors, even
+after validations, it should handle it and notify the user with proper error details like error number and description.
+```javascript
+let a = 10;
+console.log(`value of a: ${a}`);    // 10
+letb = 20;  // Uncaught ReferenceError: b is not defined
+console.log(`value of b: ${b}`);
+```
+In order to handle this kind of situation where you don't face any error at compile time but at runtime if you face any
+error then, you can use the **try ... catch** block:
+```javascript
+try {
+    let a = 10;
+    console.log(`value of a: ${a}`);
+    letb = 20;
+    console.log(`value of b: ${b}`);
+} catch (err) { // Error object is always passed with the catch block and it has name, message and stack properties
+    console.log(err.name);  // ReferenceError
+    console.log(err.message);   // b is not defined
+    console.log(err.stack); // This contains all information above as well as where the error is occured
+}
+```
+It might also happen that you want to generate your own custom errors, you can generate custom errors by using **throw**
+operator. Here is an example:
+```javascript
+let a = 10;
+let ageError = new Error("Invalid Age");
+try {
+    if (a < 18) throw ageError;
+    else console.log("Valif Age");
+} catch (err) {
+    console.log(err.message);   // Invalid Age
+}
+```
+Let's see an example of type error:
+```javascript
+let a = 10;
+try {
+    if (typeof a !== "string") throw TypeError("a has invalid type!");
+    else console.log("a has valid type")
+} catch (e) {
+    console.log(e.message);     // a has invalid type!
+}
+```
+There is one another block which we can add to **try** block and that is **finally** block. Let's see an example:
+```javascript
+try {
+    // Some code
+} catch (e) {
+    // Some other code
+} finally {
+    // This code is executed at the end and is always executed
+}
+```
+```javascript
+let a = 10;
+try {
+    if (typeof a !== "string") throw TypeError("a has invalid type!");
+    else console.log("a has valid type")
+} catch (e) {
+    console.log(e.message);     // a has invalid type!
+} finally {
+    console.log("Final Code Ran!");     // Final Code Ran
+}
+```
+
+#### *Relative Questions*:
+
+**When do you need try...catch block?**  
+This block is something which is handled at runtime, so when the code executed; Some portion of code needs to be managed
+properly so that the program does not stop in between then you use the try...catch block.
+
+**How can you generate an error?**  
+You can generate custom errors with **throw** statement.
+```javascript
+let ageError = new Error("Age Error");
+try {
+    if (a < 18) throw ageError;
+}
+
+// Or
+
+throw new TypeError("Type of a is string!");
+```
+
+**Can you generate SyntaxError or ReferenceError kind of error?**  
+Yes, but you should use throw statement to raise the javascript built-in errors.
+
+**What is the purpose of the finally block?**  
+The finally block is always executed whether there is an error or not. So the code which shall to be executed we put it
+in finally block.
+
+**How can you refer to the name and description of an error?**  
+```javascript
+try {
+    // some code is here
+} catch (err) {
+    console.log(err.name);
+    console.log(err.message);
+}
+```
+
+**Can we have finally block without a catch block as well?**  
+Yes
+```javascript
+try{
+    // Some code is here
+} finally {
+    // Some other code which is always executed
+}
+```
 </div>
