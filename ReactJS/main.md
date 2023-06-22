@@ -463,6 +463,34 @@ The recommended approach is to use *filter()* method. This allows you to create 
 elements of original array except the one you want to remove. This a safer and more efficient approach than using the
 *splice()* method, which mutates the original array and can cause unexpected side effects.
 
+**How do you memoize a component?**  
+To memoize a component in React, you can use the *React.memo* higher-order component. This will prevent the component
+from re-rendering if the props have not changed. You can also use the *shouldComponentUpdate* lifecycle method or the
+*React.useMemo* hook to achieve similar results.
+
+**How do you implement server side rendering or SSR?**  
+To implement server side rendering in React, you can use the *ReactDOMServer* module. This module provides a method
+called *renderToString* that allows you to render a component to HTML on the server. You can then send this HTML to the
+client, where it can be hydrated into a full React application.
+
+**What is the purpose of getDerivedStateFromProps() lifecycle method?**  
+This lifecycle method in React is used to update the state based on changes to props. This method is called every time
+the component is updated and can return a new state object. It is commonly used to synchronize the state with the props
+in response to user input or server-side changes.
+
+**Why ReactDOM is separated from React?**  
+ReactDOM is separated from React in order to improve performance and reduce the bundle size of React applications.
+Separating the rendering logic from the component logic allows for more efficient updates and reduces the amount of
+javascript that needs to be downloaded by the client. This separation also allows for easier integration with other
+rendering targets such as native mobile apps or desktop applications.
+
+**What is the difference between setState and replaceState methods?**  
+The *retState* method is used to update component state, and it merges the new state with the old one. The 
+*replaceState* is similar, but it overwrites the old state completely with the new state. However, *replaceState* is
+deprecated in React and should not be used. Instead, you should use the *setState* method to update state in a React
+component.
+
+
 
 ## React Refs:
 
