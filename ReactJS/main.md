@@ -490,6 +490,31 @@ The *retState* method is used to update component state, and it merges the new s
 deprecated in React and should not be used. Instead, you should use the *setState* method to update state in a React
 component.
 
+**How to pretty print JSON with React?**  
+You can use *JSON.stringify()* method with a null value for the *replacer* parameter and a number value for the *space*
+parameter. This will format the JSON data with indentation and line breaks for readability.
+
+**What is strict mode in React?**  
+It is a mode that highlights potential problems in the code, such as deprecated lifecycle methods or unsafe practices.
+It can help to identify issues early on and improve the overall quality of the code. Strict mode can be enabled
+globally or for individual components.
+
+**How do you use decorators in React?**  
+Decorators in React can be used as class decorators to add a functionality to a component class. For example, you can
+use a decorator to add additional lifecycle methods or state to a component. Decorators can be written as higher-order
+components(HOCs) or as regular functions.
+
+**Why is isMounted() an antipattern and what is the proper solution?**  
+The *isMounted()* method in React is considered an antipattern because it can lead to race conditions and bugs. This
+method checks if the component is mounted in the DOM, but it can return a false positive if it is called during the
+unmounting phase. The proper solution is to use the *componentDidMount* and *componentWillUnmount* lifecycle methods
+to manage component state and cleanup.
+
+**What are the Pointer Events supported in React?**  
+React supports both mouse and touch events through the use of Pointer Events. Pointer Events are the standardized event
+model that provide a unified way to handle mouse, touch and stylus input. React provides a set of event handlers for
+Pointer Events, such as *onPointerDown* and *onPointerMove* that can be used to create responsive and touch-friendly
+user interfaces.
 
 
 ## React Refs:
