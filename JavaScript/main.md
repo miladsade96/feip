@@ -1411,6 +1411,8 @@ try{
 
 ---
 
+## Arrays:
+
 ### Explain Array and Traversal in Array:
 
 Normally when you have a variable it can store only one value.
