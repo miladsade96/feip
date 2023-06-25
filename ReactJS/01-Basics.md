@@ -164,4 +164,9 @@ used in ES5 classes. In general, it is recommended to use the *constructor* meth
 You can use the standard HTML label element to associate a label with an input field or other form element. To do this,
 you can use the *for* attribute on the label element and set it to the id of the input field. In JSX, you can use the
 *htmlFor* attribute instead of *for*, because *for* is a reserved keyword in javascript.
+
+**What are the exceptions on React component naming?**  
+There are several rules for naming components, including that component's name must start with capital letter, use
+camelCase convention and can include numbers but not as a first character. Components should also have a descriptive
+name that reflects their purpose or function in the application.
 </div>
