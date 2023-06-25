@@ -1560,4 +1560,97 @@ console.log(arr[arr.length]);   // Undefined
 ```
 This will display the *undefined* as a result.
 
+---
+
+### Array Element Manipulation:
+
+Adding and removing elements in an array:
+There are 4 most known methods that we can use to add or remove elements; *push()*, *pop()*, *shift* and *unshift*.
+*push()* and *unshift()* are used to add elements. *push()* method adds one or more elements at the end of an array and
+returns the new length; count of elements after adding elements. *unshift()* method adds one or more elements at the 
+beginning of an array and returns the new length; cont of elements after adding elements. *pop()* and *shift* are used
+to remove elements. *pop()* method removes the last element of array, and it returns that removed element. *shift()*
+method removes the first element of array, and it returns that removed element.
+```javascript
+const arr = ["one", "two", "three", "four", "five"];
+
+console.log(arr.push("six"));   // 6
+console.log(arr);   // ["one", "two", "three", "four", "five". "six"]
+
+console.log(arr.unshift("zero"));   // 7
+console.log(arr);   // ["zero", "one", "two", "three", "four", "five", "six"]
+
+console.log(arr.pop());     // "six"
+console.log(arr);   // ["zero", "one", "two", "three", "four", "five"]
+
+console.log(arr.shift());   // "zero"
+console.log(arr);   // ["one", "two", "three", "four", "five"]
+```
+Let's talk about an important method in arrays which is called *splice()* method. This method depending on what 
+parameters it takes, can add, insert, replace or even remove on or more elements. It also returns all the deleted
+elements. Here is its syntax:
+```javascript
+arrName.splice(start, deleteCount, items);
+// Start: Zero-based index at which to start changing the array
+// deleteCount: Optional - An integer indicating the number of elements in the array to remove from start
+// items: Optional - The elements to add to the array, beginning from start
+```
+Let's see a couple of examples:
+```javascript
+let arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(2));     // ["three", "four", "five"]
+console.log(arr);   // ["one", "two"]
+
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(2, 1));      // ["three"]
+console.log(arr);   // ["one", "two", "four", "five"]
+
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(2, 1, "New"));      // ["three"]
+console.log(arr);   // ["one", "two", "New", "four", "five"]
+
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(2, 1, "New", "Another"));      // ["three"]
+console.log(arr);   // ["one", "two", "New", "Another", "four", "five"]
+
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(2, 0, "New", "Another"));      // []
+console.log(arr);   // ["one", "two", "New", "Another", "three", "four", "five"]
+
+// Behave like push method:
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(arr.length, 0, "New"));      // []
+console.log(arr);   // ["one", "two", "three", "four", "five", "New"]
+
+// Behave like unshift method:
+arr = ["one", "two", "three", "four", "five"];
+console.log(arr.splice(0, 0, "New"));      // []
+console.log(arr);   // ["New", "one", "two", "three", "four", "five"]
+```
+*splice()* method is a fantastic way to deal with various types of operations within an array, but it changes the
+original array which isn't very good practice in some cases.
+
+#### *Relative Questions*:
+
+**What is the difference between push() and unshift() methods?**  
+*push()* method adds the element at the end of an array whereas *unshift()* method adds element at the beginning.
+
+**What is the difference between pop() and shift() methods?**  
+*pop()* method remove the element from the end of an array whereas *shift()* method removes element from the beginning.
+
+**How can you insert an element at the given position?**  
+*splice()* method is used to insert an element at a given position:
+```javascript
+arr.splice(0, 0, "New Element");
+```
+
+**How can you remove a specific element?**  
+*splice()* method is used to remove a specific element:
+```javascript
+arr.splice(2, 1);
+```
+
+**What does splice() method return?**  
+*splice()* method returns deleted items, If there is nothing to delete then it will return an empty array.
+
 </div>
