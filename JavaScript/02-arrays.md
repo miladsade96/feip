@@ -428,4 +428,73 @@ const products = [
 const productNames = products.map(element => element.pName);
 console.log(productNames);  // ['Apple', 'Melon', 'Banana', 'BlueBerry']
 ```
+
+---
+
+### Flattening a 2D Array:
+
+Flattening an array means converting a multi dimensional array(2D, 3D, ...) into a single dimensional array. In order
+to do this, we have to use the *reduce()* method. Let's say we want to sum of all elements from the array, then it's
+kind of an accumulative operation i.e, result is combined. So *reduce()* method loop through all the elements and helps
+you to get one combined result such as sum, average or product. *reduce()* method takes a callback function  and  the
+accumulator initial value as its parameters. Callback function itself takes four parameter as follows: accumulator,
+currentValue, currentIndex and array:
+* accumulator:  The value resulting from the previous call to callbackFn. On first call, initialValue if specified,
+    otherwise the value of array[0].
+* currentValue:  The value of the current element. On first call, the value of array[0] if an initialValue was
+    specified, otherwise the value of array[1].
+* currentIndex:  The index position of currentValue in the array. On first call, 0 if initialValue was specified,
+    otherwise 1.
+* array:  The array reduce() was called upon
+
+Let's see the couple of examples:
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let result = arr.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(result);    // 15
+
+result = arr.reduce((acc, currentValue) => acc + currentValue, 10);;
+console.log(result);    // 25
+
+
+result = arr.reduce((acc, currentValue) => acc * currentValue);;
+console.log(result);    // product: 120
+
+arr = [2, 4, 6, 8];
+result = arr.reduce((acc, currentValue, index, array) => {
+    acc += currentValue;
+    if (index === arr.length - 1) return acc / arr.length;
+    return acc;
+});
+console.log(result);    // average: 5
+```
+
+#### *Relative Questions*:
+
+**How will you flatten an array?**  
+```javascript
+const arr = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+const flatArr = arr.reduce((acc, curr) => acc.concat(curr));
+console.log(flatArr);   // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+**Get the sum of all salaries of employees?**  
+```javascript
+const employees = [
+    {eNo: 1111, eSalary: 10000},
+    {eNo: 2222, eSalary: 20000},
+    {eNo: 3333, eSalary: 30000},
+    {eNo: 4444, eSalary: 40000},
+];
+const totalSalary = employees.reduce((acc, curr) => acc + curr.eSalary, 0);
+console.log(totalSalary);   // 10000
+```
+
+**What is the difference between reduce() and reduceRight() method?**  
+The *reduce()* method loops from 0th index till the last index of an array whereas *reduceRight()* method starts
+looping from the last index to 0th index.
 </div>
