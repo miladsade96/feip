@@ -365,4 +365,67 @@ const arr = ["One", "Two", "Three", "Four", "Five"];
 console.log(arr.lastIndexOf("Abcd"));
 ```
 In case of *indexOf()* or *lastIndexOf()*, when the element is not found, it will return -1.
+
+---
+
+### The use of map() method:
+
+The *map()* method creates a new array populated with the results of calling a provided function on
+every element in the calling array. *map()* method takes a callback function as its parameter; callback
+function itself takes four parameters as follows: element, index, array, thisArg
+* element: The current element being processed in the array
+* index: The index of the current element being processed in the array
+* array: The array map() was called upon
+* thisArg: Optional - A value to use as this when executing callbackFn
+
+Let's see the couple of examples:
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const result = arr.map((elementItself, indexOfElement) => {
+    console.log(`Element: ${elementItself}, index: ${indexOfElement}`)
+});
+/*
+Element: 1, index: 0
+Element: 2, index: 1
+Element: 3, index: 2
+Element: 4, index: 3
+Element: 5, index: 4
+ */
+console.log(result);    // [undefined, undefined, undefined, undefined, undefined]
+```
+Let's consider we want to get squared of all elements:
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const newArr = arr.map(elem => elem * elem);
+console.log(newArr);    // [1, 4, 9, 16, 25]
+```
+Note: *map()* method returns a new array, and it doesn't change the original one.
+
+#### *Relative Questions*:
+
+**Find the length of each element in a new array?**  
+```javascript
+const array = ["Apple", "Banana", "Orange"];
+const results = array.map(element => element.length);
+console.log(results);   // [5, 6, 6]
+```
+
+**Find the square root of every element and store it in a new array?**  
+```javascript
+const arr = [4, 16, 64];
+const results = arr.map(element => Math.sqrt(element));
+console.log(results);   // [2, 4, 8]
+```
+
+**Fetch all pNames in a new array?**  
+```javascript
+const products = [
+    {pCode: 1, pName: "Apple"},
+    {pCode: 2, pName: "Melon"},
+    {pCode: 3, pName: "Banana"},
+    {pCode: 4, pName: "BlueBerry"},
+]
+const productNames = products.map(element => element.pName);
+console.log(productNames);  // ['Apple', 'Melon', 'Banana', 'BlueBerry']
+```
 </div>
