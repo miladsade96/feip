@@ -246,6 +246,123 @@ arr.splice(2, 1);
 **What does splice() method return?**  
 *splice()* method returns deleted items, If there is nothing to delete then it will return an empty array.
 
+---
 
+### Search Operation on Array:
 
+Searching elements in an array is a very common task in programming. Javascript gives us various methods to perform
+search. We will begin with these three methods: *indexOf()*, *lastIndexOf()* and *includes()*  
+Here are their syntax:
+```javascript
+arr.indexOf(searchElement, fromIndex);
+/*
+This method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+
+searchElement: Element to locate in the array
+fromIndex: Zero-based index at which to start searching - default value is 0
+ */
+```
+```javascript
+arr.lastIndexOf(searchElement, fromIndex);
+/*
+This method returns the last index at which a given element can be found in the array, or -1 if it is not present.
+The array is searched backwards, starting at fromIndex.
+
+searchElement: Element to locate in the array
+fromIndex: Zero-based index at which to start searching backwards - default value is arr.length - 1
+ */
+```
+```javascript
+arr.includes(searchElement, fromIndex);
+/*
+This method determines whether an array includes a certain value among its entries, returning true or false as 
+appropriate.
+
+searchElement: The value to search for
+fromIndex: Zero-based index at which to start searching - default value is 0
+ */
+```
+Let's see the couple of examples:
+```javascript
+let arr = ["one", "two", "one", "three", "four", "one", "five"];
+console.log(arr.indexOf("one"));    // 0
+console.log(arr.indexOf("one", 3));    // 5
+console.log(arr.indexOf("One", 3));     // -1 - Because indexOf() search is case sensitive
+console.log(arr.lastIndexOf("one"));    // 5
+console.log(arr.lastIndexOf("one", 3));     // 2
+console.log(arr.includes("ne"));    // false
+```
+There are other methods such as *find()*, *findIndex()* and *filter()*. Let's see couple of examples:
+```javascript
+/*
+find() method returns the first element in the provided array that satisfies the provided testing function. If no values
+satisfy the testing function, undefined is returned. find() method takes a callback function as its parameter; callback
+function itself takes four parameters as follows: element, index, array, thisArg
+    element: The current element being processed in the array
+    index: The index of the current element being processed in the array
+    array: The array find() was called upon
+    thisArg: Optional - A value to use as this when executing callbackFn
+*/
+const arr = [2300, 4500, 5600, 7800, 1200];
+const result = arr.find(elem => elem > 3000);
+console.log(result);    // 4500
+```
+```javascript
+/*
+findIndex() method returns the index of the first element in an array that satisfies the provided testing function.
+If no elements satisfy the testing function, -1 is returned. find() method takes a callback function as its parameter;
+callback function itself takes four parameters as follows: element, index, array, thisArg
+    element: The current element being processed in the array
+    index: The index of the current element being processed in the array
+    array: The array findIndex() was called upon
+    thisArg: Optional - A value to use as this when executing callbackFn
+*/
+const arr = [2300, 4500, 5600, 7800, 1200];
+const result = arr.findIndex(elem => elem > 3000);
+console.log(result);    // 1
+```
+But the problem with these two methods is that they find one value at a time. Let's consider you want to get all the
+values which are more than 3000, How would you that? The best way is to use *filter()* method:
+```javascript
+/*
+filter() method creates a shallow copy of a portion of a given array, filtered down to just the elements from the given
+array that pass the test implemented by the provided function. find() method takes a callback function as its parameter;
+callback function itself takes four parameters as follows: element, index, array, thisArg
+    element: The current element being processed in the array
+    index: The index of the current element being processed in the array
+    array: The array filter() was called upon
+    thisArg: Optional - A value to use as this when executing callbackFn
+*/
+const arr = [2300, 4500, 5600, 7800, 1200];
+const result = arr.filter(elem => elem > 3000);
+console.log(result);    // [4500, 5600, 7800]
+```
+If there is no element in array that satisfies the filter() method condition, it will return an empty array:
+```javascript
+const arr = [2300, 4500, 5600, 7800, 1200];
+const result = arr.filter(elem => elem > 30000);
+console.log(result);    // []
+```
+
+#### *Relative Questions*:
+
+**What is the difference between find() and filter() method?**  
+find() method returns only one value which is the first match and then stops searching process while filter() method
+returns a new array.
+
+**If there is no value to return, what will findIndex() method return?**  
+findIndex() method return *undefined*, if there is no true value matched.
+
+**What is the difference between indexOf() and includes() method?**  
+indexOf() method return only the index, while includes() method returns *true* or *false* which are the boolean values.
+
+**How do you search multiple values in an array?**  
+We can use *filter()* method in order to search multiple values in an array.
+
+**What will be the output of this code?**  
+```javascript
+const arr = ["One", "Two", "Three", "Four", "Five"];
+console.log(arr.lastIndexOf("Abcd"));
+```
+In case of *indexOf()* or *lastIndexOf()*, when the element is not found, it will return -1.
 </div>
