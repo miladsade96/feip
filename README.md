@@ -43,6 +43,7 @@ and boost your confidence in frontend interviews.
 * [Refs](ReactJS/12-Refs.md)
 * [Forms](ReactJS/13-Forms.md)
 * [Events](ReactJS/14-Events.md)
+* [Intermediate](ReactJS/15-Intermediate.md)
 </details>
 
 
