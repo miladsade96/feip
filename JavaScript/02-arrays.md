@@ -131,8 +131,12 @@ forEach method cannot be stopped in between like you break the loop.
 
 #### *Relative Questions*:
 
+---
+
 **What is the difference between for...in and for...of loop?**  
 for...in loop will display the index number while for...of loop will refer the actual value of elements.
+
+---
 
 **What will be the output of the following code?**
 ```javascript
@@ -145,6 +149,8 @@ arr.forEach(function (element, index) {
 });
 ```
 You can not break the forEach loop, and it is going to loop till the entire array.
+
+---
 
 **What will be the output of the following code?**
 ```javascript
@@ -225,11 +231,17 @@ original array which isn't very good practice in some cases.
 
 #### *Relative Questions*:
 
+---
+
 **What is the difference between push() and unshift() methods?**  
 *push()* method adds the element at the end of an array whereas *unshift()* method adds element at the beginning.
 
+---
+
 **What is the difference between pop() and shift() methods?**  
 *pop()* method remove the element from the end of an array whereas *shift()* method removes element from the beginning.
+
+---
 
 **How can you insert an element at the given position?**  
 *splice()* method is used to insert an element at a given position:
@@ -237,11 +249,15 @@ original array which isn't very good practice in some cases.
 arr.splice(0, 0, "New Element");
 ```
 
+---
+
 **How can you remove a specific element?**  
 *splice()* method is used to remove a specific element:
 ```javascript
 arr.splice(2, 1);
 ```
+
+---
 
 **What does splice() method return?**  
 *splice()* method returns deleted items, If there is nothing to delete then it will return an empty array.
@@ -346,18 +362,28 @@ console.log(result);    // []
 
 #### *Relative Questions*:
 
+---
+
 **What is the difference between find() and filter() method?**  
 find() method returns only one value which is the first match and then stops searching process while filter() method
 returns a new array.
 
+---
+
 **If there is no value to return, what will findIndex() method return?**  
 findIndex() method return *undefined*, if there is no true value matched.
+
+---
 
 **What is the difference between indexOf() and includes() method?**  
 indexOf() method return only the index, while includes() method returns *true* or *false* which are the boolean values.
 
+---
+
 **How do you search multiple values in an array?**  
 We can use *filter()* method in order to search multiple values in an array.
+
+---
 
 **What will be the output of this code?**  
 ```javascript
@@ -403,6 +429,8 @@ Note: *map()* method returns a new array, and it doesn't change the original one
 
 #### *Relative Questions*:
 
+---
+
 **Find the length of each element in a new array?**  
 ```javascript
 const array = ["Apple", "Banana", "Orange"];
@@ -410,12 +438,16 @@ const results = array.map(element => element.length);
 console.log(results);   // [5, 6, 6]
 ```
 
+---
+
 **Find the square root of every element and store it in a new array?**  
 ```javascript
 const arr = [4, 16, 64];
 const results = arr.map(element => Math.sqrt(element));
 console.log(results);   // [2, 4, 8]
 ```
+
+---
 
 **Fetch all pNames in a new array?**  
 ```javascript
@@ -471,6 +503,8 @@ console.log(result);    // average: 5
 
 #### *Relative Questions*:
 
+---
+
 **How will you flatten an array?**  
 ```javascript
 const arr = [
@@ -481,6 +515,8 @@ const arr = [
 const flatArr = arr.reduce((acc, curr) => acc.concat(curr));
 console.log(flatArr);   // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+---
 
 **Get the sum of all salaries of employees?**  
 ```javascript
@@ -493,6 +529,8 @@ const employees = [
 const totalSalary = employees.reduce((acc, curr) => acc + curr.eSalary, 0);
 console.log(totalSalary);   // 10000
 ```
+
+---
 
 **What is the difference between reduce() and reduceRight() method?**  
 The *reduce()* method loops from 0th index till the last index of an array whereas *reduceRight()* method starts

@@ -39,6 +39,8 @@ console.log(x===y); // False, Bacause null and undefined have different data typ
 
 #### *Relative Questions*:
 
+---
+
 **What is undefined in javascript?**
 A variable, which is not assigned a value is undefined.
 
@@ -46,10 +48,14 @@ A variable, which is not assigned a value is undefined.
 let x;
 ```
 
+---
+
 **What will be the output of *undefined == null* and *undefined === null* ? and why?**
 undefined == null is simple comparison, and it is going to return true, but undefined === null is strict
 comparison, which checks both value and data type. Undefined itself is a data type but null is a primitive
 data type. So the return value is false.
+
+---
 
 **Can you explicitly assign undefined to a variable?**
 Yes, because undefined itself is a kind of keyword in javascript, which you can use:
@@ -153,12 +159,18 @@ let x;
 
 #### *Relative Questions*:
 
+---
+
 **What is hoisting in javascript?**
 A process, which is happening behind the scene, internally it is bringing the declarations on top.
+
+---
 
 **How does block scope work?**
 It is nothing but the brackets {}, in if conditions, for loop, do while loop, etc. That is block created, which
 creates separate scope for declarations existing in that block.
+
+---
 
 **What is scope of a variable?**
 It is the availability or visibility or lifetime of a variable.
@@ -204,8 +216,12 @@ console.log(obj);   // undefined
 
 #### *Relative Questions*:
 
+---
+
 **Should you terminate all lines by a ";"?**
 It is a good practice to have a ";" at the end.
+
+---
 
 **Can “use strict” statement, or the strict mode changes the behavior of ASI?**
 No, It does not change the behavior if you write “use strict” it does not mean you have to end all lines with ";".
@@ -296,9 +312,13 @@ console.log(Math.max(...array));    /// 999
 
 #### *Relative Questions*:
 
+---
+
 **Can we use arguments object in arrow functions?**
 It cannot be used.
 If it is the traditional way, it works, otherwise it won't.
+
+---
 
 **Which is the best way to create a new array with assignments?**
 Using spread operator:
@@ -309,6 +329,8 @@ const arr2 = [...arr1, 4, 5, 6];
 console.log(arr2);  // [1, 2, 3, 4, 5, 6]
 ```
 
+---
+
 **How can you handle the n number of parameters passed to a function?**
 
 ```javascript
@@ -318,6 +340,8 @@ const func = function(...numbers) { // rest operator
 
 func(1, 2, 3, 4, 5);
 ```
+
+---
 
 **Is this piece of code valid? Give a reason.**
 
@@ -371,6 +395,8 @@ else return num;    // Or some calculation on num
 
 #### *Relative Questions*:
 
+---
+
 **How will you go put a validation for positive or negative infinity?**
 
 ```javascript
@@ -380,6 +406,8 @@ else return num;    // Or some calculation on num
 if (num === Number.NEGATIVE_INFINITY) return "Negative Infinite Value";
 else return num;    // Or some calculation on num
 ```
+
+---
 
 **What is the output of the following code?**
 
@@ -429,12 +457,16 @@ console.log(isFinite(Infinity));        // flase
 
 #### *Relative Questions*:
 
+---
+
 **What will be the output of the below statement?**
 
 ```javascript
 console.log(NaN == NaN);        // false
 console.log(NaN === NaN);       // false
 ```
+
+---
 
 **What is the difference between isNaN() and isFinite()?**
 isNan() method is going to check whether the value is Not-a-number or not, while isFinite() method checks for NaN as
@@ -595,11 +627,17 @@ const obj = new test();     // Uncaught TypeError: test10 is not a constructor
 
 #### *Relative Questions*:
 
+---
+
 **Explain the syntactical features of arrow function?**
 Already discussed above.
 
+---
+
 **Why "this" does not work in arrow functions?**
 Already discussed above.
+
+---
 
 **Explain the output of the following code with a reason:**
 
@@ -611,8 +649,13 @@ const obj = {
 }
 ```
 
+---
+
 **How can you handle arguments object like functionality in arrow function?**
 Already discussed above.
+
+---
+
 **Can you write IIFE with arrow function syntax?**
 Already discussed above.
 
@@ -703,8 +746,12 @@ when needed.
 
 #### *Relative Questions*:
 
+---
+
 **How can you access private variable or a function outside the scope?**
 We can do this using closure. Using returning a function without parentheses.
+
+---
 
 **Explain the advantages of the closure?**
 The main advantage of closure is that any member which is private for certain scope, can be accessed keeping it private
@@ -767,9 +814,13 @@ console.log(discountAmount(0.5));       // 150
 
 #### *Relative Questions*:
 
+---
+
 **What is function currying?**
 It is a way to call functions where you can pass arguments partially or pass multiple arguments in a function but one
 argument at a time.
+
+---
 
 **What will this statement do? Explain in detail.**
 
@@ -788,6 +839,8 @@ const multiplication = a => {
     }
 }
 ```
+
+---
 
 **Explain practical usage of function currying?**
 Currying is an incredible useful technique of functional programming which solves various purposes like passing partial
@@ -891,13 +944,19 @@ the object itself because there won't be any reference otherwise.
 
 #### *Relative Questions*:
 
+---
+
 **What is the purpose of the iterator?**
 The use of an iterator is to make a data structure iterable which is not. When you create an object which should have
 facility of putting *for ... of* loop on it, then you need to create the iterator.
 
+---
+
 **How do you create an iterator?**
 The *Symbol.iterator* method must be implemented which should return an iterator object and should also have a next()
 method which returns the object.
+
+---
 
 **Explain the practical use of an iterator?**
 The use of an iterator is not very prompt when you use it in the same scope as we have seen earlier. As the custom data
@@ -1154,8 +1213,12 @@ combined call work well.
 
 #### *Relative Questions*:
 
+---
+
 **What are generator functions? Explain the syntax.**
 Generator functions give you a way where you can pause a process and continue from there after some time.
+
+---
 
 **Which is the right syntax?**
 
@@ -1268,13 +1331,19 @@ student.teacher = teacher;
 
 #### *Relative Questions*:
 
+---
+
 **How does garbage collection work in javascript?**  
 Mark and sweep algorithm is used for garbage collection. This algorithm will start from the global object and it makes
 the referenced values and unreachable locations are cleared.
 
+---
+
 **Explain Mark and Sweep algorithm's pattern?**  
 The algorithm begins with the root element, and then it starts to marking the referenced values and unmarked values will
 be cleared.
+
+---
 
 **Which situation can create a memory leak?**  
 Circular reference:
@@ -1365,9 +1434,13 @@ try {
 
 #### *Relative Questions*:
 
+---
+
 **When do you need try...catch block?**  
 This block is something which is handled at runtime, so when the code executed; Some portion of code needs to be managed
 properly so that the program does not stop in between then you use the try...catch block.
+
+---
 
 **How can you generate an error?**  
 You can generate custom errors with **throw** statement.
@@ -1382,12 +1455,18 @@ try {
 throw new TypeError("Type of a is string!");
 ```
 
+---
+
 **Can you generate SyntaxError or ReferenceError kind of error?**  
 Yes, but you should use throw statement to raise the javascript built-in errors.
+
+---
 
 **What is the purpose of the finally block?**  
 The finally block is always executed whether there is an error or not. So the code which shall to be executed we put it
 in finally block.
+
+---
 
 **How can you refer to the name and description of an error?**  
 ```javascript
@@ -1398,6 +1477,8 @@ try {
     console.log(err.message);
 }
 ```
+
+---
 
 **Can we have finally block without a catch block as well?**  
 Yes
