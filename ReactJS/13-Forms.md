@@ -4,9 +4,13 @@
 
 ## React Forms:
 
+---
+
 **What are uncontrolled components?**  
 They are components that store their own state and are updated using refs. They are often used for simple form inputs,
 where manging the state in a parent component would be unnecessary overhead.
+
+---
 
 **What are controlled components?**  
 They are components that store their state in a parent component and are updated using the setState() method. The

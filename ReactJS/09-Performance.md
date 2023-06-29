@@ -4,6 +4,8 @@
 
 ## React Performance:
 
+---
+
 **What are pure components?**  
 Pure components in React are components that implement the shouldComponentUpdate lifecycle method to improve
 performance. This method compares the current props and state to the next props and state, and determines whether
