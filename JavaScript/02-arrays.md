@@ -497,4 +497,100 @@ console.log(totalSalary);   // 10000
 **What is the difference between reduce() and reduceRight() method?**  
 The *reduce()* method loops from 0th index till the last index of an array whereas *reduceRight()* method starts
 looping from the last index to 0th index.
+
+---
+
+### Sorting an Array:
+
+Sorting an array is a very common task in all programs. One way expect the arrangement of values in acsending and
+descending order. *sort()* is the method used to sort elements. Let's see an example:
+```javascript
+const products = ["Banana", "Orange", "Grapes", "Apple"];
+const sArr = products.sort();
+console.log(sArr);  // ["Apple", "Banana", "Grapes", "Oranges"]
+console.log(products);  // ["Apple", "Banana", "Grapes", "Oranges"]
+```
+*sort()* method also sorts the original array. So we can do this way:
+```javascript
+const products = ["Banana", "Orange", "Grapes", "Apple"];
+products.sort();
+console.log(products);  // ["Apple", "Banana", "Grapes", "Oranges"]
+```
+To sort an array in descending order, there is a callback function passed to *sort()* method which we refer it to 
+compare function. Let's see an example:
+```javascript
+const products = ["Banana", "Orange", "Grapes", "Apple"];
+products.sort((a, b) => console.log(a, b));
+/*
+Orange Banana
+Grapes Orange
+Apple Grapes
+*/
+```
+This compare function can return 3 types of values:
+* Less than 0
+* More than 0
+* 0 itself
+
+If compare function returns -1, sort will arrange a before b. Strings are compared internally as they are allocated
+with unicode code point values.
+```javascript
+const prices = [45, 23, 10, 89, 5];
+console.log(prices.sort()); // [10, 23, 45, 5, 89]
+```
+If you try to sort a numeric array with only *sort()* method, it is going to consider the unicode string value if
+there is no compare function given. Let's fix the issue above:
+```javascript
+const prices = [45, 23, 10, 89, 5];
+
+prices.sort((a, b) => a - b);   // Ascending order
+console.log(prices);    // [5, 10, 23, 45, 89]
+
+prices.sort((a, b) => b - a);   // Descending order
+console.log(prices);    // [89, 45, 23, 10, 5]
+```
+
+#### *Relative Questions*:
+
+---
+
+**What will be the output in case an array has undefined while sorting the values?**  
+Undefined values are never sorted, *sort()* method shifts all the *undefined* values to the end and then sorts
+the rest of the values.
+
+---
+
+**Sort the employees below in ascending order based on their salaries?**  
+```javascript
+const employees = [
+    {id: 1111, salary: 7000},
+    {id: 2222, salary: 3030},
+    {id: 3333, salary: 1000},
+    {id: 4444, salary: 6500},
+];
+
+employees.sort((a, b) => a.salary - b.salary);
+console.log(employees);
+/*
+[{ "id": 3333, "salary": 1000},
+ { "id": 2222, "salary": 3030},
+ { "id": 4444, "salary": 6500},
+ { "id": 1111, "salary": 7000}]
+*/
+```
+
+---
+
+**How will you sort a numeric array?**  
+In order to sort a numeric array, we should specify the compare function, otherwise the array elements treated as
+strings.
+
+---
+
+**Sort all values of array in the descending order?**  
+```javascript
+const arr = [10, 4, 19, 5];
+arr.sort((a, b) => b - a);
+console.log(arr);   // [19, 10, 5, 4]
+```
 </div>
