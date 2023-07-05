@@ -128,7 +128,7 @@ console.log(fav);   // I love JS
 ---
 
 **What are the advantages of using template string?**  
-Fist, you can display a value or an expression without ending the backticks:
+First, you can display a value or an expression without ending the backticks:
 ```javascript
 const val = 10;
 const score = `${val} out of 10`;
