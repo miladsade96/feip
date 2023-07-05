@@ -631,4 +631,97 @@ const arr = [10, 4, 19, 5];
 arr.sort((a, b) => b - a);
 console.log(arr);   // [19, 10, 5, 4]
 ```
+
+---
+
+### Destructuring Arrays:
+
+As the name destructuring says that something is getting destructured. It also means there is already a structure
+which is getting broken. Here structure means data structure. Destructuring is a concept of breaking data structure,
+like array or object literal into data pieces or in other words individual variables.
+```mermaid
+flowchart BR
+    subgraph Array 
+        index_0[1]
+        index_1[2]
+        index_2[3]
+        index_3[4]
+    end
+    index_0 -. extract and assign .- variable_1
+    index_1 -. extract and assign .- variable_2
+    index_2 -. extract and assign .- variable_3
+    index_3 -. extract and assign .- variable_4
+```
+Let's see an example:
+```javascript
+const arr = [1, 2, 3, 4];
+// Syntax of array destructuring:
+const [a, b, c, d] = arr;
+console.log(a, b, c, d);    // 1 2 3 4
+
+// Destructuring an array which is the returned value of a function
+function arrayReturner() {
+    return [5, 6, 7];
+}
+const [e, f, g] = arrayReturner();
+console.log(e, f, g);
+
+// Skipping an element of array while destructuring:
+const arr = [1, 2, 3, 4];
+const [a,,c,d] = arr;
+console.log(a, c, d);   // 1 3 4
+
+// Switching the values of two variables using array destructuring:
+let a = 10;
+let b = 20;
+[a, b] = [b, a];
+console.log(`a:${a}, b:${b}`);  // a:20, b:10
+
+// Using the rest operator alongside array destructuring:
+const array = [9, 10, 11, 12];
+const [first, ...restOfTheElements] = array;
+console.log(first); // 9
+console.log(restOfTheElements); // [10, 11, 12]
+
+// Using default value in array destructuring:
+const arr = [1];
+const [a, b] = arr;
+console.log(a, b);  // 1 undefined
+// Solution:
+const [a, b = 0] = arr;
+console.log(a, b);  // 1 0
+```
+
+#### *Relative Questions*:
+
+---
+
+**What is the destructuring assignment?**  
+It is about extracting the data pieces from array and assigning to individual variables.
+
+---
+
+**Swap values using destructuring?**  
+```javascript
+let a = 15;
+let b = 20;
+[a, b] = [b, a];
+```
+
+---
+
+**What will be the output of this code?**  
+```javascript
+let [a, b, c] = [5, , 7];
+console.log(a, b, c);
+```
+There is no value for b, So the output is *5 undefined 7*
+
+---
+
+**How do you set a default value while destructuring an array?**  
+```javascript
+let [a, b = 0, c] = [5, , 7];
+console.log(a, b, c);   // 5 0 7
+```
 </div>
