@@ -74,9 +74,76 @@ const str2 = "\u{1F602}";
 
 ---
 
-
 **Show the syntax to display long unicode character?**  
 ```javascript
 const luc = "\u{1F602}";
+```
+
+---
+
+### ES6 Template Literals:
+
+Let's talk about how do we can declare template string(template literal) in javascript.
+```javascript
+const str = `I am not new to JS`;
+console.log(str);   // I am not new to JS
+```
+Template literal gives a way to display the expression inside the backtick(`) itself.
+```javascript
+const a = 20;
+const str = `The value of a is ${a}`;
+console.log(str);   // The value of a is 20
+```
+Template literal helps you to store the format as it is then escape sequence is not required for special characters,
+spaces and new lines.
+```javascript
+const format = `This is
+     second line and
+          This is the third line.`;
+console.log(format);
+/*
+This is
+     second line and
+          This is the third line.
+*/
+```
+
+#### *Relative Questions*:
+
+---
+
+**What is the template literal?**  
+Template literal is a newer way to declare the string variable in javascript.
+
+---
+
+**How do you display a value or an expression inside template string?**  
+Using $ sign and {}
+```javascript
+let a = "JS";
+const fav = `I love ${a}`;
+console.log(fav);   // I love JS
+```
+
+---
+
+**What are the advantages of using template string?**  
+Fist, you can display a value or an expression without ending the backticks:
+```javascript
+const val = 10;
+const score = `${val} out of 10`;
+console.log(score);     // 10 out of 10
+```
+and the second is storing the format of sting as it is:
+```javascript
+const format = `This is
+     second line and
+          This is the third line.`;
+console.log(format);
+/*
+This is
+     second line and
+          This is the third line.
+*/
 ```
 </div>
