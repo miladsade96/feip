@@ -146,4 +146,68 @@ This is
           This is the third line.
 */
 ```
+
+---
+
+### .length Property and Search Methods:
+
+Normally properties and methods should be with objects, whereas string is a primitive type. Javascript
+primitive types behave like an object when executed. It means you do have properties and methods with
+these primitive types as well. The string type has a length property, which returns the length (number
+of characters). Let's see an example:
+```javascript
+const str = "Javascript";
+console.log(str.length);    // 10
+```
+length is a property, which is always there with a string. There are two important methods related to
+strings: *indexOf()* and *lastIndexOf()* which search for a character or string within a string and 
+return the index number. Let's see a couple of examples:
+```javascript
+const str = "This is a test";
+console.log(str.indexOf("is"));     // 2 - indexOf() starts searching from the beginning
+console.log(str.lastIndexOf("is")); // 5 - lastIndexOf() starts searhing from the end
+```
+Both methods above return -1 if the value not found, and you can also give the start position:
+```javascript
+const str = "This is a test";
+console.log(str.indexOf("is", 5));      // 5
+console.log(str.lastIndexOf("is", 4));  // 2
+```
+There is another method called *search()*:
+```javascript
+const str = "This is a test";
+console.log(str.search("is"));  // 2
+```
+There are two main differences between *search()* and *indexOf()* methods:  
+1. indexOf() method can have a start position to perform search whereas search() method cannot.
+2. indexOf() method cannot be used for advanced search operations like regex whereas search method can.
+
+
+#### *Relative Questions*:
+
+---
+
+**Explain the indexOf() and the lastIndexOf() methods with syntax?**
+```javascript
+const str = "This is a test";
+console.log(str.indexOf("is"));     // 2 - indexOf() starts searching from the beginning
+console.log(str.lastIndexOf("is")); // 5 - lastIndexOf() starts searhing from the end
+```
+
+---
+
+**What are the differences between indexOf() and search() methods?**  
+We have already discussed it above.
+
+---
+
+**What will be the output of the below given code? Explain with the reason.**  
+```javascript
+let str = "This is a test";
+console.log(str.indexOf("is", 5));  // 5, because it will start searching from index posiotion number 5 all 
+// the way to the right side
+
+console.log(str.lastIndexOf("is", 1));  // -1, because it will start searching from index position number 1
+// all the way to the left side and since it cannot find "is", it will return -1
+```
 </div>
