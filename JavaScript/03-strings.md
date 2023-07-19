@@ -210,4 +210,112 @@ console.log(str.indexOf("is", 5));  // 5, because it will start searching from i
 console.log(str.lastIndexOf("is", 1));  // -1, because it will start searching from index position number 1
 // all the way to the left side and since it cannot find "is", it will return -1
 ```
+
+---
+
+### Extraction Methods:
+
+We can divide extraction methods in two main categories:
+1. String extraction methods
+2. Character extraction methods
+
+There are three methods help to extract strings: *Slice()*, *Substr()* and *Substring()*.  
+Let's get started with *slice()* method. The syntax of *slice()* method is as follows:
+```javascript
+str.slice(startIndex, endIndex);    // endIndex is optional
+```
+It returns the extracted part as a new string without changing the original one. Let's see a couple of examples:
+```javascript
+const str = "First second third fourth";
+console.log(str.slice(10)); // nd third fourth
+console.log(str.slice(-10));    // ird fourth
+console.log(str.slice(10, 15)); // nd th  - Because 15 itself in not included
+console.log(str.slice(-10, -5));    // ird f
+```
+Let's get into *substr()* method. The syntax of *substr()* method is as follows:
+```javascript
+str.substr(startIndex, numberOfCharacters);     // numberOfCharacters is optional
+```
+*slice()* and *substr()* methods are more or less similar methods but *substr()* method takes the number of
+characters instead of end index. It returns a portion of the string, starting at the specified index and
+extending for a given number of characters afterward. Let's see a couple of examples:
+```javascript
+const str = "First second third fourth";
+console.log(str.substr(10, 5));     // nd th
+console.log(str.substr(-10, 5));    // ird f
+```
+Let's get into *substring()* method. The syntax of *substring()* method is as follows:
+```javascript
+str.substring(startIndex, endIndex);  // endIndex is optional  
+```
+It returns the part of the string from the start index up to and excluding the end index, or to the end of the
+string if no end index is supplied. Any argument value that is less than 0 or greater than str.length is treated
+as if it were 0 and str.length, respectively(It cannot take negative values). Let's see a couple of examples:
+```javascript
+const str = "First second third fourth";
+console.log(str.substring(10));     // nd third fourth
+console.log(str.substring(-10));    // First second third fourth
+console.log(str.substring(10, 15)); // nd th
+```
+
+So let's talk about character extraction. There are two similar methods in terms of character extraction:
+1. charAt() - Returns the character
+2. charCodeAt() - Returns the integer unicode(UTF-16) value between 0 and 65535
+
+Here are a couple of examples:
+```javascript
+const str = "First second";
+console.log(str.charAt());  // F    default value is 0
+console.log(str.charAt(3)); // s
+console.log(str.charCodeAt());  // 70   default value is 0
+console.log(str.charCodeAt(3)); // 115
+console.log(str[2]);    // r    this is legacy syntax in javascript
+```
+
+#### *Relative Questions*:
+
+---
+
+**What will be the output of the code below?**  
+```javascript
+const str = "Hello World";
+console.log(str.slice(-5, -2)); // Wor
+```
+
+---
+
+**What are the differences between substr() and substring() methods?**  
+1. substr() takes 2 arguments - the starting index, and the number of characters to extract. substring() takes 2 arguments - the starting index and the ending index (end not included).
+2. substr() can take negative start and length values, substring() cannot. Negative start values in substring() are treated as 0.
+
+---
+
+**What will be the output of the code below?**  
+```javascript
+const str = "This is a test";
+console.log(str.substring(-5));     // This is a test
+```
+Since substring() does not accept negative start indexes, passing -5 will be treated as 0.
+
+---
+
+**What will be the output of the code below?**
+```javascript
+const str = "This is a test";
+console.log(str.substring(3, 3));   // ""
+```
+When the start and end indexes passed to substring() are equal, it will return an empty string. An empty string
+is returned because there are no characters between index 3 and 3 in the string.
+
+---
+
+**Explain the output of the code below?**  
+```javascript
+const str = "Hello";
+console.log(str.charAt());  // H
+```
+The charAt() method in JavaScript returns the character at a specified index in the string. However, in this code,
+charAt() is called on the string "Hello" without passing an index. When no index is passed to charAt(), it will
+default to returning the character at index 0. Therefore, the output of this code will be: "H"
+
 </div>
