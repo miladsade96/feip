@@ -25,10 +25,28 @@ to the component. This object contains the current history of the router, includ
 location, previous locations and navigation history. You can use this object to programmatically
 navigate, access the current URL or manage the browser history.
 
+---
+
 **How to update the component every second?**  
 You can do this by using *setInterval()* function in the *componentDidMount()* lifecycle method. This
-will create a timer that update the component state every second, causing the component to re-render
+will create a timer that updates the component state every second, causing the component to re-render
 with the new state value. For example:
 
+---
 
+**How to implement default or NotFound page?**  
+It can be implemented by using 
+```jsx
+<Switch /> 
+```
+Component to render the first matching child
+```jsx
+<Route />
+```
+And adding a
+```jsx
+<Route path="*" component={NotFound} />
+```
+As the last child. This route will match any path that has not been
+matched by other routes and render the NotFound component.
 </div>
