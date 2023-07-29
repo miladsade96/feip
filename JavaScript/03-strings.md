@@ -318,4 +318,56 @@ The charAt() method in JavaScript returns the character at a specified index in 
 charAt() is called on the string "Hello" without passing an index. When no index is passed to charAt(), it will
 default to returning the character at index 0. Therefore, the output of this code will be: "H"
 
+---
+
+### Case Conversion & replace() Method:
+
+JavaScript has built-in methods like *toUpperCase()* and *toLowerCase()* that can be used for case conversion.
+The syntax of these two methods are as follows:
+```javascript
+const str = "JavaScript";
+str.toLowerCase();
+str.toUpperCase();
+```
+These methods are very usful when we are comparing strings. Let's see an example:
+```javascript
+const str = "JavaScript";
+console.log(str.toLowerCase());     // javascript
+console.log(str.toUpperCase());     // JAVASCRIPT
+```
+Comparing two string with avoiding case-sensitivity:
+```javascript
+const str1 = "HelLo";
+const str2 = "hELlO";
+str1.toLowerCase() === str2.toLowerCase() ? console.log("True") : console.log("False");     // True
+// Or 
+str1.toUpperCase() === str2.toUpperCase() ? console.log("True") : console.log("False");     // True
+```
+There is one another method called *replace()* method which is used to replace the character or substring, but
+it also returns the new string. The *replace()* method is a wonderful method to find and replace a value. I can
+take a regular expression or substring. Let's see a couple of examples:
+```javascript
+const str = "EcmaScript2023";
+console.log(str.replace("23", "15"));   // EcmaScript2015
+```
+
+#### *Relative Questions*:
+
+---
+
+**Get a character from the user and check whether the character is a vowel or not?**  
+```javascript
+let char;
+
+function getValue() {
+    char = prompt("Enter the character: ");
+    char = char.toLowerCase();
+    if (char === "a" || char === "e" ||char === "i" ||char === "o" ||char === "u") {
+        console.log("It is vowel");
+    } else {
+        console.log("It is consonant");
+    }
+}
+getValue();
+```
 </div>
