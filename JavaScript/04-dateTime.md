@@ -69,4 +69,74 @@ console.log(dt);    // Wed Sep 23 2020 00:00:00 GMT+0330 (Iran Standard Time)
 
 **Explain the various formats of ISO standard followed by javascript?**  
 YYYY-MM-DDTHH:mm:ss.sssZ
+
+---
+
+### Date Methods:
+
+The Date() object helps you to create the dates and also the time. We don't have a separate object for time,
+we use the Date() object only. The Date() object has various methods for date and time related operations. In
+this section, we will go through a few date related *set* and *get* methods. Let's see a couple of examples:
+```javascript
+let dt = new Date();
+console.log(dt);    // Mon Jul 31 2023 18:21:00 GMT+0330 (Iran Standard Time)
+// Get methods:
+console.log(dt.getFullYear());  // 2023
+console.log(dt.getMonth());     // 6  - 0 Based
+console.log(dt.getDate());      // 31
+console.log(dt.getDay());       // 1 - Day of the week(0 - 6)
+console.log(dt.getUTCFullYear());   // 2023
+console.log(dt.getUTCDay());    // 1
+
+// Set methods:
+dt.setFullYear(1996);   // year, month, day - month and day are optional
+console.log(dt);    // Wed Jul 31 1996 18:28:50 GMT+0430 (Iran Daylight Time)
+dt.setMonth(9);     // month, day - day is optional and month is 0 based
+console.log(dt);    // Thu Oct 31 1996 18:34:35 GMT+0330 (Iran Standard Time)
+dt.setDate(4);      // day=4
+console.log(dt);    // Fri Oct 04 1996 18:36:29 GMT+0330 (Iran Standard Time)
+``` 
+Another useful method is *Date.parse()* which parses a string of date and returns the milliseconds:
+```javascript
+// Syntax:
+Date.parse(dateString);
+// Or
+new Date(dateString);
+```
+Let's see an example:
+```javascript
+const dt = Date.parse("1996-09-04");
+console.log(dt);    // 841795200000
+```
+
+#### *Relative Questions*:
+
+---
+
+**Get a character month?**  
+```javascript
+const dt = new Date();
+const arrMonths = ["January", "February", "March", "april", "May", "June", "July", "August",
+                   "September", "October", "November", "December"];
+console.log(arrMonths[dt.getMonth()]);  // July
+```
+
+---
+
+**Find the date before 50 days of the given date?**  
+```javascript
+const dt = new Date();
+console.log(dt);    // Mon Jul 31 2023 18:54:07 GMT+0330 (Iran Standard Time)
+dt.setDate(dt.getDate() - 50);
+console.log(dt);    // Sun Jun 11 2023 18:54:07 GMT+0330 (Iran Standard Time)
+```
+
+---
+
+**What will be the output if you add35 as date in Date() constructor?**  
+```javascript
+const dt = new Date(2020, 04, 35);
+console.log(dt);    // Thu Jun 04 2020 00:00:00 GMT+0430 (Iran Daylight Time)
+```
+The autocorrection feature of the date object will validate the date automatically even if it is leap year.
 </div>
