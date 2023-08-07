@@ -139,4 +139,51 @@ const dt = new Date(2020, 04, 35);
 console.log(dt);    // Thu Jun 04 2020 00:00:00 GMT+0430 (Iran Daylight Time)
 ```
 The autocorrection feature of the date object will validate the date automatically even if it is leap year.
+
+---
+
+### Time Methods:
+
+For time, javascript gives the very same Date object only. There is a unique static method called Date.now()
+which returns a timestamp in milliseconds elapsed since 1 Jan 1970 UTC. Let's see a couple of examples:
+```javascript
+console.log(Date.now());    // 1691402471667
+// Time get methods:
+const dt = new Date();
+console.log(dt.getTime());              // 1691402656744
+console.log(dt.getHours());             // 13
+console.log(dt.getMinutes());           // 34
+console.log(dt.getMinutes());           // 34
+console.log(dt.getMilliseconds());      // 744
+```
+There are also set methods. Let's see an example:
+```javascript
+/*
+By giving the milliseonds to setTime() method, it will set the time and the value
+is started since 1 Jan 1970.
+ */
+const dt = new Date();
+console.log(dt);            // Mon Aug 07 2023 13:41:56 GMT+0330 (Iran Standard Time)
+dt.setTime(999999999);
+console.log(dt);            // Mon Jan 12 1970 17:16:39 GMT+0330 (Iran Standard Time)
+```
+
+#### *Relative Questions*:
+
+---
+
+**Calculate the date difference in days?**  
+```javascript
+const dt1 = new Date(2023, 8, 7);
+const dt2 = new Date(2023, 9, 4);
+const n = dt2.getTime() - dt1.getTime();
+const diff = n / 1000 / 3600 / 24;
+console.log(diff);  // 27
+```
+
+---
+
+**How can you change hours or minutes in time?**  
+Using *setHours()* and *setMinutes()* methods.
+
 </div>
