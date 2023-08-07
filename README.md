@@ -26,6 +26,7 @@ and boost your confidence in frontend interviews.
 * [Arrays](JavaScript/02-arrays.md)
 * [Strings](JavaScript/03-strings.md)
 * [Date and Time](JavaScript/04-dateTime.md)
+* [Object Oriented](JavaScript/05-objectOriented.md)
 </details>
 
 <details>
