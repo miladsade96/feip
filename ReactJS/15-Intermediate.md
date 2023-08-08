@@ -28,25 +28,53 @@ navigate, access the current URL or manage the browser history.
 ---
 
 **How to update the component every second?**  
-You can do this by using *setInterval()* function in the *componentDidMount()* lifecycle method. This
-will create a timer that updates the component state every second, causing the component to re-render
-with the new state value. For example:
+You can do this by using *useState* and *useEffect* hooks and *setInterval* method, For example:
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function StandAloneUpdate() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(count => count + 1); 
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <div>{count}</div>;
+}
+```
 
 ---
 
 **How to implement default or NotFound page?**  
-It can be implemented by using 
 ```jsx
-<Switch /> 
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="product" element={<Product />} />
+                <Route path="pricing" element={<Pricing />} />
+                <Route path="login" element={<Login />} />
+                <Route
+                    path="app"
+                    element={
+                        <ProtectedRoute>
+                            <AppLayout />
+                        </ProtectedRoute>
+                    }>
+                    <Route index element={<Navigate replace to="cities" />} />
+                    <Route path="cities" element={<CityList />} />
+                    <Route path="cities/:id" element={<City />} />
+                    <Route path="countries" element={<CountryList />} />
+                    <Route path="form" element={<Form />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
 ```
-Component to render the first matching child
-```jsx
-<Route />
-```
-And adding a
-```jsx
-<Route path="*" component={NotFound} />
-```
-As the last child. This route will match any path that has not been
-matched by other routes and render the NotFound component.
 </div>
