@@ -7,8 +7,16 @@
 ---
 
 **How to set state with dynamic key name?**  
-To set state with dynamic key name, you can use the setState() method with a variable key name.
-This allows you to create new state keys based on user input or other dynamic data.
+```jsx
+const [state, setState] = useState({});
+
+const handleChange = (key, value) => {
+  setState(prev => ({...prev, [key]: value}));
+}
+```
+Use the spread syntax (...) to copy the existing state.Compute the key name dynamically in square brackets [key].
+This will merge the existing state and the new dynamic key value. setState accepts a function to avoid issues with
+stale closure state.
 
 ---
 
@@ -35,18 +43,29 @@ the UI.
 ---
 
 **What are the limitations of React?**  
-React has some limitations, including a steep learning curve and limited SEO optimization. React's focus
-on component-based architecture can make it more difficult for beginners to learn and understand, and its
-reliance on javascript can make it less friendly to search engines. React can also struggle with
-performance on large datasets or complex UI components. React is primarily used for frontend development
-and does not have built-in support for backend development.
+* React has limited SEO optimization.
+* React is focused on client-side rendering. SSR takes extra effort to set up.
+* The abstraction of React and its syntax can be difficult for beginners to grasp.
+* React has a lot of new concepts like JSX and the virtual DOM that require time to learn.
+* React doesn't impose guidelines for project structure. Large apps can become difficult to maintain.
+* React focuses solely on the view layer. You need to choose other libraries for routing, state management, etc.
 
 ---
 
-**What are children prop?**  
+**What is children prop?**  
 The children prop is a special prop in React that contains the child components of a component. It allows
 component to render their child components directly without having to pass them down through props. The
 children prop can be used with any component, including functional components.
+```jsx
+<MainComponent>
+  <ChildComponent />
+</MainComponent>
+
+
+function MainComponent(props) {
+    return <div>{props.children}</div>
+}
+```
 
 ---
 
@@ -65,35 +84,58 @@ to test than stateless components.
 ---
 
 **What are the major features of React?**  
-React has several major features, including a virtual DOM, server-side rendering and component reusablity.
-The virtual DOM helps improve performance by minimizing the number of updates to the actual DOM.
-Server-side rendering allows React to render components on the server before sending them to the client,
-improving performance and SEO. Component reusability allows developers to create reusable UI components
-using javascript. One-way data binding is not a major feature of React.
+- **Components** - React is component-based, allowing you to build encapsulated UI elements that manage their own state.
+- **Virtual DOM** - React uses a virtual DOM to optimize performance by minimizing DOM operations.
+- **JSX** - JSX is a React extension to JavaScript that allows you to write HTML-like code in components.
+- **One-way data binding** - Data flows one way in React, making the flow easy to reason about.
+- **Performance** - React uses different techniques like virtual DOM diffing to optimize performance.
+- **Ease of integration** - React can be incrementally integrated into existing codebases because it's "just JavaScript".
+- **Community and ecosystem** - React has a large community and many 3rd party libraries like React Router.
+- **Declarative programming** - React uses declarative code that is easier to reason about than imperative code.
+- **Flexibility** - You can use React for interesting solutions like building mobile apps with React Native.
 
 ---
 
-**What are the advantages of React?**  
-React has several advantages, including improved performance, reusable components and good community
-support. React's use of a virtual DOM and its focus on component-based architecture help improve
-performance and make it easier to develop complex UI components. React's component-based architecture
-also makes it easier to create reusable components that can be used across multiple projects. React has
-a large and active community of developers, which provides good support and resources for learning and
-development.
+**What are the advantages of React?**
+- **Component-based** - Build encapsulated components that manage their own state, then compose them to make complex UIs.
+- **Declarative** - React uses declarative code that is easier to reason about than imperative code.
+- **Efficient** - The virtual DOM diffing algorithm enables high performance by minimizing DOM operations.
+- **Flexible** - You can use React for interesting solutions like building mobile apps with React Native.
+- **Modular** - Components and state management with Redux enables easier large application development.
+- **Popular** - React has a large community and many 3rd party libraries available.
+- **Testable** - The component model enables easy unit and integration testing.
+- **Versatile** - React can be used for web, mobile, VR, and even game development.
+- **SEO Friendly** - Server-side rendering enables good SEO if you need it.
+- **Active ecosystem** - With constant updates and rapid release cycles.
 
 ---
 
 **What are stateless components?**  
-Stateless components aka functional components are components that don't use any state. Stateless
-components are simpler and easier to test than stateful components, but they can't be used for more
-complex UI components that need to maintain state.
+
+Stateless components in React are components that do not have state. They are "dumb" components that only
+receive data via props and render DOM or other components.
+```jsx
+function StatelessComponent(props) {
+    return <h1>Hello, {props.name}!</h1>;
+}
+```
 
 ---
 
 **What are fragments?**  
-Fragments are a way to group multiple elements without adding an extra DOM node. Fragments are useful
-when you want to return multiple elements from a component, but don't want to add an unnecessary
-container element to the DOM.
+Fragments are useful for:
+* Returning multiple elements from components
+* Avoiding adding extra DOM nodes
+* Wrapping element groups without div soup
+```jsx
+function MyComponent() {
+    return <>
+        <ChildA />
+        <ChildB />
+        <ChildC />
+    </>
+}
+```
 
 ---
 
@@ -119,8 +161,47 @@ is mounted to the DOM.
 ---
 
 **How to use styles in React?**  
-In React, you can use style attribute to apply styles to the component. The style attribute takes an object that
-contains css properties and values, Similar to inline styles in  HTML.
+- **Inline styles** : Object with camelCased CSS properties
+```jsx
+<div style={{ color: 'blue', fontSize: '14px' }}>
+  Hello World!
+</div>
+```
+- **Css stylesheets**: Import a CSS file and reference classes
+```jsx
+import './styles.css';
+
+function App() {
+  return <div className="container">...</div> 
+}
+```
+- **Css modules**: CSS files loaded locally with modules
+```jsx
+import styles from './styles.module.css';
+
+function App() {
+  return <div className={styles.container}>...</div>
+}
+```
+- **Css in JS**: CSS written inline using libraries like Styled Components
+```jsx
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  color: red;
+`;
+```
+- **Tailwind css**: Use pre-built classes and styles
+```jsx
+function MyComponent() {
+    return <div className="px-2 py-3 flex items-center">
+        <h1 className="font-semibold text-stone-500">Tailwind</h1>
+        <p className="py-3">is awesome</p>
+    </div>
+}
+```
+
+
 
 ---
 
