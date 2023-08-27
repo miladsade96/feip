@@ -201,95 +201,205 @@ function MyComponent() {
 }
 ```
 
-
-
----
-
-**What is CRA and its benefits?**  
-CRA stands for Create React App, which is a boilerplate for creating React applications. It provides pre-configured
-setup for building, testing and deploying React applications, allowing developers to focus on writing code rather than
-setting up the build toolchain. Some benefits of using CRA include easy setup, automatic configuration and a built-in
-development server.
-
 ---
 
 **How to combine multiple inline style objects?**  
-In React, you can combine multiple inline style objects using spread operator. This allows you to merge the properties
-of multiple style objects into a single object that can be applied to a component
+- **Object spread syntax**: The spread syntax merges the objects into one.
 ```jsx
-<div style={{...style1, ...style2}}>My Component</div>
+const style1 = { color: 'red' };
+const style2 = { fontSize: '12px' };
+
+<div style={{...style1, ...style2}}></div>
 ```
-This will create a new style object that contains the properties of both style1 and style2.
+- **Object.assign**: Object.assign copies properties from source objects into a target object.
+```jsx
+const style1 = { color: 'red' };
+const style2 = { fontSize: '12px' };
+
+const styles = Object.assign({}, style1, style2);
+
+<div style={styles}></div>
+```
+- **Concatenated Object**: You can also pre-concatenate styles into a new variable.
+```jsx
+const style1 = { color: 'red' };
+const style2 = { fontSize: '12px' };
+
+const styles = {
+  ...style1,
+  ...style2
+};
+
+<div style={styles}></div>
+```
 
 ---
 
 **What is the use of react-dom package?**  
 The react-dom package is used to render React components to the DOM. The react-dom package provides several methods
-for rendering components, including the render method and the hydrate method.
+for rendering components. Some of the key things it provides:
+- **render() method**: Renders a React element into the DOM in the supplied container. This is used to render your app to the DOM:
+```javascript
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+- **hydrate method**: Same as render() but used for hydrating SSR React markup.
+- **unmountComponentAtNode() method**: Removes a mounted React component from the DOM.
+- **findDOMNode() method**: Returns the underlying DOM node for a mounted React.
+- **createPortal() method**: Creates a React portal and appends it to the target DOM node.
 
 ---
 
 **What is the purpose of render method of react-dom?**  
-The render method of the react-dom package is used to render a React component to the client-side DOM. The render
-method takes two arguments: the component to render and the DOM element to render it to.
+The render() method in react-dom is used to render React elements to the DOM. Here are some key points about render():
+- It is the primary method used to render a React application to the DOM.
+- It takes two arguments - the React element to render, and the DOM node to render to:
+```jsx
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+- This will render the <App /> into the DOM element with id 'root'.
+- It should be called only once in the app, typically in index.js.
+- Multiple calls to render() will replace what's already rendered.
+- Returns a reference to the root React component instance.
+- Only renders on the client, not server side.
 
 ---
 
 **What is the difference between React and ReactDOM?**  
-React is a library for creating components and managing state and events of those components, while ReactDOM is a
-library for rendering those components to the DOM. React provide the programming interface for working with components
-, While ReactDOM provides the methods for rendering and updating the components in the browser.
+- **React** is the core library that contains React components, state, props etc. It contains functionality common to React on all platforms.
+- **ReactDOM** deals with the DOM and browser specific features. It provides DOM specific methods like render().  
+So in summary, React is the core library and ReactDOM is the glue between React and the DOM for web apps.
 
 ---
 
-**Why you can't update props in React?**  
-In React, props are immutable and cannot be changed directly. Because React is designed to be a one-way data flow,
-where data is passed down from parent components to child components through props. If you need to update the data,
-you should do so in the parent component and pass the updated data down as props to the child components.
+**Why can't we update props in React?**  
+There are a few key reasons why directly modifying props in React is prohibited:
+- **Unidirectional data flow**: React follows a one-way data flow paradigm, with props being passed from parent to child only. Modifying props directly breaks this.
+- **State as source of truth**: A component's state should be the source of truth for data that can change, not its props.
+- **Immutability**: Mutating objects/arrays in JavaScript can lead to bugs, so React avoids this by not allowing props mutation.
+- **Pure components**: When props remain immutable, it's easier to optimize components by preventing unnecessary re-renders.
+- **Predictability**: Immutable props aid in debugging and understanding data flow.
+- **Functional components**: Functional components are stateless and only rely on props. Mutable props could cause issues.
 
 ---
 
 **How do you conditionally render components?**  
-You can use ternary operator in JSX. This allows you to specify a condition and render one component if condition is
-true, and another component if condition is false. You can use other conditional statements such as *if* statements or
-*switch* statements, outside the JSX to determine which component to render.
+- **if/else**:
+```jsx
+const App = () => {
+  if (condition) {
+    return <ComponentA /> 
+  } else {
+    return <ComponentB />
+  }
+}
+```
+- **Short-circuit && operator**:
+```jsx
+const App = () => {
+  return (
+    condition && <ComponentA />
+  ) 
+}
+```
+- **Ternary operator**:
+```jsx
+const App = () => {
+  return (
+    condition ? 
+      <ComponentA /> :
+      <ComponentB />
+  )
+}
+```
+- **Switch statement**:
+```jsx
+const App = () => {
+  switch(condition) {
+    case 'A': 
+      return <ComponentA />
+    case 'B':
+      return <ComponentB />
+    default:
+      return <ComponentC />
+  }
+}
+```
 
 ---
 
 **How to conditionally apply class attributes?**  
-In React, You can conditionally apply class attributes using the *className* and the ternary operator. This allows you
-to add or remove classes based on some condition, such as the state of the component. The *className* is used instead
-of the *class* attribute in React, because *class* is reserved in javascript.
+- Using **Ternary operator**:
+```jsx
+<div className={condition ? 'classA' : 'classB'}>
+```
+- Using **Short-circuit && operator**:
+```jsx
+<div className={condition && 'classA'}>
+```
 
 ---
 
 **How to enable production mode in React?**  
-To enable production mode in React, you can set NODE_ENV environment variable to *production*. This will trigger
-various optimizations anf remove development-only code from the bundle. You can also use the *process.env.NODE_ENV*
-variable in the code to conditionally enable certain features.
+- Setting NODE_ENV to *production*
+- Setting webpack mode to *production*
+- Parcel build for production: *parcel build entry.js --production*
+- Running the following command: *parcel build entry.js --production*
 
 ---
 
 **How do you access props in attribute quotes?**  
-In React, you can access props in attribute quotes using the *this.props* syntax and the name of the prop. For example
-to access the props named *someProp*, you would use syntax "{this.props.someProp}" inside the attribute quotes.
+To access props in an attribute in JSX, you can use curly braces {}:
+```jsx
+<input 
+  type="text"
+  value={this.props.value}
+  onChange={this.props.onChange}
+/>
+```
 
 ---
 
 **How to loop inside JSX?**  
 To loop inside JSX, you can use map() method to map an array of data to a set of React elements. This allows you to
-dynamically generate UI elements based on data, such as a list of items or a set of images.
+dynamically generate UI elements based on data, such as a list of items or a set of images:
+```jsx
+{items.map(item => (
+  <div key={item.id}>{item.name}</div>  
+))}
+```
 
 ---
 
 **How to focus an input element on page load?**  
-In  React, You can focus an input element on page load using the *focus()* method in the *componentDidMount()*
-lifecycle method. This will set the focus to the input element after the component has been mounted in the DOM. For
-example:
-```javascript
-componentDidMount() {
-    this.myInput.focus();
+- Using **useRef** hook:
+```jsx
+const inputRef = useRef(null);
+
+useEffect(() => {
+  inputRef.current.focus();
+}, [])
+
+return (
+  <input ref={inputRef} /> 
+)
+```
+- Using **focus() method** inside componentDidMount:
+```jsx
+class Input extends React.Component {
+  componentDidMount() {
+    this.input.focus();
+  }
+
+  render() {
+    return <input ref={el => this.input = el} />
+  }
 }
+```
+- Using **autoFocus** attribute:
+```jsx
+return (
+  <input autoFocus />
+)
 ```
 
 ---
@@ -302,9 +412,18 @@ used in ES5 classes. In general, it is recommended to use the *constructor* meth
 ---
 
 **How to use React label element?**  
-You can use the standard HTML label element to associate a label with an input field or other form element. To do this,
-you can use the *for* attribute on the label element and set it to the id of the input field. In JSX, you can use the
-*htmlFor* attribute instead of *for*, because *for* is a reserved keyword in javascript.
+- First way:
+```jsx
+<label htmlFor="name">Name</label>
+<input id="name" type="text" />
+```
+- Second way:
+```jsx
+<label>
+  Name
+  <input type="text" />  
+</label>
+```
 
 ---
 
