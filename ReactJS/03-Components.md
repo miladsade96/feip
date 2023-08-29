@@ -7,15 +7,27 @@
 ---
 
 **How to create components in React?**  
-In React, components can be created using React.createElement method or JSX syntax.
-React.createElement is a lower-level API for creating components, while JSX is a syntax extension that
-allows developers to write HTML-like in javascript.
+There are two main ways to create components in React:
+- **Function components**: Function components are simple JavaScript functions that accept props and return JSX
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+- **Class components**: Class components are ES6 classes that extend React.Component and render JSX in their render method
+```jsx
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
 
 ---
 
 **When to use a class component over a function component?**  
-Class components in React are used when handling a complex state and lifecycle methods. They provide
-additional functionality over function components, such as the ability to use lifecycle methods like
-componentDidMount and componentDidUpdate to maintain internal state. Function components are generally
-used for rendering simple UI components, while class components are used for more complex functionality.
+Class components were used before React 16.8. They exist because they are necessary. Nowadays, most projects
+done with React use Functional components as hooks have made everything easier, and the code is leaner and
+more flexible. Yet, there are cases where we need to use Class components; for example when we’re required to
+build an Error Boundary, or the team we joined has a project that has not migrated to React 16.8.
 </div>
