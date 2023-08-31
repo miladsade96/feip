@@ -6,7 +6,7 @@
 
 ---
 
-**Why should we not update the state directly?**  
+**Why shouldn't we update the state directly?**  
 In React the state should not be updated directly because it can cause the component to re-render
 improperly. Instead, the setState() method should be used to update state, which triggers a re-render
 of the component and ensures that the updated state is properly reflected in the UI.

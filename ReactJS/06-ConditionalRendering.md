@@ -8,7 +8,16 @@
 
 **What are inline conditional expressions?**  
 Inline conditional expressions in React are expressions that are used to conditionally render components
-based on a certain condition. They are typically used in JSX and are written using the ternary operator.
-Inline conditional expressions are simple and effective way to conditionally render components without
-a need for additional logic.
+based on a certain condition. For example:
+```jsx
+// Logical && operator
+{isLoggedIn && <LogoutButton />}
+
+// Or || operator
+{unreadMessages || <p>No unread messages</p>}
+
+// Ternary operator
+{isPremium ? <PremiumContent /> : <RegularContent />}
+<div className={isValid ? 'valid' : 'invalid'}>
+```
 </div>
