@@ -14,7 +14,7 @@ largely replaced by higher-order components and render props.
 
 ---
 
-**What id the difference between super() and super(props) in React using ES6 classes?**  
+**What is the difference between super() and super(props) in React using ES6 classes?**  
 In React using ES6 classes, super() is used to call the constructor of the superclass, while super(props) is used to
 pass props to the constructor of the superclass. The super(props) syntax is necessary if you need to access props in
 the constructor of a subclass.
@@ -22,9 +22,20 @@ the constructor of a subclass.
 ---
 
 **How to listen to state changes?**  
-You can listen to state changes by using the *componentDidUpdate* lifecycle method. This method is called after a
-component's state has been updated, and you can use it to perform additional actions or update the UI based on the new
-state, For example you can use this method to update the DOM, call a web API or trigger an animation.
+We can do it using **useState** and **useEffect** hooks:
+```jsx
+import { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Count updated: ', count);
+  }, [count]);
+
+  return <button onClick={() => setCount(count + 1)}>Increment</button>
+}
+```
 
 ---
 
@@ -39,7 +50,42 @@ of higher-order components.
 **What is a switching component?**  
 A switching component in React is a component that renders one of several child components based on some condition or
 state. This is commonly used to switch between different views or user interface elements in response to user input
-or other events.
+or other events. The common ways to implement a switching component are:
+- **Using switch statement:**
+```jsx
+function Switch(props) {
+  switch(props.page) {
+    case 'home':
+      return <HomePage />;
+    case 'about':  
+      return <AboutPage />;
+    default:
+      return <NotFoundPage />;
+  }
+}
+```
+- **Using a components map:**
+```jsx
+const components = {
+  home: HomePage,
+  about: AboutPage
+};
+
+function Switch(props) {
+  const Component = components[props.page] || NotFoundPage;
+  return <Component />;
+}
+```
+- **Using ternary operator:**
+```jsx
+function Switch(props) {
+  return (
+    props.page === 'home'
+      ? <HomePage />
+      : <AboutPage />
+  );
+}
+```
 
 ---
 
@@ -48,6 +94,17 @@ In React, you can re-render the view when the browser is resized by using a stat
 This will trigger a re-render of the component and allow you to update the layout or other properties based on the new
 size of browser window. You can use the *windowAddEventListener* method to listen for the *resize* event and update the
 state variable accordingly.
+```jsx
+useEffect(() => {
+  function handleResize() {
+    setWindowSize(window.innerWidth);
+  }
+  
+  window.addEventListener('resize', handleResize);
+  
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+```
 
 ---
 
@@ -58,7 +115,7 @@ methods are: *getDerivedStateFromProps* and *getSnapshotBeforeUpdate*.
 
 ---
 
-**Why we need to pass a function to setState?**  
+**Why do we need to pass a function to setState?**  
 This is because in order to avoid infinite loops. If we pass an object directly, it can cause the component to
 re-render and update the state endlessly. By passing a function, we can ensure that the state is updated correctly and
 avoid these issues.
