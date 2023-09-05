@@ -146,22 +146,79 @@ model as React for building UIs on iOS and Android platform.
 
 **What is the recommended approach of removing an array element in react state?**  
 The recommended approach is to use *filter()* method. This allows you to create a new array that contains all the
-elements of original array except the one you want to remove. This a safer and more efficient approach than using the
-*splice()* method, which mutates the original array and can cause unexpected side effects.
+elements of original array except the one you want to remove.
+```jsx
+import { useState } from 'react';
+
+function App() {
+  const [items, setItems] = useState([1, 2, 3]);
+
+  const removeItem = (index) => {
+    const updatedItems = items.filter((item, i) => i !== index);
+    setItems(updatedItems);
+  }
+
+  return (
+    <div>
+      {/* Render items */}
+      <button onClick={() => removeItem(index)}>Remove</button>
+    </div>
+  );
+}
+```
 
 ---
 
 **How do you memoize a component?**  
-To memoize a component in React, you can use the *React.memo* higher-order component. This will prevent the component
-from re-rendering if the props have not changed. You can also use the *shouldComponentUpdate* lifecycle method or the
-*React.useMemo* hook to achieve similar results.
+There are a couple ways to memoize a React functional component to avoid unnecessary re-renders when
+the props haven't changed:  
+- **React.memo:** This is a higher order component that will memoize a functional component based on its props.
+```jsx
+const MyComponent = React.memo(function MyComponent(props) {
+  /* only rerenders if props change */
+});
+```
+- **useMemo hook:** This will memoize the result of a function call based on dependencies like props.
+```jsx
+function MyComponent(props) {
+  // only recalculated if props.data changes
+  const data = useMemo(() => transformData(props.data), [props.data]);  
+  
+  return <div>{data}</div>
+}
+```
+- **useCallback hook:** useCallback can memoize a callback function so that reference equality is preserved between renders.
+```jsx
+// memoize callback
+const memoizedCallback = useCallback(
+    () => {
+        doSomething(a, b);
+    },
+    [a, b],
+);
+```
 
 ---
 
 **How do you implement server side rendering or SSR?**  
-To implement server side rendering in React, you can use the *ReactDOMServer* module. This module provides a method
-called *renderToString* that allows you to render a component to HTML on the server. You can then send this HTML to the
-client, where it can be hydrated into a full React application.
+Here is a general approach to implement server-side rendering (SSR) in React:
+- **1. Create a Universal App:**
+Your React app needs to be universal - able to run on both client and server. Use a framework like Next.js or modify your app accordingly.
+- **2. Render on Server:**
+On the server, call ReactDOMServer.renderToString() to render your app to an HTML string.
+```js
+import ReactDOMServer from 'react-dom/server';
+
+const appHtmlString = ReactDOMServer.renderToString(<App />);
+```
+- **3. Output HTML:**
+Inject the HTML string into your page template and send it as the response from the server.
+- **4. Hydrate on Client:**
+The client receives the HTML from the server and ReactDOM.hydrate() hydrates those static markup into a live React app.
+```jsx
+ReactDOM.hydrate(<App />, document.getElementById('root'));
+```
+This makes React avoid re-rendering on the client for improved performance.
 
 ---
 
@@ -189,13 +246,35 @@ component.
 ---
 
 **How to pretty print JSON with React?**  
-You can use *JSON.stringify()* method with a null value for the *replacer* parameter and a number value for the *space*
-parameter. This will format the JSON data with indentation and line breaks for readability.
+- **JSON.stringify:**
+```jsx
+const data = { name: 'John', age: 30 };
 
+const json = JSON.stringify(data, null, 2);
+
+return <pre>{json}</pre>
+```
+- **react-json-view library:**
+```jsx
+import ReactJson from 'react-json-view';
+
+const data = { name: 'John', age: 30 };
+
+return <ReactJson src={data} />;
+```
+- **react-json-pretty library:**
+```jsx
+import JsonPretty from 'react-json-pretty';
+
+const data = { name: 'John', age: 30 };
+
+return <JsonPretty data={data}></JsonPretty>
+```
 ---
 
 **What is strict mode in React?**  
-It is a mode that highlights potential problems in the code, such as deprecated lifecycle methods or unsafe practices.
+It is a mode that highlights potential problems in the code, such as identifying components with unsafe lifecycles,
+warning about legacy string ref API usage, detecting unexpected side effects and detecting legacy context API.
 It can help to identify issues early on and improve the overall quality of the code. Strict mode can be enabled
 globally or for individual components.
 
@@ -205,14 +284,6 @@ globally or for individual components.
 Decorators in React can be used as class decorators to add a functionality to a component class. For example, you can
 use a decorator to add additional lifecycle methods or state to a component. Decorators can be written as higher-order
 components(HOCs) or as regular functions.
-
----
-
-**Why is isMounted() an antipattern and what is the proper solution?**  
-The *isMounted()* method in React is considered an antipattern because it can lead to race conditions and bugs. This
-method checks if the component is mounted in the DOM, but it can return a false positive if it is called during the
-unmounting phase. The proper solution is to use the *componentDidMount* and *componentWillUnmount* lifecycle methods
-to manage component state and cleanup.
 
 ---
 
