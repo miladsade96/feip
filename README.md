@@ -18,7 +18,15 @@ and boost your confidence in frontend interviews.
 ## Authors:
 * Milad Sadeghi DM – [EverLookNeverSee@GitHub](https://github.com/EverLookNeverSee)
 
+
 ## Table of Contents:
+
+<details>
+<summary>DS & Algo</summary>
+
+* [Data structures](DataStructures_Algorithms/01-DataStructures.md)
+</details>
+
 <details>
 <summary>JavaScript</summary>
 
