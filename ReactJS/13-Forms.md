@@ -7,13 +7,47 @@
 ---
 
 **What are uncontrolled components?**  
-They are components that store their own state and are updated using refs. They are often used for simple form inputs,
-where manging the state in a parent component would be unnecessary overhead.
+Uncontrolled components in React are components that maintain their own internal state. Their values are not
+controlled by React. For example, this is an uncontrolled input:
+```jsx
+<input type="text" />
+```
+The input manages its own state internally, and React has no control over its value.
+Some characteristics of uncontrolled components:
+- They maintain their own internal state
+- The state can only be updated via DOM events
+- Their value is not set by React props
+- Examples include native input and textarea elements
+- Use refs to read their state when needed
 
 ---
 
 **What are controlled components?**  
-They are components that store their state in a parent component and are updated using the setState() method. The
-parent component passes down the component's state as props and also passes down a function to update the state when
-needed. This approach allows for more control over the component's behaviour and simplifies debugging.
+Controlled components in React are components that have their values controlled by React. Typically, this is done by:
+1. Specifying the component's value via props
+2. Updating the value via callbacks like onChange
+
+For example, this input is a controlled component:
+```jsx
+function MyInput({ value, onChange }) {
+  return (
+    <input 
+      value={value}
+      onChange={onChange} 
+    />
+  );
+}
+```
+
+The key aspects are:
+- The input value is passed in via the value prop
+- onChange handler updates the parent component's state
+- Input is controlled through props rather than local state
+
+Advantages of controlled components:
+- Input values are predictable and trackable
+- Parent maintains control over form data
+- Easy to validate or sanitize input
+- Can simplify complex inputs handling multiple states
+
 </div>

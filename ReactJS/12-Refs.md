@@ -7,8 +7,18 @@
 ---
 
 **How to create refs?**  
-Refs in React can be created using React.createRef() method. This method creates a new ref object, Which can be
-attached to DOM element or a React component. Refs can be accessed using the current property of the ref object.
+```jsx
+function MyComponent() {
+  const ref = useRef();
+  
+  useEffect(() => {
+    // access DOM element
+    const element = ref.current;
+  }, []);
+  
+  return <div ref={ref}></div>
+}
+```
 
 ---
 
