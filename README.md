@@ -38,6 +38,12 @@ and boost your confidence in frontend interviews.
 </details>
 
 <details>
+<summary>Other</summary>
+
+* [Agile](Other/Agile.md)
+</details>
+
+<details>
 <summary>ReactJS</summary>
 
 * [Basics](ReactJS/01-Basics.md)
