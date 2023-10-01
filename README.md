@@ -10,8 +10,8 @@
 
 
 Welcome to the feip (Frontend Interview Preparation) repository! This repository is designed
-to help you prepare for frontend interviews, specifically focusing on JavaScript, ReactJS, HTML
-and CSS topics. Whether you are a beginner or an experienced developer, this resource will provide
+to help you prepare for frontend interviews, specifically focusing on JavaScript, ReactJS, HTML, CSS and etc topics.
+Whether you are a beginner or an experienced developer, this resource will provide
 you with a comprehensive collection of tutorials and interview questions to enhance your skills
 and boost your confidence in frontend interviews.
 
