@@ -17,6 +17,7 @@ need to pre-define a fixed size like other languages.
 - **Delete:**
   - **O(n):** Remove from end with pop(). Remove from beginning with shift(). This is slow like insert since it requires shifting elements.
   - **O(1):** Delete from middle using splice(). Faster than pop/shift.
+- **Space complexity - O(n)**
 
 **Tips and tricks:**
 - Use hash maps/objects for fast lookup of values. Store array values as keys for O(1) access.
@@ -40,6 +41,7 @@ storage at the cost of order being arbitrary.
 - **Search - O(1):** Check if a key exists in the hash table using hasOwnProperty() or key in hash. This is a fast lookup.
 - **Insert - O(1):** Insert a new key-value pair using square bracket notation. Takes constant time.
 - **Delete - O(1):** Delete a key-value pair using delete hash[key]. Very fast removal.
+- **Space complexity - O(n)**
 
 **Note:** Many collisions - A poor hash function can result in lots of keys mapping to the same hash code. This leads to the same array bucket containing many entries, slowing down lookup speed.
 
