@@ -89,3 +89,30 @@ pointers), and circular linked list.
 - Recursion works well for operations like linked list reversal.
 
 ---
+
+## Stack:
+
+**Short introduction:**  
+A stack is a linear data structure that follows the LIFO (Last In First Out) principle. The last element added to the stack is the first one removed.
+
+**Big O:**
+- **Access - O(n):** To access an element on the stack you have to pop all the elements on top of it first to reach it.
+- **Search - O(n):** To search for an element, you have to linearly iterate through the stack to find it.
+- **Insert - O(1):** Pushing an element onto the stack just puts it at the top, so it takes constant time.
+- **Delete - O(1):** Popping an element removes the top element, which is done in constant time.
+- **Space complexity - O(n)**
+
+**Tips and tricks:**
+- Use stacks to help reverse elements - pop everything and push onto a new stack.
+- Track opening/closing brackets or tags with a stack and pop/push for each one. Check empty at end.
+- Use two stacks to implement a queue when needed.
+- Recursion and recursive backtracking lend themselves well to stacks. Visualize call stack.
+- Check for palindromic strings or substrings using a stack.
+- Use stacks to do DFS (depth first search) on graphs and trees. Recursion works well here.
+- Draw out stack contents step-by-step during operations on paper. Visualize pushes and pops.
+- Remember to consider edge cases like empty or full stacks.
+- Consider amortized costs for resize operations as stack grows.
+- Compare tradeoffs to other structures like queues or heaps for the problem.
+- Practice questions like decimal to binary conversion, histogram maximum rectangle area etc.
+
+---
