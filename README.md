@@ -28,48 +28,45 @@ and boost your confidence in frontend interviews.
 </details>
 
 <details>
+<summary>Development</summary>
+
+<details>
 <summary>JavaScript</summary>
 
-* [Fundamentals](JavaScript/01-fundamentals.md)
-* [Arrays](JavaScript/02-arrays.md)
-* [Strings](JavaScript/03-strings.md)
-* [Date and Time](JavaScript/04-dateTime.md)
-* [Object Oriented](JavaScript/05-objectOriented.md)
+* [Fundamentals](Development/JavaScript/01-fundamentals.md)
+* [Arrays](Development/JavaScript/02-arrays.md)
+* [Strings](Development/JavaScript/03-strings.md)
+* [Date and Time](Development/JavaScript/04-dateTime.md)
+* [Object Oriented](Development/JavaScript/05-objectOriented.md)
+</details>
+
+<details>
+<summary>ReactJS</summary>
+
+* [Basics](Development/ReactJS/01-Basics.md)
+* [Props](Development/ReactJS/02-Props.md)
+* [Components](Development/ReactJS/03-Components.md)
+* [Arrays and Lists](Development/ReactJS/04-ArraysLists.md)
+* [Best Practices](Development/ReactJS/05-BestPractices.md)
+* [Conditional Rendering](Development/ReactJS/06-ConditionalRendering.md)
+* [State](Development/ReactJS/07-State.md)
+* [State vs. Props](Development/ReactJS/08-StateProps.md)
+* [Performance](Development/ReactJS/09-Performance.md)
+* [Advanced Concepts](Development/ReactJS/10-AdvancedConcepts.md)
+* [Advanced](Development/ReactJS/11-Advanced.md)
+* [Refs](Development/ReactJS/12-Refs.md)
+* [Forms](Development/ReactJS/13-Forms.md)
+* [Events](Development/ReactJS/14-Events.md)
+* [Intermediate](Development/ReactJS/15-Intermediate.md)
+</details>
+
+[CSS](Development/css.md)
 </details>
 
 <details>
 <summary>Other</summary>
 
 * [Agile](Other/Agile.md)
-</details>
-
-<details>
-<summary>ReactJS</summary>
-
-* [Basics](ReactJS/01-Basics.md)
-* [Props](ReactJS/02-Props.md)
-* [Components](ReactJS/03-Components.md)
-* [Arrays and Lists](ReactJS/04-ArraysLists.md)
-* [Best Practices](ReactJS/05-BestPractices.md)
-* [Conditional Rendering](ReactJS/06-ConditionalRendering.md)
-* [State](ReactJS/07-State.md)
-* [State vs. Props](ReactJS/08-StateProps.md)
-* [Performance](ReactJS/09-Performance.md)
-* [Advanced Concepts](ReactJS/10-AdvancedConcepts.md)
-* [Advanced](ReactJS/11-Advanced.md)
-* [Refs](ReactJS/12-Refs.md)
-* [Forms](ReactJS/13-Forms.md)
-* [Events](ReactJS/14-Events.md)
-* [Intermediate](ReactJS/15-Intermediate.md)
-</details>
-
-
-<details>
-<summary>HTML - Coming soon!</summary>
-</details>
-
-<details>
-<summary>CSS - Coming soon!</summary>
 </details>
 
 
