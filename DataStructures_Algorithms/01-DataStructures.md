@@ -58,3 +58,32 @@ storage at the cost of order being arbitrary.
 - Practice questions involving maximum occurring frequency, anagrams, palindromes to get familiar with hashing strings/arrays.
 
 ---
+
+## Linked list:
+
+**Short introduction:**  
+A linked list is a linear data structure that stores elements in nodes. Each node contains the data and a pointer to
+the next node. The elements are not stored contiguously in memory like arrays, instead each node points to the next 
+one in the chain. Common types of linked lists include singly linked (one pointer), doubly linked (forward and backward
+pointers), and circular linked list.
+
+**Big O:**
+- **Singly and doubly linked list:**
+  - **Access - O(n):** To access a node in a linked list, you have to start from the head and traverse sequentially until you reach the index you want; This is linear time.
+  - **Search - O(n):** Search involves traversal to find a specific value. Also, linear time since in the worst case, you may have to visit each node once.
+  - **Insert - O(1):** To insert a new node, you can rewire the pointers to insert a node after a given node in constant time O(1).
+  - **Delete - O(1):** Deleting a node just requires rewiring the previous node's next pointer to skip over the node to delete. So it's constant time to delete.
+  - **Space complexity - O(n)**
+
+**Tips and tricks:**
+- Draw out example linked lists visually and walk through the state changes step-by-step. Visualization helps greatly.
+- Be very comfortable with traversal using while loops, updating node pointers, etc. These are very common.
+- For problems involving a sublist or traversal ending condition, maintain pointers to both the head and tail nodes of sublists.
+- To reverse a linked list, keep track of the previous node and swap next pointers accordingly.
+- To detect cycles, use two pointers moving at different speeds - fast and slow. If they meet, there's a loop.
+- For deleting nodes without head reference, copy next node's data over and delete next node instead.
+- For merging two sorted lists, create a dummy head and traverse both lists picking smaller node each time.
+- To find the middle node, use fast/slow pointers again where fast moves 2x speed. When fast hits end, slow is at middle.
+- Recursion works well for operations like linked list reversal.
+
+---
