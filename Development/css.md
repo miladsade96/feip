@@ -287,3 +287,247 @@ The main differences between classes and IDs in CSS are:
 - Use classes for common styling needs, IDs for unique or specific element styling.
 
 ---
+
+**List out the data types that sass supports?**  
+- **Numbers:** Used for any number values
+```scss
+$size: 18;                  // A number
+$px-unit: $size * 1px;      // A pixel measurement
+$px-string: $size + px;     // A string
+$px-number: $px-unit / 1px; // A number
+```
+- **Strings:** Used for text values. Can be quoted in single or double quotes
+```scss
+$website: 'hereismy.site'; // Stores my personal website
+$name: 'Milad' + ' Sadeghi';  // 'Milad Sadeghi'
+$date:  'Month/Year : ' + 10/2023; // 'Month/Year : 10/2023'
+$date:  'Month/Year : ' + (10/2023); 
+```
+- **Colors:** Used for any color value
+```scss
+$color: yellowgreen;           // #9ACD32
+color: lighten($color, 15%);    // #b8dc70
+color: darken($color, 15%);     // #6c9023
+color: saturate($color, 15%);   // #a1e01f
+color: desaturate($color, 15%); // #93ba45
+color: (green + red);           // #ff8000
+```
+- **Booleans:** Used for true or false values.
+```scss
+$i-am-true: true;
+
+body {
+  @if not $i-am-true {
+    background: rgba(255, 0, 0, 0.6);
+  } @else {
+    background: rgba(0, 0, 255, 0.6); // expected
+  }
+}
+```
+- **Null:** Null - is commonly used to define an empty state, neither true or false. This is typically the value you
+             want to set when defining a variable without a value, only to prevent the parser from crashing.
+```scss
+.foo {
+  content: type-of(null); // null
+  content: type-of(NULL); // string
+  $bar: 'foo' + null; // invalid null operation: "foo plus null”.
+}
+```
+- **Lists** Used to store multiple values like 1px 2px 3px. Uses spaces or commas for separation.
+```scss
+$font-list: 'Raleway','Dosis','Lato'; // Three comma separated elements
+$pad-list: 10px 8px 12px; // Three space separated elements
+$multi-list: 'Roboto',15px 1.3em; // This multi-list has two lists.
+```
+- **Maps:** Sass maps are like associative arrays. A map stores both keys and values associated with those keys.
+```scss
+$styling: (
+  'font-family': 'Lato',
+  'font-size': 1.5em,
+  'color': tomato,
+  'background': black
+);
+
+h1 {
+  color: map-get($styling, 'color');
+  background: map-get($styling, 'background');
+}
+```
+
+----
+
+**What are the differences between sass and scss?**  
+Sass and SCSS (Sassy CSS) are two syntax options for the Sass stylesheet language:
+- Sass uses the Sass (.sass) syntax which is indented based and does not use braces or semicolons.
+```sass
+body
+  font:
+    family: Roboto
+    size: 16px
+```
+
+- SCSS uses the SCSS (.scss) syntax which is very similar to CSS style with braces and semicolons.
+```scss
+body {
+  font: {
+    family: Roboto;
+    size: 16px;
+  }
+}
+```
+
+The key differences are:
+- Sass uses indentation rather than braces and semicolons. SCSS uses CSS-style syntax.
+- Sass files use the .sass extension. SCSS uses .scss extension.
+- At a technical level, both compile to the same CSS code. They are just two formats of the same preprocessor.
+- SCSS syntax is more popular and widely used because it is easier for developers with CSS experience.
+
+---
+
+**Explain the usage of table-layout in css?**  
+The `table-layout` property in CSS is used to specify the algorithm that the browser should use to lay out table cells,
+rows, and columns. There are two possible values for this property:
+* `auto`: This is the default value, and it allows the browser to use its own algorithm to lay out the table. This
+          algorithm typically adjusts the widths of the table and its cells to fit the content.
+* `fixed`: This value tells the browser to use a fixed layout algorithm. In this algorithm, the width of each column is
+           determined as follows:
+  * A `col` element with explicit width sets the width for that column.
+  * Otherwise, a cell in the first row with explicit width determines the width for that column.
+  * Otherwise, the column gets the width from the shared remaining horizontal space.
+
+The main benefit of using `table-layout: fixed` is that it can improve the performance of rendering tables. This is
+because the browser can start rendering the table as soon as it has parsed the first row, even if the content of the
+other rows is not yet known.
+
+To use `table-layout: fixed`, you must explicitly set the width of the table using the `width` property. You can also
+set the width of individual columns using the `col` element.
+
+Here is an example of a table using `table-layout: fixed`:
+
+```html
+<table>
+  <colgroup>
+    <col width="100px">
+    <col width="200px">
+  </colgroup>
+  <tr>
+    <th>Header 1</th>
+    <th>Header 2</th>
+  </tr>
+  <tr>
+    <td>Cell 1</td>
+    <td>Cell 2</td>
+  </tr>
+  <tr>
+    <td>Cell 3</td>
+    <td>Cell 4</td>
+  </tr>
+</table>
+```
+In this example, the width of the first column is set to 100px and the width of the second column is set to 200px.
+This means that the table will always have a width of 300px, regardless of the content of the cells.
+
+---
+
+**what is the difference between a relative, absolute, fixed and static positioned element?**  
+The main difference between relative, absolute, fixed, and static positioned elements is how they are positioned
+relative to the other elements on the page:
+- Static is the default position for all elements. Static elements are positioned in the normal flow of the document,
+  meaning that they are stacked on top of each other in the order that they appear in the HTML code.
+- Relative elements are positioned relative to their normal position in the document flow. This means that you can use
+  the top, right, bottom, and left properties to move the element around its normal position. However, relative elements
+  will still take up space in the document flow, meaning that other elements will flow around them.
+- Absolute elements are positioned relative to their nearest positioned ancestor. This means that they are removed from
+  the normal flow of the document and can overlap other elements. Absolute elements are often used to create popups,
+  menus, and other floating elements.
+- Fixed elements are positioned relative to the browser viewport, meaning that they stay in the same position on the
+  page even when the user scrolls. Fixed elements are often used for navigation bars, headers, and other elements that
+  should always be visible to the user.
+
+---
+
+**Have you ever worked with retina graphics? If so, when and what techniques did you use?**  
+Yes, I have worked with retina graphics on several occasions. I have used a variety of techniques, including:
+* **Using high-resolution images:** For static images, such as logos and icons, I use images that are twice the
+                                    resolution of what is needed for non-retina displays. This ensures that the images
+                                    look sharp and crisp on retina displays.
+* **Using vector graphics:** Vector graphics are scalable images that can be displayed at any resolution without losing 
+                             quality. This makes them ideal for use on retina displays.
+* **Using CSS media queries:** CSS media queries allow you to specify different styles for different devices and screen
+                               resolutions. I use media queries to ensure that my websites and apps look good on both 
+                               retina and non-retina displays.
+
+For example, the following CSS code will ensure that the `logo.png` image is displayed at the correct resolution on
+both retina and non-retina displays:
+```css
+img {
+  max-width: 100%;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  img.logo {
+    content: url("logo@2x.png");
+  }
+}
+```
+This code will display the `logo.png` image on non-retina displays. On retina displays, it will display the 
+`logo@2x.png` image, which is a high-resolution version of the logo.
+
+---
+
+**What are the advantages and disadvantages of using css preprocessors?**  
+**Advantages of using CSS preprocessors:**
+* **More powerful and flexible CSS:** CSS preprocessors like Sass and LESS provide a number of features that are not available in native CSS, such as variables, mixins, functions, and nesting. These features can make your CSS code more maintainable, reusable, and efficient.
+* **Reduced code bloat:** CSS preprocessors can help you to reduce the amount of CSS code that you need to write. For example, you can use variables to define common values that can be reused throughout your code. You can also use mixins to create reusable code snippets that can be included in multiple places.
+* **Improved CSS organization:** CSS preprocessors can help you to organize your CSS code in a more logical way. For example, you can use Sass's `@use` directive to import CSS files from other Sass files. This can make your code easier to read and understand.
+* **Increased productivity:** CSS preprocessors can help you to write CSS code more quickly and efficiently. By using features like variables, mixins, and functions, you can avoid having to repeat yourself and write the same CSS code over and over again.
+
+**Disadvantages of using CSS preprocessors:**
+* **Learning curve:** CSS preprocessors can have a bit of a learning curve, especially if you are not familiar with programming concepts like variables and functions. However, there are many resources available online and in books to help you learn CSS preprocessors.
+* **Increased build complexity:** CSS preprocessors require an additional build step to compile the preprocessed CSS code into regular CSS code. This can add some additional complexity to your development workflow.
+* **Debugging can be more difficult:** Debugging CSS code that has been preprocessed can be more difficult than debugging regular CSS code. This is because the preprocessed CSS code is compiled into a single CSS file, which can make it difficult to track down the source of errors.
+
+---
+
+**How is responsive design different from adaptive design?**  
+Responsive design and adaptive design are both approaches to web design that aim to create websites that look good and function well on a variety of devices, from desktop computers to smartphones. However, there are some key differences between the two approaches.
+- **Responsive design** is a fluid approach that uses CSS media queries to adjust the layout and appearance of a website based on the screen size of the device it is being viewed on. This means that a single responsive website can be viewed on any device without any major changes to the layout or content.
+- **Adaptive design**, on the other hand, uses a fixed layout approach with a different layout for each common device screen size. This means that an adaptive website will have a different layout for desktop computers, tablets, and smartphones.
+
+---
+**What is css selectors? name some**  
+CSS selectors are used to identify the HTML elements that you want to style. There are a variety of CSS selectors available, each of which targets a different type of HTML element.
+
+Here are some of the most common CSS selectors:
+
+- **Element selector:** This selector selects all elements of a specific type. For example, the div selector selects all div elements on a page.
+- **Class selector:** This selector selects all elements with a specific CSS class. For example, the .my-class selector selects all elements with the CSS class my-class.
+- **ID selector:** This selector selects all elements with a specific ID. For example, the #my-id selector selects the element with the ID my-id.
+- **Descendant selector:** This selector selects all elements that are descendants of a specific element. For example, the div p selector selects all p elements that are descendants of div elements.
+- **Child selector:** This selector selects all elements that are direct children of a specific element. For example, the div > p selector selects all p elements that are direct children of div elements.
+- **Adjacent sibling selector:** This selector selects all elements that are adjacent siblings of a specific element. For example, the div + p selector selects all p elements that are adjacent siblings of div elements.
+- **Pseudo-class selector:** This selector selects elements based on their state, such as whether they are hovered over, focused, or active. For example, the :hover pseudo-class selector selects all elements that are currently being hovered over.
+
+---
+
+**What does accessibility(a11y) mean?**  
+Accessibility (a11y) is the practice of making websites, apps, and other digital content accessible to people with disabilities. This includes people who are blind or have low vision, deaf or hard of hearing, have mobility impairments, or have cognitive disabilities.
+There are a number of things that can be done to make digital content more accessible. Some common techniques include:
+- Providing alternative text for images and videos
+- Using clear and concise language
+- Avoiding complex layouts and navigation
+- Providing captions and transcripts for audio and video content
+- Making sure that all content can be accessed using a keyboard
+
+---
+
+**What is css preprocessor and why to use one?**  
+A CSS preprocessor is a programming language that extends the capabilities of CSS. CSS preprocessors allow you to use features such as variables, mixins, functions, and nesting to make your CSS code more maintainable, reusable, and efficient.
+
+Here are some of the benefits of using a CSS preprocessor:
+- More powerful and flexible CSS: CSS preprocessors provide a number of features that are not available in native CSS, such as variables, mixins, functions, and nesting. These features can make your CSS code more maintainable, reusable, and efficient.
+- Reduced code bloat: CSS preprocessors can help you to reduce the amount of CSS code that you need to write. For example, you can use variables to define common values that can be reused throughout your code. You can also use mixins to create reusable code snippets that can be included in multiple places.
+- Improved CSS organization: CSS preprocessors can help you to organize your CSS code in a more logical way. For example, you can use Sass's @use directive to import CSS files from other Sass files. This can make your code easier to read and understand.
+- Increased productivity: CSS preprocessors can help you to write CSS code more quickly and efficiently. By using features like variables, mixins, and functions, you can avoid having to repeat yourself and write the same CSS code over and over again.
+
+---
