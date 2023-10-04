@@ -116,3 +116,31 @@ A stack is a linear data structure that follows the LIFO (Last In First Out) pri
 - Practice questions like decimal to binary conversion, histogram maximum rectangle area etc.
 
 ---
+
+## Queue:
+
+**Short introduction:**  
+
+A queue is a linear data structure that follows the First In First Out (FIFO) principle. Items are added to the queue
+at the back (tail) and removed from the queue at the front (head). This is similar to a line of people waiting to
+purchase tickets, where the first person in line is the first person served. Queues are implemented using a variety
+of methods, including arrays, linked lists, and circular buffers. The most common implementation is a linked list,
+where each item in the queue contains a pointer to the next item in the queue.
+
+**Big O:**
+- **Access - O(n):** Because the queue is a linear data structure, accessing an item at the front of the queue requires iterating over all the items in the queue until the desired item is found.
+- **Search - O(n):** For the same reason as access, searching for an item in a queue requires iterating over all the items in the queue until the desired item is found.
+- **Insert - O(1):** Inserting an item into a queue is a constant time operation because it only requires adding the item to the back of the queue.
+- **Delete - O(1):** Deleting an item from a queue is also a constant time operation because it only requires removing the item from the front of the queue.
+- **Space complexity - O(n):** Because the queue needs to store all the items in the queue. The amount of space required by the queue will increase as more items are added to the queue
+
+**Tips and tricks:**
+- Use queues for breadth-first search (BFS) on trees and graphs instead of recursion or stacks.
+- Implement other queues like priority queue, circular queue, deque to fit problem constraints.
+- Use queues to model real-world queueing behavior like job scheduling, server requests, etc.
+- Reverse a queue by enqueueing all items into a new queue. The order will be reversed.
+- Use queues to cache or rate limit actions, only allowing one action per timestep like keypresses.
+- Model a queue abstractly using two stacks when a full queue implementation is not available.
+- Pay attention to empty/full queue conditions and how the implementation handles resizing.
+
+---
