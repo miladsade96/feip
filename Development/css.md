@@ -580,7 +580,6 @@ The box model can be used to control the size and position of HTML elements on a
 ---
 
 **Describe pseudo-elements and discuss what they are used for?**  
-
 Pseudo-elements are a CSS feature that allows you to style specific parts of an element without having to create a new element.
 Pseudo-elements are denoted by a double colon (::) followed by a keyword. For example, the ::first-letter pseudo-element targets
 the first letter of an element.
@@ -592,5 +591,181 @@ Pseudo-elements can be used for a variety of purposes, such as:
 - Styling the before and after content of an element
 - Styling the selection cursor
 - Styling the scrollbar of an element
+
+---
+
+**How does css actually work(under the hood of the browser)?**  
+CSS works by telling the browser how to render HTML elements on a web page. The browser first parses the HTML document
+to create a DOM tree. The DOM tree is a representation of the HTML document in which each HTML element is represented
+as a node. The browser then parses the CSS stylesheet to create a CSSOM tree. The CSSOM tree is a representation of
+the CSS stylesheet in which each CSS declaration is represented as a node. Once the browser has created the DOM tree
+and the CSSOM tree, it can start to render the web page. The browser does this by walking through the DOM tree and
+applying the CSS styles to each element.  
+Here is a step-by-step overview of how CSS works:
+- The browser loads the HTML document.
+- The browser parses the HTML document to create a DOM tree.
+- The browser loads the CSS stylesheet.
+- The browser parses the CSS stylesheet to create a CSSOM tree.
+- The browser walks through the DOM tree and applies the CSS styles to each element.
+- The browser renders the web page.
+
+---
+
+**What is a grid system in css?**  
+A CSS grid system is a layout system that uses rows and columns to position elements on a page. Grid systems are
+flexible and responsive, making them ideal for creating websites that look good on all devices. To create a grid
+system, you first need to define the grid rows and columns. You can do this using the `grid-template-rows` and 
+`grid-template-columns` CSS properties. Once you have defined the grid rows and columns, you can place elements in
+the grid using the `grid-row` and `grid-column` CSS properties. You can also use the `grid-area` CSS property to define
+a custom grid area for an element.
+
+---
+
+**Explain the purpose of clearing floats in css?**  
+The purpose of clearing floats in CSS is to prevent other elements from wrapping around floated elements. When an
+element is floated, it is removed from the normal flow of the document and placed next to the other floated elements
+on the page. This can cause other elements to wrap around the floated elements, which can lead to unexpected and
+undesirable results. To clear a float, you can use the `clear` CSS property. The `clear` property can be set to `left`,
+`right`, or `both`. To clear all floats, you can set the `clear` property to `both`.  
+Here is an example of how to clear floats in CSS:
+```css
+.floated-element {
+  float: left;
+}
+
+.clear-floats {
+  clear: both;
+}
+```
+In this example, the `.floated-element` element will be floated to the left. The `.clear-floats` element will clear all
+floats, so the text below the `.clear-floats` element will not wrap around the `.floated-element` element.
+
+---
+
+**What does * { box-sizing: border-box; } do? What are its advantages?**  
+The CSS declaration `* { box-sizing: border-box; }` tells the browser to use the border-box box model for all elements.
+This means that the width and height of an element will include the padding, border, and margin.  
+The advantages of using the border-box box model include:
+- **Easier to calculate the size of elements:** When the border-box box model is used, the width and height of an element include the padding, border, and margin. This makes it easier to calculate the total size of an element and its contents.
+- **More consistent layouts:** The border-box box model ensures that all elements have a consistent appearance, regardless of their padding and border. This can lead to more predictable and consistent layouts.
+- **Reduced code bloat:** The border-box box model can help to reduce code bloat by eliminating the need to add padding and border values to the width and height of elements.
+
+---
+
+**Can you explain the difference between coding a website to be responsive versus using a mobile-first strategy?**  
+**Responsive web design** is an approach to web design that aims to create websites that look good and function well on
+all devices, from desktop computers to smartphones. Responsive websites use CSS media queries to adjust the layout and
+appearance of the website based on the screen size of the device it is being viewed on.
+
+**Mobile-first web design** is an approach to web design that prioritizes the mobile experience. Mobile-first websites
+are designed with mobile devices in mind first, and then adapted for larger screens. This approach ensures that the
+mobile experience is as good as possible, even if the website is not perfectly optimized for larger screens.
+**Here is a table that summarizes the key differences between responsive and mobile-first web design:**
+
+| Feature | Responsive web design | Mobile-first web design |
+|---|---|---|
+| **Focus** | Focuses on creating a consistent experience across all devices | Focuses on creating a great mobile experience |
+| **Design process** | Starts with the desktop design and adapts it for smaller screens | Starts with the mobile design and adapts it for larger screens |
+| **Pros** | Consistent experience across all devices | Optimized mobile experience |
+| **Cons** | Can be more difficult to design and develop | May not be as visually appealing on larger screens |
+
+**Which approach is right for you depends on your specific needs.** If you want to create a website with a consistent
+experience across all devices, then responsive web design is a good choice. If you want to create a website with a 
+great mobile experience, then mobile-first web design is a good choice.
+
+---
+**Explain the basic rules of css specificity?**  
+CSS specificity is a set of rules that the browser uses to determine which CSS declaration should be applied to an
+element. When two or more CSS declarations target the same element, the declaration with the highest specificity wins.  
+The four components of CSS specificity are:
+- Inline styles: Inline styles have the highest specificity.
+- ID selectors: ID selectors have the second-highest specificity.
+- Class selectors, attribute selectors, and pseudo-classes: These selectors have the third-highest specificity.
+- Element selectors and pseudo-elements: These selectors have the lowest specificity.
+
+To calculate the specificity of a CSS declaration, you add up the number of each type of selector in the declaration.
+For example, the declaration .my-class:hover has a specificity of 1-0-1-0, because it has one class selector and one
+pseudo-class. If two or more CSS declarations have the same specificity, the browser will apply the declaration that
+comes last in the CSS stylesheet.
+
+---
+
+**How do you optimize your webpages for print?**  
+Here are some tips on how to optimize your webpages for print:
+- **Use a print stylesheet.** A print stylesheet is a CSS stylesheet that is specifically designed for printing. You can use a print stylesheet to hide unnecessary elements, such as navigation bars and social media buttons, and to adjust the layout of your page to make it more print-friendly.
+- **Use a readable font.** When choosing a font for your printed webpages, it is important to choose a font that is easy to read. Avoid using fonts that are too small or too decorative.
+- **Use a high contrast color scheme.** When printing webpages, it is important to use a high contrast color scheme to make the text and images easy to see. Avoid using light text on a light background or dark text on a dark background.
+- **Remove unnecessary images.** When printing webpages, it is important to remove any unnecessary images. Images can take a long time to print and can waste ink.
+- **Use a consistent layout.** When printing webpages, it is important to use a consistent layout. This will make your printed webpages look more professional and polished.
+
+---
+
+**Have you ever used a grid system? if so, what do you prefer?**  
+Yes, I have used a number of grid systems, including Bootstrap, Foundation, and Bulma. I prefer to use the Bootstrap
+grid system because it is simple, flexible, and well-documented.
+
+- The Bootstrap grid system is a responsive grid system that uses 12 columns. The grid system can be used to create a variety of layouts, from simple one-column layouts to complex multi-column layouts.
+- The Bootstrap grid system is also very flexible. You can use the grid system to create layouts for any device, from desktop computers to smartphones.
+- Finally, the Bootstrap grid system is well-documented. There are many resources available online that can help you to learn how to use the Bootstrap grid system.
+
+---
+
+**What are the different ways to visually hide content(and make it available only for screen readers)?**  
+There are a few different ways to visually hide content and make it available only for screen readers:
+- **Position the element off-screen:** You can position the element off-screen using CSS. This can be done by setting the `position` property to `absolute` and then setting the `left`, `right`, `top`, and `bottom` properties to negative values. For example:
+```css
+.hidden-from-sight {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+```
+This will hide the element from both sighted users and screen readers.
+
+- **Set the display property to none:** You can set the `display` property to `none` to hide the element from both sighted users and screen readers. However, this is not the recommended approach, as it can have unexpected consequences, such as breaking the layout of your page.
+- **Use the `aria-hidden` attribute:** The `aria-hidden` attribute can be used to hide the element from screen readers only. To do this, set the `aria-hidden` attribute to `true`. For example:
+```html
+<span aria-hidden="true">This text will be hidden from screen readers.</span>
+```
+This approach is recommended because it allows screen readers to skip over the hidden content, while still allowing sighted users to see the content if they need to.
+- **Use a CSS framework:** Many CSS frameworks, such as Bootstrap and Foundation, have built-in classes that can be used to hide content from screen readers. For example, the Bootstrap `.sr-only` class can be used to hide content from screen readers only.
+
+---
+
+**Describe z-index and how a stacking context is formed?**  
+The `z-index` CSS property controls the stacking order of elements on a web page. Elements with a higher `z-index` 
+will appear on top of elements with a lower `z-index`. A stacking context is a three-dimensional conceptualization
+of space on a two-dimensional screen. It is a way of grouping elements together and determining their order in the
+z-index. A stacking context is formed when an element meets one of the following criteria:
+
+* The element is the root element of the document (the `html` element).
+* The element has a `position` value other than `static` and a `z-index` value other than `auto`.
+* The element is a child of a flex container with a `z-index` value other than `auto`.
+* The element has an `opacity` value of less than 1.
+* The element has a `transform`, `filter`, `perspective`, or `clip-path` property value other than `none`.
+
+Once a stacking context is formed, all of its child elements are stacked according to the `z-index` property values.
+Elements with a higher `z-index` will appear on top of elements with a lower `z-index`. Stacking contexts can be nested.
+This means that a stacking context can contain other stacking contexts. When stacking contexts are nested, the stacking
+order of elements is determined by the order of the stacking contexts.
+
+---
+
+**Is there any reason you would want to use translate() instead of absolute positioning or vice-versa? and why?**  
+Yes, there are a few reasons why you might want to use `translate()` instead of absolute positioning or vice-versa.  
+**Reasons to use `translate()`:**
+- **Performance:** `translate()` is generally faster than absolute positioning, especially when used with animations. This is because `translate()` does not affect the layout of other elements on the page.
+- **Smoothness:** `translate()` can be used to create smoother animations than absolute positioning. This is because `translate()` can interpolate at sub-pixel positions.
+- **Responsiveness:** `translate()` is more responsive than absolute positioning. This is because `translate()` is not affected by the size of the container element.
+
+**Reasons to use `absolute positioning`:**
+- **Accuracy:** Absolute positioning can be more accurate than `translate()` when it is important to precisely position an element on the page.
+- **Control:** Absolute positioning gives you more control over the position of an element on the page. For example, you can use absolute positioning to position an element relative to the edge of the browser window or the edge of another element.
+- **Compatibility:** Absolute positioning is more widely supported than `translate()`. This means that absolute positioning is a good choice for projects that need to be compatible with older browsers.
+
+**Which one should you use?**  
+The best approach to use will depend on your specific needs. If you need to create a
+smooth and responsive animation, then you should use `translate()`. If you need to precisely position an element on
+the page, or you need to support older browsers, then you should use absolute positioning.
 
 ---
