@@ -17,7 +17,7 @@ need to pre-define a fixed size like other languages.
 - **Delete:**
   - **O(n):** Remove from end with pop(). Remove from beginning with shift(). This is slow like insert since it requires shifting elements.
   - **O(1):** Delete from middle using splice(). Faster than pop/shift.
-- **Space complexity - O(n)**
+- **Space complexity - O(n):**  because arrays are typically implemented using a contiguous block of memory. In order to access or modify an element in the array, the array needs to keep track of the address of the first element in the array and the size of each element in the array.
 
 **Tips and tricks:**
 - Use hash maps/objects for fast lookup of values. Store array values as keys for O(1) access.
@@ -41,7 +41,7 @@ storage at the cost of order being arbitrary.
 - **Search - O(1):** Check if a key exists in the hash table using hasOwnProperty() or key in hash. This is a fast lookup.
 - **Insert - O(1):** Insert a new key-value pair using square bracket notation. Takes constant time.
 - **Delete - O(1):** Delete a key-value pair using delete hash[key]. Very fast removal.
-- **Space complexity - O(n)**
+- **Space complexity - O(n):** because the hash table needs to store all of the key-value pairs in the table. This is because hash tables are typically implemented using an array of buckets. Each bucket in the array can store one or more key-value pairs.
 
 **Note:** Many collisions - A poor hash function can result in lots of keys mapping to the same hash code. This leads to the same array bucket containing many entries, slowing down lookup speed.
 
@@ -75,7 +75,7 @@ pointers), and circular linked list.
   - **Search - O(n):** Search involves traversal to find a specific value. Also, linear time since in the worst case, you may have to visit each node once.
   - **Insert - O(1):** To insert a new node, you can rewire the pointers to insert a node after a given node in constant time O(1).
   - **Delete - O(1):** Deleting a node just requires rewiring the previous node's next pointer to skip over the node to delete. So it's constant time to delete.
-  - **Space complexity - O(n)**
+  - **Space complexity - O(n):** Because each node in the linked list needs to store a pointer to the next node in the list. This means that the amount of space required by the linked list will increase linearly as more nodes are added to the list.
 
 **Tips and tricks:**
 - Draw out example linked lists visually and walk through the state changes step-by-step. Visualization helps greatly.
@@ -100,7 +100,7 @@ A stack is a linear data structure that follows the LIFO (Last In First Out) pri
 - **Search - O(n):** To search for an element, you have to linearly iterate through the stack to find it.
 - **Insert - O(1):** Pushing an element onto the stack just puts it at the top, so it takes constant time.
 - **Delete - O(1):** Popping an element removes the top element, which is done in constant time.
-- **Space complexity - O(n)**
+- **Space complexity - O(n):** Because the stack needs to store all the items in the stack. This is because stacks are typically implemented using a last-in-first-out (LIFO) data structure, such as an array or linked list.
 
 **Tips and tricks:**
 - Use stacks to help reverse elements - pop everything and push onto a new stack.
