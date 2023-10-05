@@ -769,3 +769,309 @@ smooth and responsive animation, then you should use `translate()`. If you need 
 the page, or you need to support older browsers, then you should use absolute positioning.
 
 ---
+
+**What is variable interpolation in sass? provide some examples?**  
+Variable interpolation in Sass is a way to insert the value of a variable into a string. This can be done using the
+`#{}` syntax. For example, the following Sass code will interpolate the value of the `$name` variable into the string
+"Hello, $name!":
+```sass
+$name: John Doe;
+
+.greeting {
+  color: blue;
+  font-size: 20px;
+  text-align: center;
+
+  &:before {
+    content: "Hello, #{$name}!";
+  }
+}
+```
+When this Sass code is compiled, it will produce the following CSS:
+```css
+.greeting {
+  color: blue;
+  font-size: 20px;
+  text-align: center;
+}
+
+.greeting:before {
+  content: "Hello, John Doe!";
+}
+```
+
+---
+
+**What is a Mixin in sass and how to use on?**  
+A Sass mixin is a reusable block of Sass code that can be included in other Sass files. Mixins can be used to define
+common styles, such as buttons, forms, and grids. Mixins can also be used to encapsulate complex Sass code, making it
+easier to read and maintain. To use a mixin, you use the `@include` directive. The `@include` directive tells Sass to
+insert the code of the mixin into the current Sass file. For example, the following Sass code will include the
+`button` mixin:
+```sass
+@include button;
+```
+This will produce the following CSS:
+```css
+button {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: blue;
+  color: white;
+}
+```
+Mixins can also take arguments. This allows you to customize the mixin when you include it. For example, the following
+Sass code defines a `button` mixin that takes a color argument:
+```sass
+@mixin button($color) {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: $color;
+  color: white;
+}
+```
+This mixin can then be used as follows:
+```sass
+@include button(red);
+```
+This will produce the following CSS:
+```css
+button {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: red;
+  color: white;
+}
+```
+
+---
+
+**How to create a zebra striped table with css?**  
+To create a zebra striped table with CSS, you can use the following steps:
+1. Add the following CSS to your stylesheet:
+```css
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #eee;
+}
+```
+This will create a table with black borders and alternating gray and white rows.
+2. Add the following HTML to your web page:
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Jane Doe</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Peter Parker</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+```
+This will create a table with three rows and two columns.
+3. Save your changes and open the web page in a browser. You should now see a table with zebra stripes.
+
+---
+
+**What is the @content directive used for?**  
+The @content directive in Sass allows you to pass content blocks into mixins. This allows mixins to inject content
+at certain points.  
+Some key things to know about @content in Sass:
+- The @content directive is placed inside a mixin definition. This marks where any passed content will go when the mixin is used.
+- When using a mixin, you can pass content blocks inside curly braces {}. This content will be inserted where @content is defined in the mixin.
+- The @content directive allows mixins to be more flexible and reusable. For example, you can create a mixin for applying styles to a button, but allow the actual button text/content to be passed in.
+- Content passed to @content does not have to be text, it can include any valid Sass such as variables, nested selectors etc.
+- The @content directive is useful for creating abstractions like media queries or conditional logic that can be reused in different contexts.
+
+Here is a simple example:
+
+```scss
+@mixin button-base {
+  padding: 10px; 
+  border: 1px solid;
+
+  @content; // Content block will be inserted here
+}
+
+.primary-btn {
+  @include button-base {
+    background: blue;
+    color: white;
+  }
+}
+```
+This allows the .primary-btn styles to reuse the button-base mixin while passing in its own unique content block.
+
+---
+
+**Write down a selector that will match any links end in .zip , .ZIP , .Zip , etc?**  
+Here is a CSS selector that will match any links ending in .zip, .ZIP, .Zip, etc:
+```css
+a[href$=".zip" i] {
+  /* styles here */ 
+}
+```
+To break this down:
+- `a` matches any anchor tag
+- `[href$=".zip"]` matches the href attribute ending with .zip
+- The `i` flag makes the attribute match case-insensitive, so .zip, .ZIP, etc will all match
+So this will match:
+```html
+<a href="file.zip">Zip File</a>
+<a href="images.ZIP">Images zip</a> 
+```
+
+---
+
+**How to style every element which has an adjacent item right before it?**  
+To style elements that have an adjacent sibling element immediately before them, you can use the adjacent sibling
+combinator selector "+":
+```css
+/* Select element that has an adjacent sibling before it */
+.element + .target {
+  /* Styles here */
+}
+```
+For example:
+```html
+<div class="sibling"></div>
+<p class="target">This paragraph will be styled</p>
+
+<div class="sibling"></div>
+<span>This span will NOT be styled</span>
+
+<p class="target">This paragraph will also be styled</p>
+```
+```css
+.sibling + .target {
+  color: red;
+}
+```
+This will style any .target elements that directly follow .sibling, but not other elements in between.
+The key is that the sibling element must be immediately preceding, with no other elements in between. This allows
+styling an element based on the context of what element comes before it.
+Some examples where this could be useful:
+- Styling list items that come after a label element
+- Styling headings that come after paragraphs
+- Highlighting links that come after images
+
+---
+
+**What is wrong with sass nesting? provide some examples?**  
+There are a few potential issues that can arise with excessive or inappropriate nesting in Sass:
+- **Overly specific selectors:**
+Nesting can result in long and overly specific CSS selectors:
+```scss
+#page {
+  .header {
+    .navigation {
+      // etc
+    }
+  }
+}
+```
+This compiles to very long selectors that can be hard to override and may not be reusable.
+
+- **Hard to read:**
+Deeply nested Sass can be hard to read and maintain:
+```scss 
+.page {
+  .header {
+    .nav {
+      .dropdown {
+        // etc
+      }
+    }
+  }
+}
+```
+It's difficult to scan and understand at a glance.
+
+- **Difficult to override:**
+Due to very specific selectors, it can be hard to override nested styles:
+```scss
+.page {
+  .header {
+    color: red; // Hard to override
+  }
+}
+```
+You may have to repeat the full nesting just to override one style.
+
+- **Not reusable:**
+Tightly nested code tends to be less reusable. Changing one thing can require changing the entire nested context.
+
+---
+
+**What clearfix methods do you know? provide some examples?**  
+Here are a few common clearfix methods for clearing floats in CSS:
+
+- **The Micro Clearfix**  
+The modern way of clearing floats without extra markup.
+```css
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+```
+Apply the clearfix class to the parent element.
+
+- **The Overflow Method**  
+Set overflow to auto, hidden, or scroll on the parent element:
+```css
+.clearfix {
+  overflow: auto;
+}
+```
+
+- **The Extra HTML Element Method**  
+Add an extra HTML element after the floated elements and set clear:both;
+```html
+<div class="clearfix">
+  
+  <div class="floated">Float</div>
+
+</div>
+
+<div style="clear: both;"></div>
+```
+
+- **The ::after Pseudo-element Method**  
+Add a pseudo-element to the parent and set clear: both;
+```css
+.clearfix::after { 
+   content: "";
+   display: block;
+   clear: both;
+}
+```
+This adds a pseudo-element as the last child that clears floats.
+
+- **The Use of border and padding**  
+Applying border and padding to the parent will also clear inner floats. These are some of the common clearfix
+approaches for clearing floats in CSS. The micro clearfix is generally the modern standard way of doing it with
+minimal extra code.
+
+---
