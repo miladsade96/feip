@@ -144,3 +144,42 @@ where each item in the queue contains a pointer to the next item in the queue.
 - Pay attention to empty/full queue conditions and how the implementation handles resizing.
 
 ---
+
+## Binary Search tree:
+
+**Short introduction:**  
+
+A binary search tree is a hierarchical binary tree data structure that stores values in a way that allows for efficient
+search, insertion and deletion. BSTs provide efficient sorting and access for dynamic datasets while being relatively
+simple to implement compared to more complex tree structures.
+
+**Big O:**
+- **Access - O(n):** Because the worst-case scenario is that the BST is a linked list, in which case we need to traverse the entire tree to find the desired node.
+- **Search - O(n):** Because the worst-case scenario is that the BST is a linked list, in which case we need to traverse the entire tree to find the desired node.
+- **Insert - O(n):** Because the worst-case scenario is that the BST is a linked list, in which case we need to traverse the entire tree to find the correct location for the new node.
+- **Delete - O(n):** Because the worst-case scenario is that the BST is a linked list, in which case we need to traverse the entire tree to find the node to be deleted.
+- **Space complexity - O(n):** Because it can degenerate into a linked list. In this case, we would need to store a pointer to every node in the tree in order to traverse it.
+
+**NOTE:** O(h) or O(n)?  
+Whether a binary search tree (BST) operation is O(h) or O(n) depends on the height of the tree. The height of
+a BST is the length of the longest path from the root node to a leaf node. In a well-balanced BST, the height of the
+tree is logarithmic in the number of nodes in the tree. This means that the time complexity of BST operations on a
+well-balanced BST is logarithmic in the number of nodes in the tree, or O(h). However, if a BST is not well-balanced,
+the height of the tree can be equal to the number of nodes in the tree. In this case, the time complexity of BST
+operations on the BST would be O(n).
+
+**Tips and tricks:**
+- Be familiar with the properties of a BST - left child < parent < right child and no duplicates.
+- To check if a tree is BST, keep track of min/max range while traversing and compare node values against range.
+- Know common BST operations - search, insert, delete, find min/max, successor, predecessor, traversal.
+- Deleting a node can be tricky. Common ways are copying successor, promoting child node, reducing to two child case.
+- BST problems often involve constructing a valid BST from a sorted array. Pick middle as root and recur on subarrays.
+- For balanced BSTs like AVL and Red-Black, understand rotation operations and color flips needed on insert/delete.
+- BST inversion counts can be found by traversing tree and counting inversions of each node versus subtrees. Merge sort approach also works.
+- BST iterator problems require tracking stack of nodes or parent pointers during traversal.
+- BST problems often have followup of optimizing for minimal height, improving insert/search costs etc. which leads to balanced BSTs.
+- Compare runtime complexity vs other trees, understand impact of balance and height.
+- Draw out examples of insert, delete, search on sample BSTs. Walk through operations visually.
+- Practice coding BST construction, traversal, insert, delete, successor, predecessor type problems.
+
+---
