@@ -183,3 +183,48 @@ operations on the BST would be O(n).
 - Practice coding BST construction, traversal, insert, delete, successor, predecessor type problems.
 
 ---
+
+## Graph:
+
+**Short introduction:**  
+
+A graph is an abstract data structure that consists of a set of nodes (vertices) and edges connecting them. Graphs are
+used to model relationships and connections.
+
+**Big O:**
+- **Add Vertex - O(1):** Adding a new vertex/node to a graph is a constant time operation. We simply allocate a new node object
+- **Remove Vertex - O(V + E):** Removing a vertex is linear in the number of vertices + edges since we must remove it from the adjacency lists of all adjacent vertices.
+- **Add Edge - O(1):** Adding an edge between two nodes is done in constant time by updating each node's adjacency list.
+- **Remove Edge - O(1):** Removing an edge is also constant time since we only need to remove it from the adjacency lists of the two vertices it connects.
+- **Query - O(V + E):** Searching if an edge exists between two nodes is linear since in the worst case we may have to traverse the adjacency list of all nodes and edges.
+- **Traversal - O(V + E):** Traversing a graph with BFS or DFS requires visiting all vertices and edges, so it is linear in terms of vertices and edges.
+- **Space Complexity:**
+  - The space complexity of a graph data structure depends on how it is implemented. Here is an analysis of space complexity for common graph representations:
+  - **Adjacency List:**
+    - Space Complexity: O(|V| + |E|)
+    - Each vertex has a list of adjacent vertices
+    - |V| vertex objects + |E| edges stored in adjacency lists
+    - Space scales with number of vertices and edges
+  - **Adjacency Matrix:**
+    - Space Complexity: O(|V|2)
+    - |V| x |V| boolean matrix to represent edges
+    - Sparse graphs waste lots of space
+  - **Object Oriented:**
+    - Space Complexity: O(|V| + |E|)
+    - Vertex and edge objects with references
+    - |V| vertex objects + |E| edge objects
+    - More memory overhead per object
+
+So in summary, adjacency list storage scales better for sparse graphs while adjacency matrix is more efficient for dense graphs in terms of space.
+
+**Tips and tricks:**
+- Understand the graph abstract data type - vertices, edges, directed/undirected, cyclic/acyclic etc.
+- Be familiar with common graph representations - adjacency matrix, adjacency list, object-oriented. Know their tradeoffs.
+- Traversals - Know how to traverse a graph depth-first (DFS) and breadth-first (BFS) recursively and iteratively.
+- Pathfinding algorithms like Dijkstra and A* search are useful for shortest path problems.
+- Graph cycles can be detected using DFS and keeping track of visited nodes. Useful for detecting cycles.
+- Pay attention to efficiency - avoid repeated expensive operations and prefer dynamic programming approaches.
+- Ask clarifying questions to determine exact graph structure, directed/undirected, representation, other constraints.
+- Draw out some example graphs and walk through your algorithm on paper. Visualize how it operates.
+
+---
