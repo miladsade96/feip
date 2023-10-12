@@ -115,4 +115,22 @@ let names = [];
 
 names = users.filter(user => user.isActive).map(user => user.name);
 ```
+
+3. Sort active users name by age descending:
+```javascript
+// Method 1: Imperative
+
+users.sort((first, second) => second.age - first.age);
+
+let names = [];
+
+for (let j = 0; j < users.length; j++) {
+    if (users[j].isActive) names.push(users[j].name);
+}
+```
+```javascript
+// Method 2: Declarative
+
+names = users.sort((first, second) => second.age - first.age).filter(user => user.isActive).map(user => user.name);
+```
 </div>
