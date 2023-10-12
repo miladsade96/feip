@@ -38,6 +38,7 @@ and boost your confidence in frontend interviews.
 * [Strings](Development/JavaScript/03-strings.md)
 * [Date and Time](Development/JavaScript/04-dateTime.md)
 * [Object Oriented](Development/JavaScript/05-objectOriented.md)
+* [Coding Challenges](Development/JavaScript/Challenges.md)
 </details>
 
 <details>
