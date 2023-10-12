@@ -70,4 +70,49 @@ for (let indx in users) {
 
 let names = users.map(user => user.name);
 ```
+
+2. Get only name of active users:
+```javascript
+// Method 1: Using regular for loop
+
+let names = [];
+
+for (let j = 0; j < users.length; j++) {
+    if (users[j].isActive) names.push(users[j].name);
+}
+```
+```javascript
+// Method 2: Using forEach function
+
+let names = [];
+
+users.forEach(user => {
+    if (user.isActive) names.push(user.name);
+});
+```
+```javascript
+// Method 3: Using for of loop
+
+let names = [];
+
+for (let user of users) {
+    if (user.isActive) names.push(user.name);
+}
+```
+```javascript
+// Method 4: Using for in loop
+
+let names = [];
+
+for (let indx in users) {
+    if (users[indx].isActive) names.push(users[indx].name);
+}
+```
+```javascript
+// Method 5: Using filter function
+
+let names = [];
+
+names = users.filter(user => user.isActive).map(user => user.name);
+```
 </div>
