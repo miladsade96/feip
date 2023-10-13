@@ -133,5 +133,45 @@ for (let j = 0; j < users.length; j++) {
 
 names = users.sort((first, second) => second.age - first.age).filter(user => user.isActive).map(user => user.name);
 ```
+
+---
+
+2. 1. What will be logged in the first and second examples?  
+```javascript
+let var1;
+console.log(var1);
+console.log(typeof var1);
+```
+On the first line we have declared `var1` variable but have not assigned any value to it, so the value of `var1` 
+variable is `undefined`. Since in javascript the `undefined` is both value and type, the type of `var1` is also 
+`undefined`.
+```text
+Output:
+
+undefined
+undefined
+```
+
+```javascript
+let var2 = null;
+console.log(var2);
+console.log(typeof var2);
+```
+Here on the first line, we have declared `var2` variable and have assigned `null` value to it. So the value of `var2`
+variable id `null`. As you probably know, in javascript there is no `null` type and the type of `null` is an `object`.
+```text
+Output:
+
+null
+object
+```
+
+2. 2. what is the difference between null and undefined in javascript and where to use each?
+```text
+null is an assigned value that represents no value. undefined represents a variable that has not been assigned a value.
+null can be explicitly assigned to a variable to indicate no value, e.g. let x = null. undefined is set automatically
+when a variable is declared but not initialized, e.g. let x;
+```
+
 ---
 </div>
