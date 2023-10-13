@@ -220,5 +220,6 @@ console.log(foo);
 ```
 So on the first line, the value of `foo` variable is `undefined`, on the second line we've assigned value `3` to `foo`
 and on the third line we've tried to log `foo` variable value which is `3`.
+
 ---
 </div>
