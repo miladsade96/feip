@@ -174,4 +174,51 @@ when a variable is declared but not initialized, e.g. let x;
 ```
 
 ---
+
+3. 1. What will be logged to the console?
+```javascript
+console.log(foo);
+foo = 1;
+```
+On the first line, we've tried to log the value of `foo` on the console. On the second line, we've not defined `foo`
+variable using `var`, `const`, `let` keywords; So if we run this code, we will get the following error:
+```text
+ReferenceError: foo is not defined
+```
+
+3. 2. What about this one?
+```javascript
+console.log(foo);
+var foo = 2;
+```
+We first need to know about `hoisting` in javascript in order to answer this question:
+```text
+Hoisting in JavaScript refers to the behavior of moving declarations to the top of their containing scope.This allows
+you to reference functions and variables before they are declared.
+```
+So the code above is equivalent to this one because of hoisting process:
+```javascript
+var foo;
+console.log(foo);
+foo = 2;
+```
+On the first line, `foo` variable have been declared without assigning any value, so its value is equal to `undefined`.
+On the second line, we've tried to log `foo` variable value which is `undefined`. And on the third line we've assigned
+numeric value `2` to `foo` variable.
+
+3. 3. What about this one?
+```javascript
+foo = 3;
+console.log(foo);
+var foo;
+```
+The code above is equivalent to the following one because of hoisting process:
+```javascript
+var foo;
+foo = 3;
+console.log(foo);
+```
+So on the first line, the value of `foo` variable is `undefined`, on the second line we've assigned value `3` to `foo`
+and on the third line we've tried to log `foo` variable value which is `3`.
+---
 </div>
