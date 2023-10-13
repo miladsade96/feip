@@ -4,7 +4,7 @@
 
 ## Core JavaScript Concepts:
 
-### Suppose we have an array of users as follows:
+1. Suppose we have an array of users as follows:
 ```javascript
 const users = [
     {
@@ -28,7 +28,7 @@ const users = [
 ];
 ```
 
-1. Extract users name and store them in a new array:
+1. 1. Extract users name and store them in a new array:
 ```javascript
 // Method 1: Using regular for loop:
 
@@ -71,7 +71,7 @@ for (let indx in users) {
 let names = users.map(user => user.name);
 ```
 
-2. Get only name of active users:
+1. 2. Get only name of active users:
 ```javascript
 // Method 1: Using regular for loop
 
@@ -116,7 +116,7 @@ let names = [];
 names = users.filter(user => user.isActive).map(user => user.name);
 ```
 
-3. Sort active users name by age descending:
+1. 3. Sort active users name by age descending:
 ```javascript
 // Method 1: Imperative
 
@@ -133,4 +133,5 @@ for (let j = 0; j < users.length; j++) {
 
 names = users.sort((first, second) => second.age - first.age).filter(user => user.isActive).map(user => user.name);
 ```
+---
 </div>
