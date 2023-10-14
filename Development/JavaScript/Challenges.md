@@ -222,4 +222,39 @@ So on the first line, the value of `foo` variable is `undefined`, on the second 
 and on the third line we've tried to log `foo` variable value which is `3`.
 
 ---
+
+4. 1. Create a counter function which has increment and getValue functionality?
+We first need to know about `closure` in javascript in order to answer this question:
+```text
+Think of a closure as a backpack. It can hold stuff inside of it. We can put stuff in the backpack, and carry it around
+wherever we go. Then we can take things out of the backpack whenever we need to use them. The backpack is like a
+closure. The notebook, pencil case and lunchbox are like local variables that existed when the closure was created.
+Even when we leave that context (like leaving the house for school), the closure remembers and can access those
+variables (like taking things from the backpack while at school). A closure in JavaScript is a function that retains
+access to its surrounding state (lexical environment) even when invoked outside of its immediate lexical scope. So in
+summary, closures allow inner functions to access and modify outer function variables even after the outer function has
+returned. They avoid the use of global variables and provide data hiding and encapsulation.
+```
+```javascript
+const privateCounter = () => {
+    let count = 0;
+
+    // aka public API
+    function increment(val = 1) {
+        count += val;
+    }
+    function getValue() {
+        return count;
+    }
+
+    return {increment, getValue};
+}
+
+const counter = privateCounter();   // Creating a closure
+console.log(counter.getValue());    // count value is 0
+counter.increment();                // now count value is count + 1
+console.log(counter.getValue());    // count value is 1
+
+console.dir(counter.getValue); // --> getValue --> scopes --> Closure --> count = 1
+```
 </div>
