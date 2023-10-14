@@ -257,4 +257,18 @@ console.log(counter.getValue());    // count value is 1
 
 console.dir(counter.getValue); // --> getValue --> scopes --> Closure --> count = 1
 ```
+
+4. 2. Create a function which will store inside a secret string and will return it when we call it again?
+```javascript
+const privateSecret = () => {
+    const secret = "p2Wc)Hw^R$ce1ErmJpY?MrKH1*p";
+    return () => secret;
+}
+
+
+const secretProvider = privateSecret();
+console.log(secretProvider());
+```
+
+---
 </div>
