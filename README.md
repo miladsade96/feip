@@ -62,6 +62,8 @@ and boost your confidence in frontend interviews.
 </details>
 
 [CSS](Development/css.md)
+[HTML](Development/html.md)
+
 </details>
 
 <details>
