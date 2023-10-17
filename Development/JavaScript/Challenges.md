@@ -271,4 +271,66 @@ console.log(secretProvider());
 ```
 
 ---
+
+5. 1. Write a function which helps to achieve `multiply(a)(b)` and returns the product of `a` and `b`?
+```javascript
+// Solution #1:
+function multiplyV1(a) {
+    return (b) => {
+        return a * b;
+    }
+}
+
+console.log(multiplyV1(2)(6));  // 12
+```
+```javascript
+// Solution #2:
+const multiplyV2 = a => b => a * b;
+
+console.log(multiplyV2(2)(8));  // 16
+```
+   
+5. 2. Create a curry function?  
+The curry function takes in a function `fn` as its argument. It returns a new curried function that can take arguments
+one by one until it has the full number of arguments `fn` expects. Each time the curried function is called with less
+than `fn.length` arguments, it returns a new function waiting for more arguments. When enough arguments are finally
+passed in, it calls fn with all the accumulated arguments.
+```javascript
+function curry(fn) {
+    const arity = fn.length;
+    return function f1(...args) {
+        if (args.length >= arity) return fn(...args);
+        else {
+            return function f2(...moreArgs) {
+                const newArgs = args.concat(moreArgs);
+                return f1(...newArgs);
+            }
+        }
+    }
+}
+
+const curriedSum = curry((first, second, third) => first + second + third);
+console.log(curriedSum(1, 2, 3));   // 6
+console.log(curriedSum(1)(2, 3));   // 6
+console.log(curriedSum(1, 2)(3));   // 6
+console.log(curriedSum(1)(2)(3));   // 6
+```
+
+5. 3. Why do we need curry function?  
+This allows us to easily create pre-configured or partially applied functions from existing functions. The curry 
+function implements partial application to turn a regular multi-argument function into a chain of single-argument
+functions.
+```javascript
+// Example #1 - get method:
+const get = curry((property, object) => object[property]);
+console.log(get("id")({id: 1, name: "Milad"}));     // 1
+```
+```javascript
+// Example #2 - map method:
+const map = curry((fn, values) => values.map(fn));
+console.log(map(getId, [{id: 1, name: "Milad"}]));      // [1]
+```
+
+---
+
 </div>
