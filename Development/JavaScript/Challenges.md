@@ -333,4 +333,10 @@ console.log(map(getId, [{id: 1, name: "Milad"}]));      // [1]
 
 ---
 
+6. Write a function which gets an array and an element and returns a new array with this element at the end?
+```javascript
+function addElementToArray(arr, el) {
+    return [...arr, el];
+}
+```
 </div>
