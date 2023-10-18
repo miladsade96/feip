@@ -151,3 +151,74 @@ The main differences between attributes and properties in HTML are:
   - Reflect the current state of an element
 
 ---
+
+**When is it appropriate to use the small element?**  
+The `<small>` element in HTML is used to represent side-comments and small print, like disclaimers, caveats, 
+legal restrictions, etc. Some common appropriate uses of the `<small>` element:
+- Copyright information in the page footer:
+```html
+<small>© 2023 MyWebsite. All rights reserved.</small>
+```
+- Terms and conditions or disclaimers stating legal or other restrictions:
+```html
+<small>Prices subject to change without notice.</small>
+```
+- Fine print for citing sources or providing attributions:
+```html
+<small>Data source: ACME Research</small>
+```
+- De-emphasizing or offsetting secondary text like asides and advisory notes:
+```html
+<p>Best deals this week on headphones. <small>While supplies last.</small></p>
+```
+
+---
+
+**Explain the differences between block elements and inline elements?**  
+The main differences between block elements and inline elements in HTML are:
+- **Block Elements:**
+  - Take up the full width available by default
+  - Force a line break before and after itself
+  - Can set height and width values
+  - Can have margins and paddings adjusted
+  - Common block elements: `<div>`, `<p>`, `<h1>-<h6>`, `<form>`
+
+- **Inline Elements:**
+  - Take up only the required width as per content
+  - Do not force line breaks before or after
+  - Cannot have fixed height and width
+  - Horizontal margins and paddings only are applied
+  - Common inline elements: `<span>`, `<a>`, `<img>`, `<strong>`
+
+
+So in summary:
+- Block elements consume full horizontal space and break the flow
+- Inline elements consume only the needed width and don't break flow
+
+---
+
+**Explain almost standard, full standard and quirks mode in html?**  
+Browsers can render web pages in different modes based on the presence and validity of the document type declaration
+in HTML code. The three main rendering modes are:
+
+1. Quirks Mode:
+   - Browser renders page using an older box model and non-standard behavior.
+   - Triggered when there is no doctype or invalid doctype.
+   - Causes layout inconsistencies across browsers.
+   - Should be avoided for web pages.
+
+2. Almost Standards Mode:
+   - Browser uses some error forgiveness and backward compatibility.
+   - Triggered by older, transitional doctypes like HTML 4.01 Transitional.
+   - May cause small quirks in layout across browsers.
+
+3. Full Standards Mode:
+   - Browser adheres strictly to HTML and CSS standards.
+   - Triggered by HTML5 doctype `<!DOCTYPE html>`
+   - Ensures consistent rendering across updated browsers.
+   - Is the recommended mode for modern web pages.
+
+Web pages should use the HTML5 doctype `<!DOCTYPE html>` to trigger full standards mode in browsers. This ensures
+predictable and consistent rendering based on web standards.
+
+---
