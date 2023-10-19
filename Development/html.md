@@ -222,3 +222,89 @@ Web pages should use the HTML5 doctype `<!DOCTYPE html>` to trigger full standar
 predictable and consistent rendering based on web standards.
 
 ---
+
+**How do you set IE compatibility mode?**  
+Here are a few ways to set IE compatibility mode in HTML pages:
+- Add a meta tag to the head section of your HTML:
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+```
+- Use HTTP headers to force IE to render pages in the highest mode available:
+```
+X-UA-Compatible: IE=edge
+```
+- Add a command line parameter if opening the page locally in IE:
+```
+iexplore.exe -c "IE=EmulateIE7"
+```
+- Use the X-UA-Compatible attribute in the opening <html> tag:
+```html
+<html xmlns="http://www.w3.org/1999/xhtml" x-ua-compatible="IE=EmulateIE7">
+```
+- Set a registry key on the client machine to always use a specific version:
+```
+HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION
+```
+The meta tag or HTTP header methods are the easiest and most reliable ways to force IE compatibility mode across all
+clients. The version number can also be changed to emulate different versions of IE.
+
+---
+
+**What is new in HTML5?**  
+Here are some of the major new features and improvements in HTML5:
+- Semantic elements like `<header>`, `<footer>`, `<article>`, `<section>` etc. This gives better document structure and meaning.
+- Canvas for 2D drawing. Allows for dynamic, scriptable rendering of 2D shapes and bitmap images.
+- Video and audio support without plugins. Allows for embedding video and audio files natively in webpages.
+- Local storage for client side data storage. Allows web apps to store data on the client side.
+- Web workers for background processing. Allows js code to run in background threads.
+- Geolocation API for location detection. Allows webapps to access user's location.
+- Drag and drop API. Allows for native drag and drop of elements.
+
+---
+
+**Have you used different HTML templating language before?**  
+Yes, I have experience with `JSX` HTML templating language. `React/JSX` is not a typical templating language but `JSX`
+is a JavaScript extension that allows writing HTML templates within JavaScript code which promotes reusable UI components.
+
+---
+
+**How do you serve a page with content in multiple languages?**  
+Here are some common ways to serve a page with content in multiple languages:
+- Build separate pages for each language and serve them based on the user's language preference, detected via browser settings or user selection. Eg: page.html, page-fr.html, page-es.html
+- Use content negotiation via the Accept-Language header to serve different language versions based on the header value. The server can detect the preferred language and serve the appropriate content.
+- Implement internationalization where string constants are stored in resource bundles based on language. The appropriate resource file can be served dynamically based on user's locale.
+- Maintain strings/translations in a database and query/substitute them dynamically via a server side script when serving the page.
+- Use client side translation by sending a single neutral language page and translating it to user's language via JavaScript by looking up strings in a JSON/XML dictionary.
+- Maintain translations in a key-value JSON object and interpolate values dynamically on page render via a template engine like Handlebars.
+- For static content, maintain multiple copies of pages and links to language alternatives using the lang attribute and hreflang tag.
+
+The best approach depends on the application architecture, whether it is server side or client side rendered, if the
+languages are known upfront or dynamic etc. A combination of static content, dynamic substitution and client side
+translation often works best.
+
+---
+
+**How do you change the direction of html text?**  
+There are a few different ways to change the text direction in HTML:
+1. Use the `dir` attribute:
+```html
+<p dir="rtl">This text will go right to left</p>
+```
+The dir attribute can be set to "rtl" for right-to-left text or "ltr" for left-to-right.
+2. Use the `bdo` tag:
+```html
+<bdo dir="rtl">This text will also go right to left</bdo>
+```
+3. Set the `direction` CSS property:
+```css
+p {
+  direction: rtl;
+}
+```
+4. Set the `lang` attribute on the HTML tag:
+```html
+<html lang="ar">
+```
+This will make right-to-left text automatic for languages like Arabic.
+
+---
