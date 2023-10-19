@@ -339,4 +339,15 @@ function addElementToArray(arr, el) {
     return [...arr, el];
 }
 ```
+
+---
+
+7. Write a function which can concatenate two arrays?
+```javascript
+function concatTwoArrays(arr1, arr2) {
+    // return arr1.concat(...arr2)
+    // Or
+    return [...arr1, ...arr2];
+}
+```
 </div>
