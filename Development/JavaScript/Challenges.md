@@ -412,4 +412,31 @@ console.log(findUserV4(users, targetUser2));    // false
 ```
 
 ---
+
+9. Remove all duplicates in the array?
+```javascript
+// Method 1: Using forEach method:
+
+const uniqueArrV1 = arr => {
+    const result = [];
+    arr.forEach(el => {
+        if (!result.includes(el)) result.push(el);
+    })
+    return result;
+}
+```
+```javascript
+// Method 2: Using reduce method:
+
+const uniqueArrV2 = arr => arr.reduce((acc, el) => {
+    return acc.includes(el) ? acc : [...acc, el];
+}, []);
+```
+```javascript
+// Method 3: Using Set():
+
+const uniqueArrV3 = arr => [...new Set(arr)];
+```
+
+---
 </div>
