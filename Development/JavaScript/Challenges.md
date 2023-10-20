@@ -350,4 +350,66 @@ function concatTwoArrays(arr1, arr2) {
     return [...arr1, ...arr2];
 }
 ```
+
+---
+
+8. Check that user with such name exists in the array of objects?
+```javascript
+const users = [
+    { id: 1, name: "Jack", isActive: true },
+    { id: 2, name: "John", isActive: true },
+    { id: 3, name: "Mike", isActive: false},
+];
+
+const targetUser1 = "Mike";
+const targetUser2 = "Milad";
+```
+```javascript
+// Method 1: Using for loop (Beginner's solution):
+
+const findUserV1 = (usersArray, name) => {
+    let isUserExist = false;
+
+    for (let i = 0; i < usersArray.length; i++) {
+        if (usersArray[i].name === name) isUserExist = true
+    }
+
+    return isUserExist;
+}
+
+console.log(findUserV1(users, targetUser1));    // true
+console.log(findUserV1(users, targetUser2));    // false
+```
+```javascript
+// Method 2: Using find method:
+
+const findUserV2 = (usersArray, name) => {
+    const result = usersArray.find(userObj => userObj.name === name);
+    return Boolean(result);
+}
+
+console.log(findUserV2(users, targetUser1));    // true
+console.log(findUserV2(users, targetUser2));    // false
+```
+```javascript
+// Method 3: Using findIndex method:
+
+const findUserV3 = (usersArray, name) => {
+    const index = usersArray.findIndex(userObj => userObj.name === name);
+    return index >= 0;
+}
+
+console.log(findUserV3(users, targetUser1));    // true
+console.log(findUserV3(users, targetUser2));    // false
+```
+```javascript
+// Method 4: Using some method (Best):
+
+const findUserV4 = (usersArray, name) => usersArray.some(userObj => userObj.name === name);
+
+console.log(findUserV4(users, targetUser1));    // true
+console.log(findUserV4(users, targetUser2));    // false
+```
+
+---
 </div>
