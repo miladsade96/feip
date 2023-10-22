@@ -466,4 +466,44 @@ books.sort((book1, book2) => {
     return b1authorLName < b2authorLName ? -1 : 1;  // Ascending order
 });
 ```
+
+---
+
+11. 1. Write a function which implements range?
+```javascript
+// Method 1: Using for loop:
+
+function rangeV1(start, stop) {
+    const result = [];
+    for (let i = start; i <= stop; i++) result.push(i);
+    return result;
+}
+
+console.log(rangeV1(1, 15));
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+```
+```javascript
+// Method 2: Using Array, from , keys methods:
+
+function rangeV2(start, stop) {
+    return [...Array(stop - start + 1).keys()].map(el => el + start);
+}
+
+console.log(rangeV2(1, 20));    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+console.log(rangeV2(10, 20));   // [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+11. 2. Write a function which implements range with adjustable step size?
+```javascript
+// Using Array.from() method:
+
+function adjustableRange(start, stop, step = 1) {
+    return Array.from({length: (stop - start) / step + 1}, (_, index) => start + index * step);
+}
+
+console.log(adjustableRange(7, 50, 3));
+// [7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49]
+```
+
+---
 </div>
