@@ -439,4 +439,31 @@ const uniqueArrV3 = arr => [...new Set(arr)];
 ```
 
 ---
+
+10. 1. Sort an array of numbers in ascending and descending orders?
+```javascript
+const sampleArr = [3, 8, 5, 2, 1];
+// NOTE: sort method mutates the original array
+
+// Ascending:
+const asc = sampleArr.sort((a, b) => a - b);
+
+// Descending:
+const dsc = sampleArr.sort((a, b) => b - a);
+```
+
+10. 2. Sort array of objects by author's lastname?
+```javascript
+const books = [
+    {name: "Harry Potter", author: "Joanne Rowling"},
+    {name: "Warcross", author: "Marie Lu"},
+    {name: "The Hunger Games", author: "Suzanne Collins"},
+];
+
+books.sort((book1, book2) => {
+    const b1authorLName = book1.author.split(" ")[1];
+    const b2authorLName = book2.author.split(" ")[1];
+    return b1authorLName < b2authorLName ? -1 : 1;  // Ascending order
+});
+```
 </div>
