@@ -269,8 +269,8 @@ This will make right-to-left text automatic for languages like Arabic.
 
 ---
 
-**What are defer and async attributes on a <script> tag?**  
-The defer and async attributes on a <script> tag control when the script should be executed when loading a web page:
+**What are defer and async attributes on a `<script>` tag?**  
+The defer and async attributes on a `<script>` tag control when the script should be executed when loading a web page:
 - **defer** - This attribute tells the browser to only execute the script file once the HTML document has been fully
   parsed. The script is executed in order, before the DOMContentLoaded event.
 - **async** - This attribute allows the script to be executed asynchronously as soon as it is available, without
@@ -331,5 +331,179 @@ Here are some of the major new features and improvements in HTML5:
 - Web workers for background processing. Allows js code to run in background threads.
 - Geolocation API for location detection. Allows webapps to access user's location.
 - Drag and drop API. Allows for native drag and drop of elements.
+
+---
+
+**What is the difference between `<section>` and `<div>`?**  
+The `<section>` and `<div>` tags are both used to group content in HTML, but have some differences:
+- `<div>` is a generic container element that has no semantic meaning. It is used to group content for styling purposes only.
+- `<section>` is a thematic grouping element that is used to group related content. It has semantic meaning as it
+represents a section of a document.
+
+Some key differences:
+- `<section>` can have a heading (`<h1>-<h6>`) to represent the topic of the content. `<div>` cannot.
+- `<section>` content should be related and have a common theme. `<div>` is just a generic wrapper.
+- Multiple <section> elements can be nested to create an outline of the document. `<div>` cannot do this.
+- Screen readers can identify `<section>` tags for accessibility purposes. `<div>` has no special meaning.
+- `<article>` tags should go inside `<section>` tags if relevant. `<div>` cannot contain `<article>`.
+
+---
+
+**Where and why is the rel="noopener" attribute used?**  
+The `rel="noopener"` attribute is used on anchor (`<a>`) tags when linking to external websites to prevent tab nabbing.
+For example:
+```html
+<a href="http://example.com" target="_blank" rel="noopener">Example Site</a>
+```
+The reason it is used is that when you use `target="_blank"` on a link, it opens the destination URL in a new browser tab.
+This allows the target destination to access the `window.opener` property and potentially redirect the opening tab to a
+malicious site using JavaScript code. Adding `rel="noopener"` prevents the newly opened page from being able to access
+`window.opener`. This stops potential tab nabbing or redirection from the external site.
+
+---
+
+**Can a webpage contain multiple `<haeder>` elements? What about `<footer>` elements?**  
+Yes, a webpage can contain multiple `<header>` and `<footer>` elements:
+- `<header>` - Represents an introductory content block. There can be one `<header>` per section or document. For example:
+```html
+<header>
+  <!-- page header -->
+</header>
+
+<section>
+
+  <header>
+    <!-- section header -->
+  </header>
+  
+  <!-- section content -->
+  
+</section>
+```
+
+- `<footer>` - Represents a closing or end content block. There can be one `<footer>` per section or document. For example:
+```html  
+<footer>
+  <!-- page footer --> 
+</footer>
+
+<section>
+
+  <!-- section content -->
+
+  <footer>
+   <!-- section footer -->
+  </footer>
+  
+</section>
+```
+
+---
+
+**What is webSQL?**  
+WebSQL is a web-based database API that allowed browsers to store data locally on the client-side. WebSQL provided a
+simple SQL-based interface for apps to store structured data locally on the client-side. But due to lack of standards,
+IndexedDB has replaced it as the preferred option for local storage in browsers today.
+
+---
+
+**What is the DOM?**  
+The DOM (Document Object Model) is an API that represents and interacts with HTML, XML or SVG documents. It provides
+a structural representation of the document as a tree of nodes and defines methods to access and manipulate each node.
+
+---
+
+**What is HTML5 web storage? Explain localStorage and sessionStorage.**  
+HTML5 introduced two new storage APIs - `localStorage` and `sessionStorage` - that allow websites to store data
+client-side, in the user's browser. `localStorage` allows saving `key/value` pairs persistently in the browser. The
+data does not expire, is available across browser sessions and persists when the browser is closed or reopened on the
+client machine.  
+
+Some key points about localStorage:
+- Data is stored permanently on the client, with no expiration time.
+- The storage limit is usually 5-10MB per domain.
+- Data is saved across browser sessions - available after browser restart or reopen.
+- API methods like setItem, getItem, removeItem and clear can be used to manipulate data.
+
+`sessionStorage` works similarly to `localStorage` but the stored data is only available for the duration of the
+browser session. The data is deleted when the tab or window is closed.  
+Some key points about sessionStorage:
+
+- Data is temporary and cleared when the browsing session ends.
+- It is isolated to the current tab/window. Data is visible only to that tab.
+- Opening multiple same-origin tabs will result in separate sessionStorage for each tab.
+- Closing the tab/window will delete that session's sessionStorage.
+
+---
+
+**What is `data-` attribute good for?**  
+The `data-` attribute is used to store custom data private to the page or application. Here are some common uses for it:
+- Attach custom data to DOM elements, like user info or any other metadata. For example:
+```html
+<div data-user="john123">Hello</div>
+```
+- Store arbitrary data associated with the element, which can then be accessed via scripts. For example:
+```html
+<span id="saveBtn" data-key="1234">Save</span>
+```
+- Hook click or other events to DOM elements easily. For example:
+```html
+<button data-modal-target="#modal">Open Modal</button>
+```
+- Build custom attributes for custom components in frameworks like React, Vue etc.
+- Non-visible metadata that devices can access like photos or phone numbers in online profiles.
+- Attach identifying or semantic information to aid styling. For example custom color themes.
+- Aid in DOM selection using attribute selectors like `$('[data-id=123]')`
+
+---
+
+**Explain the differences between cookies, session and local storage**  
+Here are the key differences between cookies, session storage and local storage:
+- **Cookies**:
+  - Stored on the client
+  - Sent back to server with every HTTP request
+  - Size limit of 4KB
+  - Expires based on lifetime options like Expires or Max-Age
+- **Session Storage**:
+  - Stored on the client, only available for current page session
+  - Not sent to server with HTTP requests
+  - Storage limit of 5-10MB
+  - Cleared when session ends (tab/window closed)
+- **Local Storage**:
+  - Stored on the client permanently
+  - Not sent to server with HTTP requests
+  - Storage limit of 5-10MB
+  - Persists data after session ends - never cleared by browser
+
+---
+
+**What are some differences that `xhtml` has compared to `html`?**  
+Here are some key differences between `XHTML` and `HTML`:
+- `XHTML` is stricter and enforces well-formed `XML` syntax whereas `HTML` is more forgiving of errors.
+- All tags and attributes in `XHTML` must be lowercase. `HTML` allows mix of upper and lower case.
+- `XHTML` tags must be properly nested and closed. `HTML` allows some tags to be unclosed.
+- `XHTML` tags that don't have a close tag must be self-closed like `<br />`. `HTML` allows `<br>`
+- Attributes in `XHTML` must have values enclosed in quotes. `HTML` allows unquoted values.
+- ID and class attribute names in `XHTML` must start with a letter. `HTML` allows starting with number.
+
+---
+
+**What are web workers?**  
+Web workers provide a way to run JavaScript code in a background thread separate from the main execution thread of a
+web application. Web workers allow long-running scripts to work in the background so that they do not block the UI,
+thereby improving performance and responsiveness. The UI and workers run on separate threads and communicate via events.
+
+---
+
+**What is the purpose of cache busting and how can you achieve it?**  
+Cache busting is a technique used to force browsers to load a new fresh copy of a resource instead of serving from its
+cache. This is useful when you update CSS, JavaScript or image files but the browser keeps using the old cached copy.
+Some common ways to achieve cache busting:
+- Append a query string to the URL with a version number or timestamp. For example, `style.css?v=1.2`
+- Include a file version in the filename like ``style.1.2.css` and update it on each change.
+- Configure server response headers to prevent caching for a resource. For example `Cache-Control: no-cache, no-store`.
+- Change the file path of the resource while keeping the name same. For example, at v1 use `/css/style.css` and at v2 use `/css/v2/style.css`.
+- Use file hashing to generate unique filenames like `style.f23ffacd.css` that change when file content changes.
+- Use versioning inside asset URLs referenced from HTML/CSS files. For example `<script src="/js/script.1.2.js">`
 
 ---
