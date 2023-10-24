@@ -507,3 +507,174 @@ Some common ways to achieve cache busting:
 - Use versioning inside asset URLs referenced from HTML/CSS files. For example `<script src="/js/script.1.2.js">`
 
 ---
+
+**Discuss the differences between an html specification and a browser's implementation thereof.**  
+There are a few key differences between an HTML specification and a browser's implementation of that specification:
+- Specifications are created by standards bodies like the W3C to define HTML and web technologies. Browsers then implement these specifications in their own engines.
+- Specifications describe ideal or recommended behavior. But browsers may interpret or implement parts of a spec differently.
+- Browser implementations often lag behind the latest specifications. New specs take time to be fully supported.
+- Browsers may only partially implement a spec, ignoring certain optional features or implementing parts of a spec they need.
+- Specs are ongoing with new additions and changes. Browsers have to constantly update their engine to keep up with specs.
+
+---
+
+**Describe the differences between cookie, sessionStorage and localStorage**  
+Here are the main differences between cookies, sessionStorage and localStorage:
+- **Cookies:**
+  - Stored on client-side
+  - Automatically sent to server with HTTP requests
+  - Small size, around 4KB
+  - Can set expiration time
+  - Accessible from both client and server-side
+- **sessionStorage:**
+  - Stored on client-side only
+  - Not sent to server automatically
+  - Around 5-10MB storage
+  - Persists only until browser tab is closed
+  - Accessible only from client-side
+- **localStorage:**
+  - Stored on client-side only
+  - Not sent to server automatically
+  - Around 5-10MB storage
+  - Persists until explicitly cleared
+  - Accessible only from client-side
+
+---
+
+**What does the DOCTYPE do?**  
+The DOCTYPE declaration serves a few important purposes in HTML pages:
+- It tells the browser which version of HTML is being used on the page. This helps the browser render the page correctly.
+- It triggers standards mode rendering in browsers. Without a DOCTYPE, browsers may fall back to quirks mode, which has unpredictable results.
+- It prevents the browser from switching to quirks mode when small mistakes exist in the HTML. Only major mistakes will trigger quirks mode.
+- For HTML5, it looks like this: `<!DOCTYPE html>`
+- For older XHTML pages, the DOCTYPE declaration references the DTD (document type definition) which defines the rules of that version of HTML.
+- It is optional in HTML5 but required in XHTML pages.
+- The DOCTYPE should be at the very start of the HTML document, even before the <html> tag.
+- DOCTYPE doesn't represent a tag, just a declaration. It doesn't have a closing tag.
+
+---
+
+**What is progressive rendering?**  
+Progressive rendering refers to the technique of displaying content to the user as quickly as possible as the page
+loads. It improves perceived performance and responsiveness.
+Some ways progressive rendering is achieved:
+- HTML is delivered first so browser can start parsing immediately.
+- Critical CSS is loaded before any other assets to allow browser to start rendering pagelayout.
+- JavaScript and images are loaded asynchronously without blocking HTML parsing.
+- Browser events like DOMContentLoaded are used to add behavior as page becomes interactive.
+- Content is strategically ordered on the server side to render most important content first.
+- Skeleton screens and placeholder content gives user a quick first paint. Details are filled in later.
+- Techniques like CSS animations or spinners mask any network delays in fetching assets.
+
+So in essence, progressive rendering delivers content incrementally, prioritizes visibility of most important content
+first and utilizes strategies to unblock rendering pipeline. This results in faster time-to-content and a more
+responsive feel for users.
+
+---
+
+**Why would you use a `srcset` attribute in an image tag? Explain the process of browser uses when evaluating
+the content of this attribute**  
+The `srcset` attribute is used to provide multiple image sources that browsers can choose between based on viewport
+size, device resolution, and other factors. Here is how browsers evaluate and use `srcset`:
+1. The browser first looks at all the image candidates in srcset and their associated size descriptors like width, pixel density, etc.
+2. It then looks at the current environment - viewport size, device resolution, etc. to determine which image would best suit.
+3. If there is a matching image source, the browser will pick the image with appropriate size and resolution.
+4. The chosen image is then loaded into the <img> element and rendered on the page.
+5. If no matching source is found, the browser loads the default image specified in the src attribute.
+
+Some benefits of using srcset:
+- Allows serving smaller image files to mobile devices saving bandwidth.
+- Images load faster as optimal resolution is served for the device.
+- Pages load faster and smoother due to faster image loading.
+- Provides better image quality and resolution across various screen sizes.
+
+---
+
+**What is the purpose of main element?**  
+The `<main>` element in `HTML5` represents the main content area of the document. Here are some key points about the
+`<main>` element:
+- It defines the main content section of the page that is unique to the document.
+- It encapsulates content that is directly related to the central subject of the page.
+- There can only be one `<main>` element on a page as it denotes the primary content.
+- It is different from `<div>` in that it has semantic meaning - indicating the central unique content.
+- Using `<main>` allows assistive technologies like screen readers to identify the main content area easily.
+- `<main>` should not contain content repeated across documents like headers, footers, sidebars etc.
+- `<article>`, `<section>` and other content tags can be used within `<main>` to further divide the content.
+- On simple pages with not much other content, `<main>` may wrap most of the page.
+
+---
+
+**What is an HTML preprocessor?**  
+An HTML preprocessor is a tool that lets you generate HTML markup using a shorthand syntax. Some common HTML
+preprocessors are:
+- `Pug (formerly Jade)` - Uses indentation rather than closing tags and allows writing HTML in a shorter way.
+- `Slim` - Similar to Pug, but uses simplified syntax that replaces shorthand with spacial characters like '-' and '.'
+- `Handlebars` - Uses Mustache style templating in HTML for dynamic content.
+- `Markdown` - Markdown syntax can be compiled to generate HTML.
+- `HAML` - Intends to make HTML semantic and reusable with a simplified syntax.
+
+---
+
+**What are the building block of `HTML5`?**  
+Here are some of the core building blocks and major features of `HTML5`:
+- `Semantic Elements` - New elements like `<header>`, `<footer>`, `<article>`, `<section>` etc to provide better document structure and meaning.
+- `Forms` - New form controls like calendar, date, time, email, url, search input types for better mobile form experiences. Attributes like placeholder, required, autofocus etc.
+- `Multimedia` - `<video>` and `<audio>` tags for native multimedia embedding. Support for `SVG` vector images.
+- `Connectivity` - Server Sent Events and WebSockets for efficient real-time communication between server and client.
+- `Offline & Storage` - Application Cache and Web Storage APIs `(localStorage & sessionStorage)` for building offline-capable web apps.
+- `3D Graphics` - `Canvas 2D` and `WebGL` for native 3D graphics and visualizations directly on the web.
+- `Performance` - `Web workers` for multithreading processing. Template and `defer` for faster loading.
+- `Device Access` - `Geolocation`, `Device Orientation Events`, `Touch Events` for tapping into device capabilities.
+- `Styling` - CSS3 for flexible box layout, 2D/3D transforms, animation, shadows etc.
+- `Accessibility` - New elements for better `ARIA` support.
+
+---
+
+**Why to use `HTML5` semantic tags?**  
+Here are some key benefits of using semantic `HTML5` tags like `<header>`, `<nav>`, `<section>`, `<article>` etc:
+- More meaningful structure - The semantics help describe the purpose and improve the understandability of the content.
+- Better accessibility - Screen readers can identify the semantic elements to provide better page navigation and context.
+- Improved SEO - Search engines give weight to headers, navigation and main content which aids rankings and discoverability.
+- Easier to style - Semantic elements can be precisely targeted compared to generic `<div>` and `<span>`.
+- Maintainability - The semantic structure helps organize the code better and makes changes easier in the long run.
+- Interoperability - Semantics allow conveying intent that can be understood across different devices, screen readers etc.
+- Smaller file size - No need for extra classes and attributes just for styling.
+- Forward compatibility - New elements introduced later will have consistent meaning.
+
+---
+
+**How would you select svg or canvas for your site?**  
+Here are some key factors to consider when choosing between SVG and Canvas in a website:
+- SVG is better for vector graphics like shapes, lines, text etc that need to scale smoothly. Canvas provides more pixel-level control for bitmap graphics
+- SVG elements are part of the DOM. Styles and attributes can be changed dynamically using JavaScript. Canvas content requires redrawing for any change
+- SVG has better support for accessibility features like screen reader compatibility. Canvas is less accessible
+- SVG files are smaller generally. Canvas images require more file size for high resolution
+- SVG allows CSS animations and transitions directly on elements. Canvas requires JavaScript code to animate
+- SVG can link to external CSS and JavaScript files. Canvas cannot reference external resources
+- Canvas is better for graphics intensive applications like games, image processing, graphs etc
+- SVG integrates with other DOM elements. Canvas is independent and just a rectangle on the page
+
+So in summary, choose SVG for simple vector graphics and interactivity. Prefer Canvas for intensive gaming or bitmap
+graphics needs. Evaluate interactivity needs, file size constraints and browser support as well.
+
+---
+
+**What kind of things must you be wary of when designing or developing for multilingual sites?**  
+Here are some considerations when designing/developing multilingual websites:
+- Be aware of the text expansion that happens in some languages and adjust layouts accordingly.
+- Account for longer words and sentences that may affect things like line lengths or paragraph sizes.
+- Ensure UI components and buttons have sufficient space for localized text.
+- Use relative units like ems/rems instead of fixed pixels in CSS.
+- Allow extra spacing in design for expansion or change in word order.
+- Set the base language direction in HTML tag rather than CSS for optimum experience.
+- Check for FORM field character limits as labels may expand.
+- Use external JSON/XML for all UI strings and content to allow easy translation.
+- Enable RTL layouts if supporting right-to-left languages like Arabic, Hebrew.
+- Choose fonts that support all the languages you are targeting.
+- Verify designs work across different scripts like Latin, Chinese, Arabic etc.
+- Ensure site meets needs of locales like formats, culture preferences etc.
+
+So in summary, always keep text expansion, alternate language directions and localization needs in mind right from the
+initial design phase to avoid issues down the road.
+
+---
