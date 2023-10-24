@@ -506,4 +506,21 @@ console.log(adjustableRange(7, 50, 3));
 ```
 
 ---
+
+12. Write a function which implements shuffle feature?
+```javascript
+function shuffle(itemsArray) {
+    return itemsArray
+        .map(item => ({sortingFactor: Math.random(), valueOfItem: item}))
+        .sort((item1, item2) => item1.sortingFactor - item2.sortingFactor)
+        .map(obj => obj.valueOfItem);
+}
+
+
+const sampleData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(shuffle(sampleData));
+
+```
+
+---
 </div>
