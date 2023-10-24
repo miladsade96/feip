@@ -518,7 +518,7 @@ function shuffle(itemsArray) {
 
 
 const sampleData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-console.log(shuffle(sampleData));
+console.log(shuffle(sampleData));   // [6, 2, 5, 7, 3, 9, 4, 8, 1]
 
 ```
 
