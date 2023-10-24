@@ -21,58 +21,38 @@ and boost your confidence in frontend interviews.
 
 ## Table of Contents:
 
-<details>
-<summary>DS & Algo</summary>
+- **Data Structures & Algorithms:**
+  - [Data Structures](DataStructures_Algorithms/01-DataStructures.md)
+- **Development:**
+  - JavaScript:
+    - [Fundamentals](Development/JavaScript/01-fundamentals.md)
+    - [Arrays](Development/JavaScript/02-arrays.md)
+    - [Strings](Development/JavaScript/03-strings.md)
+    - [Date & Time](Development/JavaScript/04-dateTime.md)
+    - [Object Oriented](Development/JavaScript/05-objectOriented.md)
+    - [Coding Challenges](Development/JavaScript/Challenges.md)
+  - ReactJS:
+    - [Basics](Development/ReactJS/01-Basics.md)
+    - [Props](Development/ReactJS/02-Props.md)
+    - [Components](Development/ReactJS/03-Components.md)
+    - [Arrays Lists](Development/ReactJS/04-ArraysLists.md)
+    - [Best Practices](Development/ReactJS/05-BestPractices.md)
+    - [Conditional Rendering](Development/ReactJS/06-ConditionalRendering.md)
+    - [State](Development/ReactJS/07-State.md)
+    - [State & Props](Development/ReactJS/08-StateProps.md)
+    - [Performance](Development/ReactJS/09-Performance.md)
+    - [Advanced Concepts](Development/ReactJS/10-AdvancedConcepts.md)
+    - [Advanced](Development/ReactJS/11-Advanced.md)
+    - [Refs](Development/ReactJS/12-Refs.md)
+    - [Forms](Development/ReactJS/13-Forms.md)
+    - [Events](Development/ReactJS/14-Events.md)
+    - [Intermediate](Development/ReactJS/15-Intermediate.md)
+  - [HTML](Development/html.md)
+  - [CSS](Development/css.md)
+- **Other:**
+  - [Agile](Other/Agile.md)
 
-* [Data structures](DataStructures_Algorithms/01-DataStructures.md)
-</details>
-
-<details>
-<summary>Development</summary>
-
-<details>
-<summary>JavaScript</summary>
-
-* [Fundamentals](Development/JavaScript/01-fundamentals.md)
-* [Arrays](Development/JavaScript/02-arrays.md)
-* [Strings](Development/JavaScript/03-strings.md)
-* [Date and Time](Development/JavaScript/04-dateTime.md)
-* [Object Oriented](Development/JavaScript/05-objectOriented.md)
-* [Coding Challenges](Development/JavaScript/Challenges.md)
-</details>
-
-<details>
-<summary>ReactJS</summary>
-
-* [Basics](Development/ReactJS/01-Basics.md)
-* [Props](Development/ReactJS/02-Props.md)
-* [Components](Development/ReactJS/03-Components.md)
-* [Arrays and Lists](Development/ReactJS/04-ArraysLists.md)
-* [Best Practices](Development/ReactJS/05-BestPractices.md)
-* [Conditional Rendering](Development/ReactJS/06-ConditionalRendering.md)
-* [State](Development/ReactJS/07-State.md)
-* [State vs. Props](Development/ReactJS/08-StateProps.md)
-* [Performance](Development/ReactJS/09-Performance.md)
-* [Advanced Concepts](Development/ReactJS/10-AdvancedConcepts.md)
-* [Advanced](Development/ReactJS/11-Advanced.md)
-* [Refs](Development/ReactJS/12-Refs.md)
-* [Forms](Development/ReactJS/13-Forms.md)
-* [Events](Development/ReactJS/14-Events.md)
-* [Intermediate](Development/ReactJS/15-Intermediate.md)
-</details>
-
-[CSS](Development/css.md)
-[HTML](Development/html.md)
-
-</details>
-
-<details>
-<summary>Other</summary>
-
-* [Agile](Other/Agile.md)
-</details>
-
-
+    
 ## License
 This repository is licensed under the [MIT License](LICENSE). Please review the license terms before
 using or contributing to this project.
