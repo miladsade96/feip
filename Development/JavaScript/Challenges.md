@@ -522,5 +522,18 @@ console.log(shuffle(sampleData));
 
 ```
 
+13. Find the number of occurrences of the minimum value in the array?
+```javascript
+function numOccurMin(itemsArr) {
+    const minValue = Math.min(...itemsArr);
+    const minArr = itemsArr.filter(el => el === minValue);
+    return minArr.length;
+}
+
+
+const nums = [1, 2, 3, 4, 1, 1, 2, 3, 1];
+console.log(numOccurMin(nums)); // 4
+```
+
 ---
 </div>
