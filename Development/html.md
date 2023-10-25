@@ -678,3 +678,96 @@ So in summary, always keep text expansion, alternate language directions and loc
 initial design phase to avoid issues down the road.
 
 ---
+
+**What is WebP?**  
+WebP is an image format developed by Google that provides superior lossy and lossless compression for images on the web.
+Here are some key features:
+- WebP lossy images are 25-35% smaller compared to JPEG images at equivalent SSIM quality index.
+- WebP lossless images are 25-35% smaller than PNG images.
+- WebP supports transparency (alpha channel) at both lossy and lossless compression unlike JPEG.
+- WebP supports animation just like GIFs while producing much smaller file sizes.
+- WebP provides consistent image quality at all compression levels unlike JPEG.
+- WebP images can use metadata for additional functionality.
+- WebP is based on a subset of the VP8 video format with enhancements.
+- Browser support is decent with Chrome, Opera, Edge and Android having native support.
+- WebP's conversion tools allow generating WebP versions of JPEGs and PNGs.
+
+---
+
+**What is public key in html?**  
+HTML and browsers do not have direct support for generating or working with public keys for cryptographic purposes.
+Public keys are part of public key cryptography and require a complex cryptographic library to generate using algorithms
+like RSA or ECC.
+
+---
+
+**Why is it generally good idea to position css `<link>` tags between `<head>` and javascript `<script>` tags just
+before `</body>`? Do you know any exception?**  
+Placing `<link>` CSS tags in the `<head>` and `<script>` JS tags just before `</body>` is generally considered a best
+practice for the following reasons:
+
+- **Benefits:**
+  - CSS in <head> allows for early progressive rendering since styles are loaded before body content.
+  - JS at end allows HTML and CSS to load first so page is rendered by the time scripts load.
+  - Separation of structure, styling and behavior makes code easier to maintain.
+  - CSS and JS stay separate from HTML structure.
+  - CSS applied to all elements on page consistently.
+
+- **Exceptions:**
+  - Small inline scripts that need to execute early can remain in `<head>`.
+  - Scripts that have interdependencies on each other may need to be grouped together.
+  - Some CSS needs to be in `<body>` like if styles depend on JS variables.
+  - Third party scripts may require being installed in `<head>` based on their requirements.
+
+---
+
+**What are web components?**  
+Web components are a set of web platform APIs that allow you to create reusable custom elements and widgets using `HTML`,
+`CSS`, and `JavaScript`.  
+- **Some key capabilities of web components:**
+  - `Custom Elements` - Define new HTML tags to extend the semantics of HTML.
+  - `Shadow DOM` - Encapsulate styles and markup within a component.
+  - `HTML Templates` - Define reusable markup templates that can be instantiated multiple times.
+  - `HTML Imports` - Allow including and reusing HTML documents in other web pages.
+
+- **Benefits of web components:**
+  - `Reusable` - Can wrap functionality into modular components that can be shared.
+  - `Interoperable` - Leverage web standards so components work across frameworks.
+  - `Isolated` - Shadow DOM provides style and markup encapsulation.
+  - `Composable` - Can define more complex components by composing other components.
+  - `Platform native` - Built on underlying browser technologies rather than frameworks.
+  - `Backwards compatible` - Work across modern browsers with polyfills.
+
+---
+
+**What is IndexedDB?**  
+`IndexedDB` is a browser API that allows client-side storage and retrieval of significant amounts of structured data.
+It is a `NoSQL` database that runs in the browser.  
+
+- **Some key features of `IndexedDB`:**
+  - It stores data in object stores which are like tables in traditional databases.
+  - Each object store can be queried via indexes which allow fast lookups.
+  - All data is stored on the client-side, no server interaction needed.
+  - The API uses JavaScript promises for async operations.
+  - Storage limits are significantly higher than localStorage or sessionStorage.
+  - Supported by modern browsers including Chrome, Firefox, Edge.
+  - Data is persisted unless explicitly deleted.
+  - Useful for offline capabilities and performance.
+
+---
+
+**What is accessibility and ARIA role means in a web app?**  
+Accessibility refers to designing web content and apps, so they can be effectively used by people with disabilities.
+ARIA roles help improve accessibility.  
+
+Some ways ARIA roles enhance accessibility:
+
+- Roles convey semantic meaning to assistive technologies like screen readers. For example, `role="navigation"` identifies a page section as a navigation pane.
+- Roles allow adding semantics where HTML elements don't fit the content. For example, `role="tabpanel"` denotes a tab panel container.
+- States and properties can provide extra info like invalid form fields or live region updates.
+- ARIA labels provide text alternatives where visible text is insufficient.
+- ARIA can make dynamic content changes accessible via live regions which are announced by screen readers.
+- ARIA `valuenow/valuemin/valuemax` provide progress indicator state.
+- Keyboard navigation and focus management rely on proper ARIA usage.
+
+---
