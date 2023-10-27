@@ -1217,3 +1217,388 @@ function App() {
 ```
 
 ---
+
+**How does reactjs work?**  
+ReactJS is a JavaScript library for building user interfaces. Here is a brief overview of how it works:
+- React uses a declarative paradigm - you describe what you want the UI to look like through components, and React takes care of updating the DOM for you.
+- Components are reusable pieces of code that return React elements describing what should be rendered on the screen. They can take in data through props and maintain internal state.
+- When a component's state changes, React will efficiently update and re-render the component and its children. This is made possible by React's use of a virtual DOM.
+- The virtual DOM is a JavaScript representation of the actual DOM. When a component's state changes, React generates a new virtual DOM tree.
+- React then compares this new virtual DOM with the previous one and figures out the minimal set of actual DOM manipulations needed to sync them up. This makes updating the real DOM very fast.
+- To determine when to re-render components, React uses a uni-directional data flow based on state. State is kept as simple as possible, and any data that influences how components render is kept in this state.
+- When state changes, React components auto-rerender efficiently. Props also allow passing data down the component tree to child components.
+
+---
+
+**What are react hooks?**  
+React hooks are a feature that was added in React 16.8 which allow you to use state and other React features without
+writing a class component. Hooks allow you to leverage React features without classes. This can help reduce boilerplate
+code and make it easier to share logic between components. Hooks were a major addition to React and changed how most
+React code is written today.
+
+---
+
+**What are the differences between a class component and a functional component?**  
+Here are the main differences between class components and functional components in React:
+- Class components are ES6 classes that extend React.Component. Functional components are plain JavaScript functions.
+- Class components have state and lifecycle methods. Functional components only receive props and render UI based on those props.
+- Class components require more code and syntactic overhead compared to simpler functional components.
+- Functional components can now use hooks to manage state and perform side effects (as of React 16.8). Before hooks, these could only be done in class components.
+- Class components should be used when you need lifecycle methods, internal state, or access to the component instance.
+- Functional components are preferable when you just need to receive props and render UI, without needing internal state.
+- Prior to hooks, functional components could only contain the render method and had no state. Now with hooks, functional components can pretty much do everything class components can.
+- Functional components offer better performance because they avoid the class overhead and state management that class components require.
+
+---
+
+**What is the difference between presentational component and container component?**  
+The difference between presentational and container components in React can be summarized as:
+
+- **Presentational Components:**
+  - Also known as "dumb" components
+  - Responsible for how things look
+  - Typically functional components
+  - Receive data and callbacks via props
+  - Rarely have their own state - they rely on props
+  - Written to be as reusable as possible
+
+- **Container Components:**
+  - Also known as "smart" components
+  - Responsible for how things work
+  - Typically class components
+  - Provide data and callbacks to presentational or other container components
+  - Call Flux actions and provide these as callbacks to presentational components
+  - May contain both presentational and container components inside, but usually don't have DOM markup of their own
+
+---
+
+**What does it mean for a component to be mounted in react?**  
+In React, when we say a component is mounted, it means the component has been rendered into the DOM (Document Object Model).
+
+Specifically, mounting refers to the actual process of inserting a React component into the DOM tree. This happens when:
+
+- A component is rendered for the first time
+- A component re-renders after an update and gets inserted back into the DOM.
+
+The mounting process consists of several phases:
+
+- `constructor()`
+- `static getDerivedStateFromProps()`
+- `render()`
+- `componentDidMount()`
+
+---
+
+**What is useState() in react?**  
+useState is a Hook in React that allows you to add state to functional components.
+
+It is a function that takes the initial state as an argument and returns an array of two entries:
+
+1. The current state value
+2. A function to update this state value
+
+For example:
+
+```javascript
+const [count, setCount] = useState(0); 
+```
+
+Here:
+
+- `count` - holds the current state value
+- `setCount` - is a function to update the state.
+
+You can call setCount() to update the state:
+
+```javascript
+setCount(prevCount => prevCount + 1);
+```
+
+When the state updates, the component re-renders and uses the latest state value.
+useState is a simpler way to add state compared to class components, since there is no need to define a separate class with this.state.
+
+---
+
+**How is react different from angular(1.x)?**  
+Here are some key differences between React and AngularJS (Angular 1):
+- React is a JavaScript library that deals with just the UI layer of an application, while AngularJS is a full MVC framework.
+- React uses a reactive programming paradigm that favors immutability and encourages thinking in terms of state changes over time, while AngularJS uses two-way data binding between models and views.
+- React uses a Virtual DOM and optimizes updates by comparing actual DOM changes rather than dirty checking everything like AngularJS. This makes React faster in most cases.
+- AngularJS uses directives and bindings to link behavior and DOM, while React uses composable components with unidirectional data flow.
+- AngularJS has built-in routing, Ajax handling, and other features, while React is focused on the view layer only.
+- React has a much simpler and flexible architecture with fewer concepts to learn compared to a full framework like AngularJS.
+- React has better support for server-side rendering and building mobile applications compared to AngularJS.
+- AngularJS has two-way data binding between scopes, while React uses a one-way data flow model between components.
+- AngularJS uses dirty checking to detect changes and redraw views, while React Only updates DOM elements that have changed.
+
+---
+
+**What are two types of components in react?**  
+The two main types of components in React are:
+1. Functional Components
+2. Class Components(ES6 classes that extend React.Component)
+
+---
+
+**What are the advantages of using react hooks?**  
+Here are some of the key advantages of using React hooks:
+
+- Simpler code - Hooks allow function components to have state and lifecycle methods without writing a class. This reduces a lot of boilerplate code.
+- Reusable logic - Hooks allow sharing stateful logic across components, rather than having to create new classes.
+- Modular code - Each hook contains a specific piece of functionality, making code more modularized
+- Stateful logic in function components - Hooks allow having state and lifecycle methods directly in function comonents. No need to swap between functions and classes.
+- No breaking changes - Hooks are additive and don't contain any breaking changes. Older class compnent code still works.
+- Easy to start using - Hooks have a small API surface and are easy to start using in new or existing React codebases
+- Flexible control flow - Hooks allow splitting component logic into smaller functions that can be extracted out or calle separately.
+
+---
+
+**What happens during the lifecycle of a React component?**  
+Here are the main phases of the component lifecycle in React:
+
+- **Mounting:**
+  - `constructor()` - Called before the component is mounted. Initialize state here.
+  - static `getDerivedStateFromProps()` - Set state before render.
+  - `render()` - Render UI and components in return statement.
+  - `componentDidMount()` - Called after component is rendered. Cause side effects here.
+
+- **Updating:**
+  - static `getDerivedStateFromProps()` - Set state before re-rendering.
+  - `shouldComponentUpdate()` - Decide if the component should re-render after changes.
+  - `render()` - Rerender UI with latest changes.
+  - `getSnapshotBeforeUpdate()` - Called right before DOM update. Capture DOM info here.
+  - `componentDidUpdate()` - Called after update is committed. Cause side effects here.
+
+- **Unmounting:**
+  - `componentWillUnmount()` - Called before the component is unmounted and destroyed. Clean up resources here.
+
+---
+
+**What is the difference between component and container in redux?**  
+The main differences between component and container in Redux are:
+- Components are concerned with how things look. Containers are concerned with how things work.
+- Components receive data and callbacks exclusively via props. Containers receive props and also connect to the Redux store to get state/dispatch.
+- Components are reusable and often stateless. Containers usually wrap components and map Redux state/actions to props.
+- Components define presentation and are concerned with UI. Containers handle data flow and subscribe to Redux state.
+- Components can be substituted for simpler mocking/testing. Containers usually can't be shallowly tested and mock store setup is needed.
+- Components receive data and callbacks from containers. Containers often generate container-specific props to pass to components.
+- Components render HTML markup or other UI. Containers often render only a single component or multiple container components.
+- Components should be as reusable and generic as possible. Containers are created once per page or connected feature.
+
+---
+
+**What happens when you call setState?**  
+Here is what happens when you call setState in a React component:
+1. `setState()` enqueues changes to the component state object.
+2. This triggers React to re-render the component with the updated state.
+3. The component's `render()` method is called and React updates the DOM.
+4. The component gets re-rendered on the UI with the new changes.
+5. If state update depends on previous state, the `setState()` callback can be used. The callback will fire after the render is finished.
+
+---
+
+**How to call loading function with react useEffect only once?**  
+Here is how you can call a loading function only once using the `useEffect` hook in React:
+
+```jsx
+import { useEffect } from 'react';
+
+function Component() {
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    // API call to load data 
+  };
+
+  return <div>Component</div>; 
+}
+```
+
+The key is passing an empty array as the second argument to `useEffect`. By default, `useEffect` runs after every render.
+But passing an empty array [] as the second parameter tells React to only run it once on mount and unmount, like
+`componentDidMount` and `componentWillUnmount` combined.
+
+---
+
+**How to access DOM elements in react functional component?**  
+Here are a few ways to access DOM elements in React functional components:
+
+1. Use Refs
+
+Refs work the same in functional components as they do in class components. Create a ref with `React.createRef()`, assign it to an element, and access the current property:
+
+```jsx
+import React, { useRef } from 'react';
+
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  return <input ref={inputRef} />;
+
+  // Access DOM element:
+  inputRef.current; 
+}
+```
+
+2. Use callback refs
+
+You can pass a callback function that receives the DOM element on mount:
+
+```jsx 
+function MyComponent({ setInput }) {
+  return <input ref={setInput} />;
+}
+
+// Parent component
+function Parent() {
+  const [input, setInput] = useState(null);
+  
+  return <MyComponent setInput={setInput} />
+}
+```
+
+3. Use useEffect hook
+
+If you need access to the DOM element after rendering, you can use the useEffect hook:
+
+```jsx
+useEffect(() => {
+  const input = document.querySelector('#my-input');
+}, []); 
+```
+
+---
+
+**Name the different lifecycle methods for class components?**  
+The main lifecycle methods for React class components include:
+- **Mounting:**
+  - `constructor()`
+  - static `getDerivedStateFromProps()`
+  - `render()`
+  - `componentDidMount()`
+- **Updating:**
+  - static `getDerivedStateFromProps()`
+  - `shouldComponentUpdate()`
+  - `render()`
+  - `getSnapshotBeforeUpdate()`
+  - `componentDidUpdate()`
+- **Unmounting:**
+  - `componentWillUnmount()`
+
+---
+
+**What is `{this.prop.children}` and when you should use it?**  
+`this.props.children` is a special prop in React that allows passing children components as data to parent components.
+For example:
+```jsx
+<ParentComponent>
+  <ChildComponent />
+</ParentComponent>
+```
+In ParentComponent, we can output `{this.props.children}` to render ChildComponent:
+
+```jsx
+function ParentComponent(props) {
+  return <div>{props.children}</div> 
+}
+```
+
+---
+
+**How would you prevent a component from re-rendering in react?**  
+Here are some ways to prevent a component from re-rendering in React:
+
+- **Using React.memo:**
+The React.memo higher order component allows memorizing a component unless its props change. This can prevent unnecessary re-renders:
+```jsx
+const MyComponent = React.memo(function MyComponent(props) {
+  // ...
+});
+```
+
+- **Using Pure Component:**
+Extend `React.PureComponent` instead of `React.Component` in a class. It performs a shallow comparison of props and state to prevent unnecessary re-renders.
+
+- **Using useMemo Hook:**
+Wrap a function component in `useMemo()` to memoize it and prevent re-renders:
+
+```jsx
+const MyComponent = useMemo(() => {
+  //...
+}, []); 
+```
+
+- **Use useCallback Hook:**
+Return function from useCallback to prevent it re-creating on each render:
+```jsx 
+const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b], 
+);
+```
+
+---
+
+**What is the typical pattern for rendering a list of components from an array in react?**  
+The typical pattern for rendering a list of components from an array in React is:
+- **Map over the array of data:**  
+For example:
+```jsx
+const listItems = dataArray.map(item => {
+  return <Component key={item.id} item={item} />; 
+});
+```
+
+---
+
+**What is the typical flow of data like in a React + redux app?**  
+Here is a typical flow of data in a React + Redux app:
+
+- **Initial setup:**
+  - React components are created to define UI structure
+  - Redux store is created to hold application state
+  - Components that need data from Redux connect to the store
+
+- **User interaction:**
+  - User interacts with a connected React component
+  - Callback handlers detect events like clicks
+  - Action creator functions are called with details about the event
+
+- **Dispatching actions:**
+  - Action creator functions create and return Redux action objects
+  - Components may call dispatch function to dispatch the actions
+
+- **Reducers update state:**
+  - Redux store runs the reducers with the dispatched action
+  - Reducers calculate a new state immutably based on actions
+  - Store saves updated state
+
+- **Components re-render:**
+  - MapStateToProps selects relevant data from updated state
+  - This data is passed as props to connected React components
+  - Components re-render with updated props
+
+- **Display updates:**
+  - Updated components rerender UI with new state
+  - Changes from the state updates are reflected
+
+---
+
+**What are some limitations of things you should not do in the component's render method in react?**  
+Here are some things to avoid in React component's render method:
+- **Side effects** - Avoid directly calling `setState()` or other functions with side effects. This can lead to inconsistent UI. Instead, do side effects in `componentDidMount()` or `componentDidUpdate()`.
+- **Slow computations** - Avoid expensive calculations or API calls directly in render, as this makes every update slow. Move computations outside render.
+- **Non-pure functions** - Render should be idempotent and pure, meaning render should render the same output for same input. Avoid functions with side effects or randomness.
+- **Updating state** - Do not update state directly from render as it can lead to infinite loops. Use setState() outside of render instead.
+- **JSX spreading** - Avoid spreading props or state directly into JSX as it becomes less readable and can break optimizations. Explicitly specify attributes instead.
+- **Referencing props/state in loops** - Avoid arrays.map() or loops that reference props/state in the loop body, as it forces updating each iteration. Cache the value first.
+- **Rendering based on props** - Avoid conditionals that render different content based on props or state. Move conditional rendering logic higher up instead.
+- **Reading DOM nodes** - Avoid reading DOM nodes in render. This breaks server-side rendering and confuses React reconciliation. Use refs sparingly instead.
+
+In summary, render should contain only the minimally needed code to render UI based on inputs. It is the wrong place for side effects, data fetching, or non-idempotent logic.
+
+---
