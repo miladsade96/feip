@@ -1602,3 +1602,156 @@ Here are some things to avoid in React component's render method:
 In summary, render should contain only the minimally needed code to render UI based on inputs. It is the wrong place for side effects, data fetching, or non-idempotent logic.
 
 ---
+
+**What is prop drilling and how can you avoid it?**  
+`Prop drilling` is a term used in React to describe the process of passing data down through a component hierarchy.
+This can be necessary when a component needs to access data that is stored in a parent component, but it can also lead
+to code that is difficult to maintain and debug.
+
+**Here are some ways to avoid prop drilling:**
+
+- **Lift state up:** When possible, lift state up to the nearest common ancestor component. This will allow all descendant components to access the state without having to pass it down as props.
+- **Use component composition:** Component composition is a way of building complex components out of smaller, more reusable components. By composing components, you can avoid passing props down through the hierarchy unnecessarily.
+- **Use the React Context API:** The React Context API provides a way to share data between components without having to pass it down as props. This is a good option for sharing data that is needed by many components at different levels of the hierarchy.
+
+---
+
+**What is the point of `shouldComponentUpdate` method?**  
+The `shouldComponentUpdate()` method is a React lifecycle method that allows you to control whether a component
+should re-render. By default, React will re-render a component whenever its state or props change. However, in some
+cases, you may want to prevent a component from re-rendering unnecessarily. This can improve the performance of your
+application, especially if the component is complex or expensive to render.
+
+To use `shouldComponentUpdate()`, you simply need to implement it in your component class. The method should return a
+boolean value. If it returns `true`, then the component will re-render. If it returns `false`, then the component will
+not re-render.
+
+Here is a simple example:
+
+```javascript
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    // Only re-render the component if the props or state have changed.
+    return nextProps !== this.props || nextState !== this.state;
+  }
+
+  render() {
+    // ...
+  }
+}
+```
+
+In this example, the `shouldComponentUpdate()` method will return `true` if the props or state have changed, and `false`
+otherwise. This means that the component will only re-render if something has changed that will affect the output of the
+component. It is important to note that you should use `shouldComponentUpdate()` with caution. If you are not careful,
+you can accidentally prevent a component from re-rendering when it should, which can lead to bugs.
+
+---
+
+**What do these three dots(...) in React do?**  
+The three dots (...) in React are used for spread syntax. Spread syntax allows you to expand an iterable object, such
+as an array or object, into its individual elements. This can be useful in a variety of situations, such as when passing
+props to a component, spreading an array into a function call, or merging two objects.
+
+---
+
+**What are the different phases of reactjs component lifecycle?**  
+The React component lifecycle has three main phases:
+
+1. **Mounting:** The mounting phase begins when a component is first created and inserted into the DOM. This includes the following lifecycle methods:
+  * `constructor()`: This method is used to initialize the component's state.
+  * `getDerivedStateFromProps()`: This method is used to derive the component's state from its props.
+  * `render()`: This method is used to render the component to the DOM.
+  * `componentDidMount()`: This method is called after the component has been mounted to the DOM.
+
+2. **Updating:** The updating phase occurs whenever a component's state or props change. This includes the following lifecycle methods:
+  * `getDerivedStateFromProps()`: This method is used to derive the component's state from its props, even if the props haven't changed.
+  * `shouldComponentUpdate()`: This method is used to determine whether or not the component should re-render.
+  * `render()`: This method is used to render the component to the DOM.
+  * `componentDidUpdate()`: This method is called after the component has been updated.
+
+3. **Unmounting:** The unmounting phase occurs when a component is removed from the DOM. This includes the following lifecycle method:
+  * `componentWillUnmount()`: This method is called before the component is removed from the DOM.
+
+In addition to the three main phases, there are also a few other lifecycle methods that can be used in specific situations. For example, the `getSnapshotBeforeUpdate()` method can be used to take a snapshot of the component's DOM before it is updated.
+
+---
+
+**What is key prop and benefit of using it in lists?**  
+The `key` prop is a special attribute that you can use on list items in React. It is used by React to identify which items in the list have changed, added, or removed. This information is then used to efficiently update the DOM.
+
+There are several benefits to using the `key` prop in lists:
+
+* **Improved performance:** When React knows which items in a list have changed, it can efficiently update the DOM without having to re-render the entire list. This can lead to significant performance improvements, especially for large lists.
+* **Reduced flicker:** When React uses the `key` prop to update a list, it can avoid flicker by reusing existing DOM elements whenever possible. This can make the user experience smoother and more responsive.
+* **Improved error handling:** React uses the `key` prop to track the identity of list items. This can help to prevent errors when items are added, removed, or reordered in the list.
+
+---
+
+**Why do class methods need to be bound to a class instance in react?**  
+Class methods need to be bound to a class instance in React because of how JavaScript works. In JavaScript, functions
+are first-class objects, meaning that they can be passed around as arguments and assigned to variables. This also means
+that functions have their own context, which is the object that owns the function. When you define a method on a class,
+the method is created as a function object. However, the method does not have a context by default. This means that when
+you call the method, the `this` keyword will refer to the global object, which is usually not what you want. To bind a
+method to a class instance, you can use the `bind()` method. The `bind()` method creates a new function object that is
+bound to the specified context. This means that when you call the bound function, the `this` keyword will refer to the
+specified context.
+
+In React, it is important to bind class methods to class instances because class methods are often used as event
+handlers. When you pass a class method to an event handler, the method will be called with the event object as the
+`this` keyword. If the method is not bound to a class instance, the `this` keyword will refer to the DOM element that
+triggered the event, which is usually not what you want.
+
+Here is an example of how to bind a class method to a class instance:
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log(this); // This will refer to the class instance
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+In this example, we are binding the `handleClick()` method to the class instance in the constructor. This means that
+when we call the `handleClick()` method from the `render()` method, the `this` keyword will refer to the class instance.
+
+You can also use arrow functions to avoid having to bind class methods to class instances. Arrow functions do not have
+their own context, so they will always use the context of the function that they are defined in.
+
+Here is an example of how to use an arrow function as an event handler:
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = () => {
+      console.log(this); // This will refer to the class instance
+    };
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+In this example, we are using an arrow function as the event handler for the `button` element. This means that the
+`handleClick()` method will automatically be bound to the class instance, so we do not need to bind it explicitly.
+
+---
