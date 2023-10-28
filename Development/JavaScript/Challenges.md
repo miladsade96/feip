@@ -660,3 +660,45 @@ Item {title: 'Ball'}
 ```
 
 ---
+
+15. 1. Design a class for employee which takes id and name in during construction of object and has a salary property?
+```javascript
+class Employee {
+    constructor(id, name) {
+        if (!id || !name) throw new Error("id and name properties are mandatory!");
+        this.id = id;
+        this.name = name;
+    }
+    
+    setSalary(salary) {
+        this.salary = salary;
+    }
+    
+    getId() {
+        return this.id;
+    }
+    
+    getName() {
+        return this.name;
+    }
+    
+    getSalary() {
+        return this.salary;
+    }
+}
+```
+
+15. 2. Design a class for manager which is an employee and can have department property?
+```javascript
+class Manager extends Employee {
+    setDepartment(deptName) {
+        this.department = deptName;
+    }
+    
+    getDepartment() {
+        return this.department;
+    }
+}
+```
+
+---
