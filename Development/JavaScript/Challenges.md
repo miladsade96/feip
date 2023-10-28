@@ -1,6 +1,5 @@
 # JavaScript Coding Challenges
 
-<div style="text-align: justify">
 
 ## Core JavaScript Concepts:
 
@@ -536,4 +535,128 @@ console.log(numOccurMin(nums)); // 4
 ```
 
 ---
-</div>
+
+14. 1. What will be logged here?
+```javascript
+function getItem() {
+    console.log(this);  // Inside function definition, this is refrencing the global object
+    // Possible values are Window object, undefined or something else
+    // It is all depends on the context
+}
+
+getItem();
+```
+
+14. 2. What will be logged in this case?
+```javascript
+const item = {
+  title: "Ball",
+  getItem() {
+      console.log(this);
+  }  
+};
+
+item.getItem(); // item object
+```
+
+14. 3. What will be logged in this case?
+```javascript
+class Item {
+    title = "Ball";
+    getItem() {
+        console.log(this);
+    }
+}
+
+
+const item = new Item();
+item.getItem(); // Item class
+```
+
+14. 4. What will be logged in this case?
+```javascript
+class Item {
+    title = "Ball";
+    getItem() {
+        function someFn() {
+            console.log(this);
+        }
+        someFn();
+    }
+}
+
+
+const item = new Item();
+item.getItem(); // undefined
+```
+
+14. 5. What will be logged here?
+```javascript
+class Item {
+    title = "Ball";
+    getItem() {
+        [1, 2, 3].map(function () {
+            console.log(this);
+        })
+    }
+}
+
+
+const item = new Item();
+item.getItem();
+/*
+undefined
+undefined
+undefined
+ */
+```
+
+14. 6. How to fix previous issue so that `this` keyword references to parent context?
+```javascript
+// Fist solution - old school javascript
+// Using a helper constant:
+
+class Item {
+    title = "Ball";
+    getItem() {
+        const this_ = this;
+        [1, 2, 3].map(function () {
+            console.log(this_);
+        })
+    }
+}
+
+
+const item = new Item();
+item.getItem();
+/*
+Item {title: 'Ball'}
+Item {title: 'Ball'}
+Item {title: 'Ball'}
+ */
+```
+Or
+```javascript
+// Second solution - more modern way
+// Using arrow functions:
+
+class Item {
+    title = "Ball";
+    getItem() {
+        [1, 2, 3].map(() => {
+            console.log(this);
+        })
+    }
+}
+
+
+const item = new Item();
+item.getItem();
+/*
+Item {title: 'Ball'}
+Item {title: 'Ball'}
+Item {title: 'Ball'}
+ */
+```
+
+---
