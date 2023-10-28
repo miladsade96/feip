@@ -702,3 +702,49 @@ class Manager extends Employee {
 ```
 
 ---
+
+16. 1. Refactor Employee class with javascript prototypes approach?
+```javascript
+var Employee = function (id, name) {
+    if (!id || !name) throw new Error("id and name properties are mandatory!");
+    this.id = id;
+    this.name = name;
+}
+
+
+Employee.prototype.setSalary = function (salary) {
+    this.salary = salary;
+}
+
+Employee.prototype.getId = function () {
+    return this.id;
+}
+
+Employee.prototype.getName = function () {
+    return this.name;
+}
+
+Employee.prototype.getSalary = function () {
+    return this.salary;
+}
+```
+
+16. 2. Refactor Manager class with javascript prototypes approach?
+```javascript
+var Manager = function (params) {
+    Employee.apply(this, arguments);
+};
+
+Manager.prototype = Object.create(Employee.prototype);
+Manager.prototype.constructor = Manager;
+
+Manager.prototype.setDepartment = function (deptName) {
+    this.department = deptName;
+}
+
+Manager.prototype.getDepartment = function () {
+    return this.department;
+}
+```
+
+---
