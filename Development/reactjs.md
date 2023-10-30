@@ -2426,3 +2426,677 @@ const style = {
 This code will add the `style` attribute to the div component if the `isActive` state property is set to `true`.
 
 ---
+
+**Does react re-render all components and subcomponents every time setState() is called?**  
+React does not re-render all components and subcomponents every time setState() is called. Instead, React maintains a
+virtual DOM, which is a lightweight representation of the real DOM. When setState() is called, React updates the
+virtual DOM and then compares it to the previous virtual DOM. React then only updates the real DOM with the changes
+that are necessary.
+
+This process is called reconciliation, and it is what makes React so fast and efficient.
+
+---
+
+**Describe how events are handled in react?**  
+Events are handled in React using event handlers. Event handlers are functions that are called when a certain event
+occurs, such as a click, hover, or key press. Event handlers can be defined inline or in a separate function.
+
+To add an event handler to a React element, you use the `onClick`, `onMouseEnter`, `onKeyDown`, and other event
+attributes. For example, the following code adds a click event handler to a button element:
+
+```javascript
+<button onClick={handleClick}>Click Me!</button>
+```
+
+The `handleClick()` function is the event handler function. It will be called when the button is clicked.
+
+Event handlers can also be passed as props to React components. For example, the following code passes a click event handler to a `MyComponent` component:
+
+```javascript
+const MyComponent = ({ onClick }) => {
+  // ...
+};
+
+<MyComponent onClick={handleClick} />
+```
+
+The `MyComponent` component can then use the `onClick` prop to add a click event handler to its elements.
+
+Event handlers receive an event object as a parameter. The event object contains information about the event, such as the target element and the mouse coordinates.
+
+To prevent the default behavior of an event, you can call the `preventDefault()` method on the event object. For example, the following code prevents the default click behavior of a button element:
+
+```javascript
+function handleClick(event) {
+  event.preventDefault();
+
+  // ...
+}
+```
+
+Event handlers can also be used to propagate events up the React component tree. This is done by calling the `stopPropagation()` method on the event object. For example, the following code prevents the click event from propagating up the component tree:
+
+```javascript
+function handleClick(event) {
+  event.stopPropagation();
+
+  // ...
+}
+```
+
+---
+
+**Why would use StrictMode component in react?**  
+There are a few reasons why you would use the StrictMode component in React:
+
+* **To identify potential bugs in your code.** StrictMode enables additional development-only checks and warnings. This can help you to identify potential bugs in your code, such as impure renders and missing effect cleanup.
+* **To improve the performance of your code.** StrictMode can help you to improve the performance of your code by forcing extra setup and cleanup cycles for effects. This can help to catch bugs early on and prevent them from causing performance problems in production.
+* **To make your code more predictable.** StrictMode can help to make your code more predictable by ensuring that it follows certain rules, such as only rendering components once per state update.
+
+---
+
+**How would you use StrictMode component in react?**  
+To use the StrictMode component in React, you simply need to wrap your root component with it. For example:
+
+```javascript
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+```
+
+Once you have wrapped your root component with StrictMode, all components in your application will be subject to the additional checks and warnings that StrictMode enables.
+
+---
+
+**What is the difference between useCallback and useMemo in practice?**  
+`useCallback` and `useMemo` are both React hooks that can be used to improve the performance of your application. However, there are some key differences between the two.
+
+**useCallback**
+
+`useCallback` returns a memoized callback function. This means that the function will only be recreated if its dependencies change. This can be useful for preventing unnecessary re-renders of components.
+
+For example, let's say you have a button component that renders a list of items. The button component has a callback function that is used to update the list of items. If you were to pass the callback function directly to the list component, the list component would re-render every time the button component re-renders.
+
+To avoid this, you can use `useCallback` to memoize the callback function. This will ensure that the list component only re-renders when the list of items actually changes.
+
+**useMemo**
+
+`useMemo` returns a memoized value. This means that the value will only be recalculated if its dependencies change. This can be useful for preventing unnecessary computations from being performed.
+
+For example, let's say you have a component that calculates a complex value. If you were to recalculate the value every time the component re-renders, this could lead to performance problems.
+
+---
+
+**Explain why and when to use `useMemo()`?**  
+**Why to use useMemo()?**
+
+useMemo() is a React hook that allows you to memoize expensive computations. This means that the computation will only be performed once, and the result will be cached and reused for subsequent renders. This can improve the performance of your application by reducing the number of times that expensive computations are performed.
+
+**When to use useMemo()?**
+
+You should use useMemo() when you need to memoize an expensive computation that is used multiple times in a component. This is especially useful for computations that are performed in the render() function, as it can prevent unnecessary re-renders.
+
+Here are some examples of when to use useMemo():
+
+* Calculating a complex value, such as a hash function or a checksum.
+* Filtering or sorting a large array of data.
+* Creating a derived state value from other state values.
+* Performing a side effect, such as fetching data from an API or setting a local storage value.
+
+**How to use useMemo()?**
+
+To use useMemo(), you simply need to pass a callback function and an array of dependencies to the hook. The callback function will be executed only when one of the dependencies changes. The result of the callback function will be memoized and returned by the hook.
+
+Here is an example of how to use useMemo():
+
+```javascript
+const MyComponent = () => {
+  const [count, setCount] = useState(0);
+
+  const memoizedValue = useMemo(() => {
+    // Perform an expensive computation
+    return Math.pow(count, 2);
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Memoized value: {memoizedValue}</p>
+    </div>
+  );
+};
+```
+
+In this example, the `memoizedValue` variable will only be updated when the `count` state variable changes. This means that the expensive computation will only be performed once, and the result will be cached and reused for subsequent renders.
+
+---
+
+**When to use `useCallback`, `useMemo` and `useEffect`?**  
+Here is a general guideline for when to use useCallback, useMemo, and useEffect:
+
+**useCallback:**
+
+* When you need to memoize a callback function. This is useful for preventing unnecessary re-renders of components.
+* When passing a callback function to a child component. This ensures that the child component only re-renders when the callback function itself changes.
+* When using a callback function in an effect. This ensures that the effect only runs when the callback function changes.
+
+**useMemo:**
+
+* When you need to memoize a value. This is useful for preventing unnecessary computations from being performed.
+* When calculating a complex value that is used in multiple places in a component. This prevents the value from being recalculated every time the component re-renders.
+* When using a value in an effect. This ensures that the effect only runs when the value changes.
+
+**useEffect:**
+
+* When you need to perform a side effect. This is anything that interacts with the outside world, such as fetching data from an API or updating the DOM.
+* When you need to clean up a side effect. This is important to prevent memory leaks and other performance problems.
+
+Here are some specific examples:
+
+**useCallback:**
+
+* A button component that passes a callback function to its child component to update the state of the parent component.
+* A component that uses a callback function in an effect to fetch data from an API.
+
+**useMemo:**
+
+* A component that calculates a complex value, such as a hash function or a checksum, and uses that value in multiple places.
+* A component that uses a memoized value in an effect to perform a side effect, such as updating the DOM.
+
+**useEffect:**
+
+* A component that fetches data from an API when it mounts and updates the DOM when the data changes.
+* A component that adds an event listener to the DOM when it mounts and removes the event listener when it unmounts.
+
+---
+
+**Can you do components inheritance in react?**  
+Yes, you can do component inheritance in React. However, it is generally not recommended to do so. This is because
+React uses a composition-based approach to building components. This means that you should build your components by
+composing smaller, reusable components together.
+
+---
+
+**What is the difference between incremental DOM and virtual DOM?**  
+The main difference between incremental DOM and virtual DOM is how they update the real DOM.
+
+**Virtual DOM**
+
+Virtual DOM is a lightweight representation of the real DOM. Whenever there is a change to the state of a component, React creates a new virtual DOM and compares it to the previous virtual DOM. React then calculates the difference between the two virtual DOMs and updates the real DOM accordingly.
+
+This process is very efficient, as React only needs to update the parts of the real DOM that have actually changed.
+
+**Incremental DOM**
+
+Incremental DOM is a newer approach to updating the real DOM. Instead of creating a new virtual DOM every time there is a change, incremental DOM keeps track of the changes to the real DOM and updates it accordingly.
+
+This approach can be even more efficient than virtual DOM, as it does not require the creation of a new virtual DOM. However, it is more complex to implement and is not as widely supported.
+
+---
+
+**When would you use `flushSync` in react?**  
+You should use `flushSync` in React sparingly. It can be useful in some cases, but it can also hurt performance.
+
+Here are some examples of when you might want to use `flushSync`:
+
+* When you need to force a component to re-render immediately. This can be useful for debugging or for handling special cases.
+* When you need to make sure that all updates to the DOM have been flushed before performing an action, such as taking a screenshot or printing a document.
+* When you need to ensure that all updates to the state of a component have been flushed before performing a side effect, such as fetching data from an API or updating the local storage.
+
+However, it is important to be aware of the following drawbacks of using `flushSync`:
+
+* It can hurt performance. `flushSync` forces React to flush all pending updates synchronously. This can block other JavaScript code from running and can lead to performance problems.
+* It can prevent React from batching updates. React normally batches updates to improve performance. `flushSync` prevents React from batching updates, which can lead to a decrease in performance.
+* It can cause unexpected behavior. For example, if you use `flushSync` to force a component to re-render immediately, it may re-render with outdated state.
+
+---
+
+**When shall we use `useReducer` hook in react?**  
+You should use the `useReducer` hook in React when:
+
+* Your state is complex or consists of multiple sub-values.
+* Your state update logic is complex or involves multiple steps.
+* You need to share state between multiple components.
+* You need to implement caching or memoization.
+
+Here are some specific examples of when to use `useReducer`:
+
+* Managing a shopping cart.
+* Managing a complex form.
+* Managing the state of a game or simulation.
+* Implementing a caching system to reduce the number of API calls.
+* Implementing a memoization system to prevent unnecessary re-renders.
+
+---
+
+**When to use useState vs. useReducer?**  
+**useState** and **useReducer** are both React hooks that can be used to manage state in a component. However, there are some key differences between the two that determine when to use each one.
+
+**useState** is the simplest way to manage state in a component. It is a good choice for simple state, such as a boolean value, a number, or a string.
+
+**useReducer** is more powerful than useState, but it is also more complex. It is a good choice for complex state, such as an object or an array, or for state that requires complex update logic.
+
+---
+
+**How would you store non-state instance variables in functional component?**  
+There are a few ways to store non-state instance variables in functional components in React:
+
+* **Use useRef:** The useRef hook allows you to store a mutable value in a component without triggering a re-render. This is useful for storing values that are used by other components or that are used to perform side effects, such as fetching data from an API.
+
+Here is an example of how to use useRef to store a non-state instance variable:
+
+```javascript
+const MyComponent = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    // Fetch data from an API
+    const fetchData = async () => {
+      const response = await fetch('https://example.com/api/data');
+      const data = await response.json();
+
+      ref.current = data;
+    };
+
+    fetchData();
+  }, []);
+
+  // Use the data stored in the ref
+  const data = ref.current;
+
+  return (
+    <div>
+      <h1>{data.title}</h1>
+    </div>
+  );
+};
+```
+
+In this example, the `ref` variable stores a reference to the data that is fetched from the API. The data is then used to render the component.
+
+* **Use a context:** Contexts are a way to share state between components without having to pass props down the component tree. This can be useful for storing non-state instance variables that are needed by multiple components.
+
+Here is an example of how to use a context to store a non-state instance variable:
+
+```javascript
+// Create a context
+const MyContext = createContext(null);
+
+// Create a provider component
+const MyProvider = ({ children }) => {
+  const value = {
+    // Non-state instance variable
+    data: {},
+  };
+
+  return (
+    <MyContext.Provider value={value}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
+// Use the context in a consumer component
+const MyConsumer = () => {
+  const { data } = useContext(MyContext);
+
+  return (
+    <div>
+      <h1>{data.title}</h1>
+    </div>
+  );
+};
+```
+
+In this example, the `MyContext` context stores a reference to the non-state instance variable. The `MyProvider` component provides the context to its child components. The `MyConsumer` component uses the context to access the non-state instance variable.
+
+* **Use a global state management library:** Global state management libraries such as Redux allow you to store state in a central location and access it from anywhere in your application. This can be useful for storing non-state instance variables that are needed by multiple components throughout your application.
+
+Here is an example of how to use Redux to store a non-state instance variable:
+
+```javascript
+// Create a Redux store
+const store = createStore(reducer);
+
+// Create a selector to access the non-state instance variable
+const selectData = state => state.data;
+
+// Use the selector in a component
+const MyComponent = () => {
+  const data = useSelector(selectData);
+
+  return (
+    <div>
+      <h1>{data.title}</h1>
+    </div>
+  );
+};
+```
+
+In this example, the Redux store stores the non-state instance variable. The `selectData` selector is used to access the non-state instance variable from any component in the application.
+
+---
+
+**What is a pure function?**  
+A pure function is a function that has the following properties:
+
+* It always returns the same output for the same input.
+* It does not modify any state outside of its scope.
+
+Pure functions are easy to reason about and test, and they can be used to build composable and predictable code.
+
+Here is an example of a pure function:
+
+```
+function add(a, b) {
+  return a + b;
+}
+```
+
+This function takes two numbers as input and returns the sum of those numbers. It is a pure function because it always returns the same output for the same input and it does not modify any state outside of its scope.
+
+---
+
+**Explain some differences between `flux` and `angularJS(1.x)` approach?**  
+Flux and AngularJS (1.x) are two different approaches to building web applications. Flux is a data flow architecture, while AngularJS (1.x) is a model-view-controller (MVC) framework.
+
+**Flux**
+
+Flux is a data flow architecture that is designed to make web applications more predictable and easier to test. Flux is based on the following principles:
+
+* Unidirectional data flow: Data flows in one direction, from the dispatcher to the stores to the views. This makes it easier to reason about your code and to track down bugs.
+* Single source of truth: All the application state is stored in a single place, called the store. This makes it easier to keep your application state consistent.
+* Pure functions: All the functions in the application are pure, meaning that they always return the same output for the same input and they do not modify any state outside of their scope. This makes it easier to reason about your code and to test it.
+
+**AngularJS (1.x)**
+
+AngularJS (1.x) is a model-view-controller (MVC) framework that is designed to make web applications more scalable and maintainable. AngularJS is based on the following principles:
+
+* Model-view-controller (MVC) architecture: The application state is stored in the model, the view is responsible for rendering the state, and the controller is responsible for handling user interactions and updating the model. This makes the application easier to scale and maintain.
+* Two-way data binding: The view and the model are bound together, meaning that any changes to the model are automatically reflected in the view and any changes to the view are automatically reflected in the model. This makes the application more responsive and easier to develop.
+* Dependency injection: AngularJS supports dependency injection, which makes the application easier to test and maintain.
+
+**Differences between Flux and AngularJS (1.x)**
+
+The following table summarizes the key differences between Flux and AngularJS (1.x):
+
+| Feature                | Flux           | AngularJS (1.x)             |
+|------------------------|----------------|-----------------------------|
+| Data flow              | Unidirectional | Two-way                     |
+| Single source of truth | Yes            | No                          |
+| Pure functions         | Yes            | No                          |
+| Architecture           | Data flow      | Model-view-controller (MVC) |
+| Dependency injection   | No             | Yes                         |
+
+---
+
+
+**What is the key architectural difference between a javascript library such as react and a javascript framework such as angular?**  
+The key architectural difference between a JavaScript library such as React and a JavaScript framework such as Angular is that a library provides specific functionality, while a framework provides a complete architecture for building web applications.
+
+**JavaScript library**
+
+A JavaScript library is a collection of code that can be used to add specific functionality to a web application. Libraries are typically lightweight and easy to use, and they can be used with a variety of different frameworks and architectures.
+
+**JavaScript framework**
+
+A JavaScript framework is a complete architecture for building web applications. Frameworks typically provide a set of pre-built components and features, such as routing, data binding, and dependency injection. This can make it easier to develop complex web applications, but it can also make it more difficult to customize the application.
+
+**Key architectural difference**
+
+The key architectural difference between a library and a framework is that a library is focused on providing functionality, while a framework is focused on providing an architecture. This means that libraries are typically more flexible and easier to customize, while frameworks are typically more opinionated and provide a more complete solution.
+
+---
+
+**How to avoid a need for binding in react?**  
+There are two ways to avoid the need for binding in React:
+
+**1. Use arrow functions**
+
+Arrow functions are a type of function expression that was introduced in ES6. Arrow functions do not have their own `this` context, so they bind the `this` context of the surrounding scope.
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = () => {
+      // ...
+    };
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+**2. Use class properties**
+
+Class properties are a new feature of JavaScript that was introduced in ES2020. Class properties allow you to define fields and methods on a class without having to use the constructor.
+
+To avoid binding the `handleClick()` function, we can use a class property:
+
+```javascript
+class MyComponent extends React.Component {
+  handleClick = () => {
+    // ...
+  };
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+---
+
+**How does react render method work exactly when we call setState?**  
+When you call `setState()` in React, the following steps occur:
+
+1. React merges the new state with the current state.
+2. React creates a new virtual DOM.
+3. React compares the new virtual DOM to the previous virtual DOM.
+4. React updates the real DOM to match the new virtual DOM.
+
+**Merging the state**
+
+When React merges the new state with the current state, it replaces the values of any existing properties in the current state with the values of the corresponding properties in the new state. Any properties that do not exist in the new state will remain unchanged.
+
+**Creating a new virtual DOM**
+
+React creates a new virtual DOM every time you call `setState()`. The virtual DOM is a lightweight representation of the real DOM. It is a tree of objects that represents the elements and their attributes.
+
+**Comparing the virtual DOMs**
+
+React compares the new virtual DOM to the previous virtual DOM to determine which parts of the real DOM need to be updated. React uses a diffing algorithm to efficiently compare the two virtual DOMs.
+
+**Updating the real DOM**
+
+React updates the real DOM to match the new virtual DOM. React only updates the parts of the real DOM that have changed.
+
+---
+
+**How to useReact.memo?**  
+React.memo is a higher-order component (HOC) that can be used to memoize a React component. This means that React will only re-render the component if its props have changed. This can improve the performance of your application by reducing the number of re-renders.
+
+To use React.memo, you simply wrap your component in it:
+
+```javascript
+import React from "react";
+
+const MyComponent = () => {
+  // ...
+};
+
+const MemoizedComponent = React.memo(MyComponent);
+```
+
+React will now only re-render the `MemoizedComponent` if its props have changed.
+
+---
+
+**Can a custom react hook return jsx?**  
+Yes, a custom React hook can return JSX. However, it is not recommended to do so.
+
+Here are a few reasons why:
+
+* It can make your hooks less reusable. If a hook returns JSX, it can only be used in components that have the same JSX structure.
+* It can make your hooks more complex. Returning JSX from a hook can add unnecessary complexity to your code.
+* It can make your hooks less testable. It is more difficult to test hooks that return JSX than hooks that do not.
+
+---
+
+**What is the order of `useInsertionEffect`, `useEffect` and `useLayoutEffect` hooks at component generation?**  
+The order of execution of the `useInsertionEffect`, `useEffect`, and `useLayoutEffect` hooks is as follows:
+
+1. `useInsertionEffect`
+2. `useLayoutEffect`
+3. `useEffect`
+
+This means that the `useInsertionEffect` hook will always be executed first, followed by the `useLayoutEffect` hook, and then the `useEffect` hook.
+
+This order is important because it allows you to control the order in which certain side effects are executed. For example, if you need to insert a new element into the DOM before doing a layout update, you would use the `useInsertionEffect` hook.
+
+---
+
+**Explain compound component pattern in react?**  
+The compound component pattern in React is a way to create reusable components that encapsulate shared state and logic. This pattern is useful for building complex components that are made up of smaller, simpler components.
+
+A compound component is a component that contains other components. It manages the state and logic of the other components, and it exposes a simplified API to the parent component.
+
+The compound component pattern can be used to:
+
+* Reduce boilerplate code.
+* Improve code readability and maintainability.
+* Make it easier to share components between different parts of an application.
+* Improve the performance of applications by reducing the number of re-renders.
+
+---
+
+**What is react portals?**  
+React portals are a way to render React components outside of the DOM hierarchy of their parent component. This can be useful for things like modals, tooltips, and dropdowns.
+
+To create a portal, you need to use the `ReactDOM.createPortal()` method. This method takes two arguments: the component to render and the DOM element to render it into. The DOM element can be any valid DOM element, but it is typically a container element such as a `div` or a `body`.
+
+Here is an example of how to create a portal:
+
+```javascript
+import ReactDOM from 'react-dom';
+
+const Modal = () => {
+  return (
+    <div>
+      <h1>This is a modal</h1>
+    </div>
+  );
+};
+
+const MyComponent = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShowModal(true)}>Open Modal</button>
+      {showModal && ReactDOM.createPortal(<Modal />, document.body)}
+    </div>
+  );
+};
+```
+
+In this example, the `MyComponent` component has a button that opens a modal when clicked. The modal is rendered using a portal, so it appears outside of the normal DOM hierarchy.
+
+Portals can be useful for a variety of purposes. For example, you can use portals to:
+
+* Render components outside of the overflow of their parent component.
+* Render components in a different z-index than their parent component.
+* Render components in a different part of the DOM than their parent component.
+
+Here are some examples of how portals can be used:
+
+* Modals: Portals can be used to render modals outside of the overflow of their parent component. This ensures that the modal is always visible, even if the parent component is hidden.
+* Tooltips: Portals can be used to render tooltips outside of the overflow of their parent component. This ensures that the tooltip is always visible, even if the parent component is hidden.
+* Dropdowns: Portals can be used to render dropdowns outside of the overflow of their parent component. This ensures that the dropdown is always visible, even if the parent component is hidden.
+* Menus: Portals can be used to render menus outside of the overflow of their parent component. This ensures that the menu is always visible, even if the parent component is hidden.
+
+Portals are a powerful tool that can be used to create more flexible and user-friendly React applications.
+
+---
+
+**Provide an example of any simple custom react hook. Why do we need custom hooks?**  
+Here is an example of a simple custom React hook:
+
+```javascript
+import { useState } from 'react';
+
+export const useToggle = (initialValue = false) => {
+  const [isOn, setIsOn] = useState(initialValue);
+
+  const toggle = () => {
+    setIsOn(!isOn);
+  };
+
+  return [isOn, toggle];
+};
+```
+
+This hook provides a simple way to toggle a boolean value. It takes an initial value as a prop, and it returns an array with two values: the current state of the boolean value and a function to toggle it.
+
+To use the hook, you would simply import it into your component and then call it:
+
+```javascript
+import { useToggle } from './useToggle';
+
+const MyComponent = () => {
+  const [isOn, toggle] = useToggle();
+
+  return (
+    <button onClick={toggle}>{isOn ? 'Turn off' : 'Turn on'}</button>
+  );
+};
+```
+
+When you click the button, the `toggle` function will be called, which will toggle the state of the boolean value. The button will then be re-rendered with the updated state.
+
+We need custom hooks because they allow us to encapsulate common state and logic into reusable components. This can make our code more readable, maintainable, and reusable.
+
+---
+
+**How to mitigate multiple component re-renders when using multiple `useState` calls?**  
+There are a few ways to mitigate multiple component re-renders when using multiple useState calls:
+
+1. **Use a single useState call for related state:** If you have multiple state variables that are related to each other, you can consider using a single useState call for all of them. This will reduce the number of re-renders that occur when any of the state variables change.
+
+For example, instead of using two separate useState calls for the `firstName` and `lastName` state variables, you could use a single useState call for an object that contains both of those state variables:
+
+```javascript
+const [user, setUser] = useState({
+  firstName: '',
+  lastName: '',
+});
+```
+
+Then, you could access the `firstName` and `lastName` state variables through the `user` object:
+
+```javascript
+const firstName = user.firstName;
+const lastName = user.lastName;
+```
+
+2. **Use a memoization hook:** You can also use a memoization hook to prevent unnecessary component re-renders. Memoization hooks allow you to cache the results of expensive computations and only re-render the component if the inputs to the computation change.
+
+For example, if you have a component that renders a list of items, and the list of items is generated from a complex computation, you could use a memoization hook to cache the results of the computation and only re-render the component if the list of items changes.
+
+3. **Use a state management library:** If you have a complex application with a lot of state, you may want to consider using a state management library such as Redux or MobX. State management libraries provide a centralized way to manage the state of your application, which can help to reduce the number of re-renders that occur.
+
+---
