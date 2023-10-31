@@ -3100,3 +3100,92 @@ For example, if you have a component that renders a list of items, and the list 
 3. **Use a state management library:** If you have a complex application with a lot of state, you may want to consider using a state management library such as Redux or MobX. State management libraries provide a centralized way to manage the state of your application, which can help to reduce the number of re-renders that occur.
 
 ---
+
+**What is a single page application? Explain its pros and cons and compare it with older methods.**  
+A single-page application (SPA) is a web application that loads a single HTML page and dynamically updates that page as the user interacts with the application. SPAs are often used to create fast and responsive web applications, such as social media platforms, e-commerce websites, and productivity tools.
+
+**Pros of SPAs**
+
+* **Fast loading:** SPAs only load a single HTML page, which means that they load much faster than traditional web applications, which need to load a new page for every interaction.
+* **Responsive:** SPAs are very responsive, meaning that they can update the user interface quickly and without reloading the page. This makes them ideal for creating dynamic and interactive web applications.
+* **Efficient:** SPAs only send data to the server when necessary, which makes them more efficient than traditional web applications, which need to send a new request to the server for every interaction.
+* **Offline support:** Some SPAs can be used offline, which means that users can access them even when they do not have an internet connection. This is useful for applications such as productivity tools and note-taking apps.
+
+**Cons of SPAs**
+
+* **SEO:** SPAs can be difficult for search engines to index, which can make it difficult to rank high in search results.
+* **Complexity:** SPAs can be more complex to develop and maintain than traditional web applications.
+* **Back button:** The back button does not always work as expected in SPAs, which can be confusing for users.
+
+**Comparison with older methods**
+
+Older web applications typically used a server-rendered architecture. This means that the server would generate a new HTML page for every interaction, which would then be sent to the client. This approach is simple and straightforward, but it can be slow and unresponsive.
+
+SPAs use a client-rendered architecture. This means that the client is responsible for generating and updating the user interface. This approach can be faster and more responsive, but it can also be more complex to develop and maintain.
+
+---
+
+**Client-side routing vs. server-side routing?**  
+**Client-side routing** is a type of routing that uses JavaScript to update the user interface without reloading the page. This is done by changing the URL in the browser's address bar and pushing a new entry onto the browser's history stack.
+
+**Server-side routing** is a type of routing that uses the server to generate a new HTML page for each page view. This is done by sending a request to the server with the desired URL, and the server then responds with the HTML page for that URL.
+
+Here is a table that summarizes the key differences between client-side routing and server-side routing:
+
+| Characteristic                | Client-side routing | Server-side routing  |
+|-------------------------------|---------------------|----------------------|
+| **Speed**                     | Faster              | Slower               |
+| **Responsiveness**            | More responsive     | Less responsive      |
+| **User experience**           | Better              | Worse                |
+| **Implementation complexity** | More complex        | Simpler to implement |
+| **SEO**                       | More difficult      | Better               |
+| **Security**                  | Less secure         | More secure          |
+
+**When to use client-side routing**
+
+Client-side routing is a good choice for web applications where speed, responsiveness, and user experience are important. For example, client-side routing is often used in social media applications, e-commerce websites, and productivity tools.
+
+**When to use server-side routing**
+
+Server-side routing is a good choice for web applications where security, SEO, and simplicity are important. For example, server-side routing is often used in banking applications, healthcare applications, and e-commerce websites where sensitive data is processed.
+
+**Examples of client-side routing**
+
+* React Router
+* Angular Router
+* Vue Router
+
+**Examples of server-side routing**
+
+* ASP.NET Core routing
+* Django routing
+* Laravel routing
+
+---
+
+**Explain the server-side rendering**  
+Server-side rendering (SSR) is a technique that renders a web page on the server before it is sent to the browser. This is in contrast to client-side rendering (CSR), where the web page is rendered in the browser.
+
+SSR has a number of advantages over CSR:
+
+* **Faster initial page load:** When a user visits a web page that uses SSR, the server can send the fully rendered HTML page to the browser immediately. This results in a much faster initial page load time than with CSR, where the browser has to download and execute JavaScript before it can start rendering the page.
+* **Better SEO:** SSR is better for SEO than CSR because search engines can crawl and index the fully rendered HTML pages. This is not possible with CSR, where the search engine would only see the initial HTML skeleton of the page.
+* **More reliable:** SSR is more reliable than CSR because it does not rely on JavaScript to render the page. This means that users can still view the page even if they have JavaScript disabled or if they are using a slow or unstable internet connection.
+
+However, SSR also has some disadvantages:
+
+* **More complex to implement:** SSR can be more complex to implement than CSR. This is because you need to develop a server-side application that can render the HTML pages.
+* **Higher server load:** SSR can generate more load on the server than CSR. This is because the server has to render the HTML pages before they can be sent to the browser.
+
+**When to use SSR**
+
+SSR is a good choice for web applications where performance and SEO are important. It is also a good choice for web applications that need to be accessible to users with JavaScript disabled or with slow or unstable internet connections.
+
+Some examples of web applications that commonly use SSR include:
+
+* E-commerce websites
+* News websites
+* Social media platforms
+* Productivity tools
+
+---
