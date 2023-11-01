@@ -815,3 +815,52 @@ In general, ES6 modules are recommended for new projects. They offer a number of
 including better modularity, easier static analysis, and native support in browsers.
 
 ---
+
+18. Create the debounce function?  
+Debouncing is a programming technique that limits the rate at which a function can be called. It is useful for preventing unnecessary function calls, such as when a function is called repeatedly in response to a user event.
+
+For example, imagine you have a search box that shows suggestions as the user types. If you call a function to fetch suggestions on every keystroke, you might end up making too many requests to the server, which can slow down the application and waste resources.
+
+Debouncing can be used to delay the execution of the function until a certain amount of time has passed since the last time it was called. This means that the function will only be executed once, even if the user types multiple keys in a short period of time.
+
+Here is a simple implementation of a debounce function in JavaScript:
+
+```javascript
+function debounce(func, wait) {
+  let timer;
+  return function() {
+    const args = arguments;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, wait);
+  };
+}
+```
+
+This function takes two parameters:
+
+* `func`: The function to be debounced.
+* `wait`: The amount of time to wait in milliseconds before executing the function.
+
+The function returns a new function that can be used to call the debounced function. This new function will delay the execution of the original function until `wait` milliseconds have passed since the last time it was called.
+
+Here is an example of how to use the debounce function:
+
+```javascript
+function requestSender() {
+    console.log("Request has been sent.");
+}
+
+const process = debounce(requestSender, 5000);
+
+process();
+process();
+process();
+
+// Output: After 5 seconds --> Request has been sent.
+```
+
+Debouncing is a useful technique for optimizing JavaScript applications. It can be used to improve the performance of user interfaces, prevent unnecessary API calls, and reduce the load on the server.
+
+---
