@@ -748,3 +748,70 @@ Manager.prototype.getDepartment = function () {
 ```
 
 ---
+
+17. 1. Create a es6 module with function getName, getSurName and default export getFullName.
+```javascript
+// New file: es6.js
+
+export const getName = name => name;
+
+export const getSurname = surname => surname;
+
+export default (name, surName) => `${getName(name)} ${getSurname(surName)}`;
+```
+```javascript
+// New file: main.js
+
+import getFullName, {getName, getSurname} from "./es6";
+
+console.log(getName("Milad"));
+console.log(getSurname("Sadeghi"));
+console.log(getFullName("Milad", "Sadeghi"));
+```
+
+17. 2. Create the same with commonJS module.
+```javascript
+// New file: common.js
+
+const getName = name => name;
+const getSurname = surname => surname;
+
+module.exports.getName = getName;
+module.exports.getSurname = getSurname;
+module.exports.getFullName = (name, surName) => `${getName(name)} ${getSurname(surName)}`;
+```
+```javascript
+const {getName, getSurname, getFullName} = require("./common.js");
+
+console.log(getName("Milad"));
+console.log(getSurname("Sadeghi"));
+console.log(getFullName("Milad", "Sadeghi"));
+```
+
+17. 3. What are the differences between ES6 and commonJS modules?  
+ES6 modules and CommonJS modules are two different ways to organize and reuse code in JavaScript. ES6 modules are newer
+and more modern, while CommonJS modules are older and more widely used.
+
+**Here are some of the key differences between ES6 and CommonJS modules:**
+
+| Feature        | ES6 modules                                             | CommonJS modules                                                                |
+|----------------|---------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Syntax**     | Uses the `import` and `export` statements               | Uses the `require()` function and the `module.exports` object                   |
+| **Loading**    | Are loaded statically                                   | Are loaded dynamically                                                          |
+| **Support**    | Natively supported in modern browsers and Node.js       | Require a bundler to be used in browsers                                        |
+| **Modularity** | Encourage strong modularity and encapsulation           | Can be less modular, with more global variables and dependencies                |
+| **Tooling**    | Static analysis tools can easily understand ES6 modules | Static analysis tools require additional tooling to understand CommonJS modules |
+
+**Other differences:**
+
+* ES6 modules can only be imported at the top of a file, while CommonJS modules can be imported anywhere in a file.
+* ES6 modules support named exports and default exports, while CommonJS modules only support default exports.
+* ES6 modules are asynchronous by default, while CommonJS modules are synchronous by default.
+* ES6 modules are designed to be tree-shakable, which means that unused code can be removed from the bundle, while CommonJS modules are not.
+
+**Which one to use?**
+
+In general, ES6 modules are recommended for new projects. They offer a number of advantages over CommonJS modules,
+including better modularity, easier static analysis, and native support in browsers.
+
+---
