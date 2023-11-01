@@ -864,3 +864,67 @@ process();
 Debouncing is a useful technique for optimizing JavaScript applications. It can be used to improve the performance of user interfaces, prevent unnecessary API calls, and reduce the load on the server.
 
 ---
+
+19. Create the throttle function?  
+Throttling is a programming technique that limits the rate at which a function can be called. It is similar to debouncing, but with a key difference: throttling will call the function at most once in a given time interval, regardless of how many times the function is called.
+
+This means that throttling is useful for scenarios where you want to ensure that a function is called regularly, but not too often. For example, you might want to throttle a function that updates the UI in response to user input, so that the UI doesn't become unresponsive if the user interacts with it too quickly.
+
+Here is a simple implementation of a throttle function in JavaScript:
+
+```javascript
+function throttle(func, wait) {
+    let isWaiting = false;
+    return function() {
+        const args = arguments;
+        if (!isWaiting) {
+            func.apply(this, args);
+            isWaiting = true;
+            setTimeout(() => {
+                isWaiting = false;
+            }, wait); 
+        }
+        
+    };
+}
+```
+
+This function takes two parameters:
+
+* `func`: The function to be throttled.
+* `wait`: The amount of time to wait in milliseconds before executing the function again.
+
+The function returns a new function that can be used to call the throttled function. This new function will only call the original function if at least `wait` milliseconds have passed since the last time it was called.
+
+Here is an example of how to use the throttle function:
+
+```javascript
+function requestSender() {
+    console.log("Request has been sent.");
+}
+
+const process = throttle(requestSender, 2000);
+process();
+
+setTimeout(() => {
+    process();
+}, 1000);
+
+setTimeout(() => {
+    process();
+}, 1200);
+
+setTimeout(() => {
+    process();
+}, 2400);
+
+/*
+Output:
+Immediately ---> Request has been sent.
+After 2400ms ---> Request has been sent.
+ */
+```
+
+Throttling is another useful technique for optimizing JavaScript applications. It can be used to improve the performance of user interfaces, prevent unnecessary API calls, and reduce the load on the server.
+
+---
