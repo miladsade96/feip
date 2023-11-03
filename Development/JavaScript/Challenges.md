@@ -928,3 +928,13 @@ After 2400ms ---> Request has been sent.
 Throttling is another useful technique for optimizing JavaScript applications. It can be used to improve the performance of user interfaces, prevent unnecessary API calls, and reduce the load on the server.
 
 ---
+
+20. Highlight all the words over 8 characters long in the paragraph text with a yellow background?
+```javascript
+const paragraph = document.querySelector("p");
+paragraph.innerHTML = paragraph.innerHTML.split(" ").map(word => {
+    return word > 8 ? `<span style="background-color: yellow">${word}</span>` : word;
+}).join(" ");
+```
+
+---
