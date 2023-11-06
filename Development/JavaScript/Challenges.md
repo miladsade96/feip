@@ -938,3 +938,13 @@ paragraph.innerHTML = paragraph.innerHTML.split(" ").map(word => {
 ```
 
 ---
+
+21. Add a link back to the source of the text after the paragraph tag?
+```javascript
+const linkTag = document.createElement("a");
+linkTag.href = "https://hereismy.site";
+linkTag.innerText = "Milad's Personal Website";
+document.body.appendChild(linkTag);
+```
+
+---
