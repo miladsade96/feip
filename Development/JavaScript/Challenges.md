@@ -957,3 +957,32 @@ paragraph.innerHTML = paragraph.innerHTML.split(/\.[^.|<]/).join(".</p><p>") + "
 ```
 
 ---
+
+23. Implement an efficient click event on todo items as fast as possible?
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fast click event implementation</title>
+    </head>
+    <body>
+        <ul class="todo-app">
+            <li class="item">Go shopping</li>
+            <li class="item">Pay bills</li>
+            <li class="item">Study for the exam</li>
+            <li class="item">Make dinner</li>
+            <li class="item">Refactor the code base</li>
+        </ul>
+    </body>
+</html>
+```
+```javascript
+const app = document.querySelector(".todo-app");
+app.addEventListener("click", (e) => {
+    if (e.target && e.target.classList.contains("item")) {
+        console.log(`You clicked on item: ${e.target.innerText}`);
+    }
+})
+```
+
+---
