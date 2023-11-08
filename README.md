@@ -35,6 +35,7 @@ and boost your confidence in frontend interviews.
     - [Object Oriented](Development/JavaScript/05-objectOriented.md)
     - [Coding Challenges](Development/JavaScript/Challenges.md)
   - [ReactJS](Development/reactjs.md)
+  - [Redux](Development/redux.md)
 - **Other:**
   - [Agile](Other/Agile.md)
 
