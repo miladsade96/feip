@@ -1004,3 +1004,12 @@ xhr.onerror = function () {
 ```
 
 ---
+
+25. Write an example of fetching data using fetch API?
+```javascript
+fetch("https://example.com").then(res => res.json()).then(data => {
+    console.log(data)}).catch(err => {
+    console.log(err.message)});
+```
+
+---
