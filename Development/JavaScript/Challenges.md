@@ -1013,3 +1013,25 @@ fetch("https://example.com").then(res => res.json()).then(data => {
 ```
 
 ---
+
+26. 1. Write an asynchronous function which executes a callback after finishing its asynchronous task?
+```javascript
+const asyFun = callback => {
+    setTimeout(() => {
+        callback("done");
+    }, 3000);
+};
+
+function ourCB(message) {
+    console.log(`Callback ${message}`);
+}
+
+asyFun(ourCB);
+```
+
+26. 2. What problems does callback solve?
+- **Allowing JavaScript to be asynchronous**. JavaScript is a single-threaded language, meaning that it can only execute one task at a time. Callbacks allow JavaScript to execute multiple tasks simultaneously by allowing functions to be executed when they are ready.
+- **Handling asynchronous operations**. Asynchronous operations are operations that take an unknown amount of time to complete, such as making network requests or reading files. Callbacks allow JavaScript to handle these operations by allowing functions to be executed when the operation has finished.
+- **Implementing event-driven programming**. Event-driven programming is a programming paradigm in which the flow of execution is determined by events, such as user input or network messages. Callbacks allow JavaScript to implement event-driven programming by allowing functions to be executed when an event occurs.
+
+---
