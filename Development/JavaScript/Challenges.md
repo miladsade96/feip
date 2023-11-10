@@ -986,3 +986,21 @@ app.addEventListener("click", (e) => {
 ```
 
 ---
+
+24. Write an example of fetching data with XMLHttpRequest?
+```javascript
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://example.com");
+xhr.send();
+
+xhr.onload = function () {
+    if (xhr.status !== 200) console.log(`Error: ${xhr.status} - ${xhr.statusText}`);
+    else console.log(`Success: ${xhr.response}`);
+}
+
+xhr.onerror = function () {
+    console.log("Request failed!");
+}
+```
+
+---
