@@ -34,6 +34,7 @@ and boost your confidence in frontend interviews.
     - [Date & Time](Development/JavaScript/04-dateTime.md)
     - [Object Oriented](Development/JavaScript/05-objectOriented.md)
     - [Coding Challenges](Development/JavaScript/Challenges.md)
+  - [TypeScript](Development/typescript.md)
   - [ReactJS](Development/reactjs.md)
   - [Redux](Development/redux.md)
 - **Other:**
