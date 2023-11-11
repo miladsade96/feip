@@ -1035,3 +1035,42 @@ asyFun(ourCB);
 - **Implementing event-driven programming**. Event-driven programming is a programming paradigm in which the flow of execution is determined by events, such as user input or network messages. Callbacks allow JavaScript to implement event-driven programming by allowing functions to be executed when an event occurs.
 
 ---
+
+27. Execute the given list of asynchronous functions in parallel and return the results as an array to the callback?
+```javascript
+const asyncFunc1 = (callback) => {
+    setTimeout(() => {callback(1)}, 3000);
+};
+
+const asyncFunc2 = (callback) => {
+    setTimeout(() => {callback(2)}, 2000);
+};
+
+const asyncFunc3 = (callback) => {
+    setTimeout(() => {callback(3)}, 1000);
+};
+```
+```javascript
+// Solution:
+
+const asyncParallel = (asyncFuncs, callback) => {
+    const resultArr = new Array(asyncFuncs.length);
+    let resultCounter = 0;
+    
+    asyncFuncs.forEach((asyncFunc, index) => {
+        asyncFunc((value) => {
+            resultArr[index] = value;
+            resultCounter++;
+            if (resultCounter >= asyncFuncs.length) callback(resultArr);
+        })
+    })
+}
+
+const cbFn = (res) => {
+    console.log(res);
+}
+
+asyncParallel([asyncFunc1, asyncFunc2, asyncFunc3], cbFn);  // [1, 2, 3]
+```
+
+---
