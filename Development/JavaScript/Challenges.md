@@ -1074,3 +1074,26 @@ asyncParallel([asyncFunc1, asyncFunc2, asyncFunc3], cbFn);  // [1, 2, 3]
 ```
 
 ---
+
+28. Create a promise function to be able to use callback function via promise approach?
+```javascript
+const asyncFunc = callback => {
+    setTimeout(() => {
+        callback(1)
+    }, 3000);
+}
+
+const promisifyAsyncFunc = () => {
+    return new Promise(function (resolve) {
+        asyncFunc( data => {
+            resolve(data);
+    })});
+}
+
+promisifyAsyncFunc().then((result) => {
+        console.log(result)
+    }
+);
+```
+
+---
