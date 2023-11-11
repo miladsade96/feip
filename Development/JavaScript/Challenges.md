@@ -1097,3 +1097,51 @@ promisifyAsyncFunc().then((result) => {
 ```
 
 ---
+
+29. You have to functions which return promises. Map data from users and userStatuses to get array of users with
+id, name and isActive?
+```javascript
+const usersArr = [
+  { id: 1, name: "Ema" },
+  { id: 2, name: "Olivia" },
+  { id: 3, name: "Rebecca" },
+];
+
+const usersStatusesArr = [
+  { id: 1, isActive: true },
+  { id: 2, isActive: true },
+  { id: 3, isActive: false },
+];
+
+const getUsers = () => {
+  return new Promise((resolve) => {
+    resolve(usersArr);
+  });
+};
+
+const getUsersStatuses = () => {
+  return new Promise((resolve) => {
+    resolve(usersStatusesArr);
+  });
+};
+
+
+// Solution:
+
+const mapUsers = (users, usersStatuses) => {
+  return users.map((user) => {
+    const isActive = usersStatuses.find(
+      (userStatus) => userStatus.id === user.id,
+    ).isActive;
+    return { ...user, isActive };
+  });
+};
+
+Promise.all([getUsers(), getUsersStatuses()])
+  .then(([users, usersStatuses]) => mapUsers(users, usersStatuses))
+  .then((mpUsers) => {
+    console.log(mpUsers);
+  });
+```
+
+---
