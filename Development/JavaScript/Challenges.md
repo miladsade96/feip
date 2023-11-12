@@ -1145,3 +1145,76 @@ Promise.all([getUsers(), getUsersStatuses()])
 ```
 
 ---
+
+30. Rewrite previous task in async await?
+```javascript
+const usersArr = [
+  { id: 1, name: "Ema" },
+  { id: 2, name: "Olivia" },
+  { id: 3, name: "Rebecca" },
+];
+
+const usersStatusesArr = [
+  { id: 1, isActive: true },
+  { id: 2, isActive: true },
+  { id: 3, isActive: false },
+];
+
+const getUsers = () => {
+  return new Promise((resolve) => {
+    resolve(usersArr);
+  });
+};
+
+const getUsersStatuses = () => {
+  return new Promise((resolve) => {
+    resolve(usersStatusesArr);
+  });
+};
+
+
+
+// Solution:
+const getMappedUsers = async () => {
+    try {
+        const users = await getUsers();
+        const usersStatuses = await getUsersStatuses();
+        const mappedUsers = users.map((user) => {
+            const isActive = usersStatuses.find(
+                (userStatus) => userStatus.id === user.id,
+            ).isActive;
+            return { ...user, isActive };
+        });
+        console.log(mappedUsers);
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+
+getMappedUsers();
+```
+
+---
+
+31. Design a utility which takes url and a value for attempts which will attempt to make a fetch request. If on failure
+it tries again with increasing delay for number of times which user has requested.
+```javascript
+const requestManager = (url, options = {}, attempts=5) => {
+    return new Promise(function (resolve, reject) { 
+        fetch(url, options).then(resolve).catch(err => {
+            let isLastAttempt = attempts === 1;
+            if (isLastAttempt) return reject(err);
+            setTimeout(() => {
+                requestManager(url, options, attempts - 1).then(resolve).then(reject);
+            }, 3000);
+        });
+    });
+}
+
+
+requestManager("https://foo.net").then(response => {
+    console.log(response)}).catch(err => {
+    console.log(err.message)});
+```
+
+---
