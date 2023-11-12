@@ -180,3 +180,127 @@ The built-in types in TypeScript are:
 TypeScript also has a number of other built-in types, such as arrays, tuples, enums, and unions. These types are derived from the basic built-in types listed above.
 
 ---
+
+**How to call base class constructor from child class in typescript?**  
+To call the base class constructor from a child class in TypeScript, you use the `super()` keyword. The `super()` keyword refers to the parent class of the current class.
+
+For example, the following code shows how to call the base class constructor from a child class:
+
+```typescript
+class Person {
+  constructor(public name: string) {}
+}
+
+class Employee extends Person {
+  constructor(public name: string, public salary: number) {
+    super(name);
+  }
+}
+
+const employee = new Employee("John Doe", 100000);
+```
+
+In the above example, the `Employee` class extends the `Person` class. The `Employee` class constructor calls the `super()` keyword to call the `Person` class constructor. This ensures that the `Employee` class object is initialized with all of the properties of the `Person` class.
+
+You can also pass arguments to the `super()` keyword to initialize the base class constructor parameters. For example, the following code shows how to pass arguments to the base class constructor:
+
+```typescript
+class Person {
+  constructor(public name: string, public age: number) {}
+}
+
+class Employee extends Person {
+  constructor(public name: string, public salary: number) {
+    super(name, 30);
+  }
+}
+
+const employee = new Employee("John Doe", 100000);
+```
+
+In the above example, the `Employee` class constructor passes the `name` argument to the `super()` keyword to initialize the `name` property of the `Person` class. The `Employee` class constructor also passes the value `30` to the `super()` keyword to initialize the `age` property of the `Person` class.
+
+It is important to note that you must always call the `super()` keyword in the child class constructor if you want to initialize the base class constructor parameters. If you do not call the `super()` keyword, the base class constructor will not be called and the base class properties will not be initialized.
+
+---
+
+**Do we need to compile typescript files and why?**  
+Yes, TypeScript files need to be compiled before they can be run in a browser or on a server. This is because TypeScript is a superset of JavaScript, and browsers and servers only understand JavaScript.
+
+When you compile a TypeScript file, the TypeScript compiler converts the TypeScript code into JavaScript code. This JavaScript code can then be run in a browser or on a server.
+
+---
+
+**How to perform string interpolation in typescript?**  
+To perform string interpolation in TypeScript, you use template literals. Template literals are enclosed in backticks (`), and they allow you to embed expressions within the string.
+
+For example, the following code shows how to perform string interpolation using a template literal:
+
+```typescript
+const name = "John Doe";
+const age = 30;
+
+const greeting = `Hello, ${name}! You are ${age} years old.`;
+```
+
+You can also use template literals to perform more complex string interpolation tasks, such as formatting numbers and dates. For example, the following code shows how to format a number using a template literal:
+
+```typescript
+const price = 10.99;
+
+const formattedPrice = `The price is $${price.toFixed(2)}`;
+```
+
+---
+
+**What is the difference between `.ts` and `.tsx` file extensions in typescript?**  
+The `.ts` file extension is used for TypeScript files that contain plain TypeScript code. The `.tsx` file extension is used for TypeScript files that contain JSX code.
+
+JSX is a JavaScript syntax extension that allows you to write HTML-like code within your JavaScript code. This can make it easier to develop user interfaces in React and other JavaScript frameworks.
+
+If you are developing a TypeScript application that does not use JSX, you should use the `.ts` file extension. If you are developing a TypeScript application that uses JSX, you should use the `.tsx` file extension.
+
+---
+
+**What are decorators in typescript?**  
+Decorators in TypeScript are a way to add metadata to classes, methods, properties, and parameters. Metadata is data that describes the code, but it is not executed. Decorators can be used to perform a variety of tasks, such as:
+
+* **Adding annotations:** Decorators can be used to add annotations to code, such as documentation or version information.
+* **Modifying the behavior of code:** Decorators can be used to modify the behavior of code, such as logging method calls or validating property values.
+* **Creating custom code generation:** Decorators can be used to create custom code generation, such as generating documentation or creating proxy objects.
+
+Decorators are defined using a special syntax that consists of the `@` symbol followed by the name of the decorator function. The decorator function can take any number of arguments, which can be used to provide metadata to the code.
+
+For example, the following code shows a simple decorator that logs method calls:
+
+```typescript
+function logMethodCall(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  console.log(`Calling method ${propertyKey}`);
+}
+
+@logMethodCall
+class MyClass {
+  public myMethod() {}
+}
+```
+
+When the `MyClass.myMethod()` method is called, the `logMethodCall()` decorator will be executed and the method call will be logged to the console.
+
+Decorators can also be used to modify the behavior of code. For example, the following code shows a decorator that validates property values:
+
+```typescript
+function validateProperty(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  if (descriptor.value !== 'foo') {
+    throw new Error(`Property ${propertyKey} must be equal to 'foo'`);
+  }
+}
+
+@validateProperty
+class MyClass {
+  public myProperty: string;
+}
+```
+
+When a new instance of the `MyClass` class is created, the `validateProperty()` decorator will be executed and the `myProperty` property value will be validated. If the property value is not equal to `'foo'`, an error will be thrown.
+
+---
