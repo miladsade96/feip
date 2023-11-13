@@ -304,3 +304,221 @@ class MyClass {
 When a new instance of the `MyClass` class is created, the `validateProperty()` decorator will be executed and the `myProperty` property value will be validated. If the property value is not equal to `'foo'`, an error will be thrown.
 
 ---
+
+**what is interface in typescript?**  
+An interface in TypeScript is a way to define a contract in your code. It defines the shape of an object, with specified properties and methods.
+
+Here are some key things to know about interfaces in TypeScript:
+
+- An interface is defined using the interface keyword:
+
+```ts
+interface User {
+  name: string;
+  id: number;
+}
+```
+
+- An interface doesn't implement anything - it just defines what properties and methods something should have.
+
+- Interfaces can describe objects, functions, arrays, classes, etc.
+
+- Interfaces are used for static type checking - they ensure an object meets the requirements of the interface.
+
+- Objects that implement an interface must contain the properties and methods defined in the interface.
+
+- Interfaces can extend other interfaces using the extends keyword.
+
+- Interfaces can't be instantiated directly - they exist only as a type definition.
+
+- Implementing classes must follow the interface contract - if they don't, it will result in a compile error.
+
+So in summary, interfaces in TypeScript allow you to define reusable static types that define a contract within your code. They are useful for static analysis and enable type checking during development.
+
+---
+
+**What is the difference between classes and interfaces in typescript?**  
+Classes and interfaces are two important concepts in TypeScript. Classes are used to define blueprints for objects, while interfaces are used to define the structure of objects.
+
+- **Classes**: Classes can be used to define the properties and methods of objects. Classes can also be used to inherit from other classes to create new classes with new features.
+- **Interfaces**: Interfaces define the structure of objects, but they do not provide any implementation. This means that interfaces cannot be used to create objects directly. Interfaces are typically used to validate the types of objects that are passed to functions and methods.
+
+---
+
+**How to implement class constants in typescript?**  
+There are two ways to implement class constants in TypeScript:
+
+1. Using the `static` and `readonly` keywords
+2. Using the `const` keyword with the `as const` assertion
+
+**Using the `static` and `readonly` keywords**
+
+The first way to implement class constants in TypeScript is to use the `static` and `readonly` keywords. The `static` keyword makes the constant available on the class itself, rather than on instances of the class. The `readonly` keyword prevents the constant from being reassigned.
+
+For example, the following code shows how to implement a class constant using the `static` and `readonly` keywords:
+
+```typescript
+class Person {
+  static readonly MAX_AGE = 120;
+
+  constructor(public name: string) {}
+}
+
+// Access the class constant
+const maxAge = Person.MAX_AGE;
+```
+
+The `MAX_AGE` constant is now available on the `Person` class itself. This means that you can access the constant without having to create an instance of the class.
+
+**Using the `const` keyword with the `as const` assertion**
+
+The second way to implement class constants in TypeScript is to use the `const` keyword with the `as const` assertion. The `const` keyword prevents the variable from being reassigned. The `as const` assertion tells the TypeScript compiler to treat the variable as a constant.
+
+For example, the following code shows how to implement a class constant using the `const` keyword with the `as const` assertion:
+
+```typescript
+class Person {
+  constructor(public name: string) {}
+}
+
+// Access the class constant
+const MAX_AGE: number as const = 120;
+```
+
+The `MAX_AGE` constant is now treated as a constant by the TypeScript compiler. This means that you cannot reassign the constant.
+
+---
+
+**What are getters and setters in typescript?**  
+Getters and setters are methods that allow you to read and write to the properties of an object in a controlled way. Getters are used to get the value of a property, while setters are used to set the value of a property.
+
+**Getters**
+
+Getters are defined using the `get` keyword. Getters can take any number of arguments, and they can return any value.
+
+For example, the following code shows a simple getter:
+
+```typescript
+class Person {
+  private _name: string;
+
+  constructor(name: string) {
+    this._name = name;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+}
+```
+
+This getter returns the value of the `_name` property.
+
+Getters can be used to perform validation and other tasks before returning the value of a property. For example, the following getter validates the value of the `_age` property before returning it:
+
+```typescript
+class Person {
+  private _age: number;
+
+  constructor(age: number) {
+    if (age < 0) {
+      throw new Error('The age must be a non-negative number.');
+    }
+
+    this._age = age;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+}
+```
+
+This getter will throw an error if the `_age` property is less than zero.
+
+**Setters**
+
+Setters are defined using the `set` keyword. Setters take one argument, which is the new value of the property.
+
+For example, the following code shows a simple setter:
+
+```typescript
+class Person {
+  private _name: string;
+
+  constructor(name: string) {
+    this._name = name;
+  }
+
+  set name(name: string) {
+    this._name = name;
+  }
+}
+```
+
+This setter sets the value of the `_name` property to the value of the `name` parameter.
+
+Setters can be used to perform validation and other tasks before setting the value of a property. For example, the following setter validates the value of the `_age` property before setting it:
+
+```typescript
+class Person {
+  private _age: number;
+
+  constructor(age: number) {
+    this._age = age;
+  }
+
+  set age(age: number) {
+    if (age < 0) {
+      throw new Error('The age must be a non-negative number.');
+    }
+
+    this._age = age;
+  }
+}
+```
+
+This setter will throw an error if the `age` parameter is less than zero.
+
+**Benefits of using getters and setters**
+
+Getters and setters offer a number of benefits, including:
+
+* **Validation:** Getters and setters can be used to perform validation on the values of properties. This can help to prevent errors in your code.
+* **Encapsulation:** Getters and setters can be used to encapsulate the properties of an object. This can help to protect the properties from being modified directly.
+* **Flexibility:** Getters and setters can be used to implement custom logic when reading and writing to the properties of an object. This can make your code more flexible and reusable.
+
+---
+
+**Does typescript support all object-oriented principles?**  
+Yes, TypeScript supports all the core object-oriented principles, including:
+
+* **Abstraction:** TypeScript supports abstract classes and interfaces, which can be used to define the structure and behavior of objects without providing a concrete implementation. This allows you to create reusable and flexible code.
+* **Encapsulation:** TypeScript supports private and protected members, which can be used to protect the internal state of objects from being modified directly. This helps to ensure the correctness and maintainability of your code.
+* **Inheritance:** TypeScript supports inheritance, which allows you to create new classes that inherit the properties and methods of existing classes. This allows you to reuse code and create more complex and powerful objects.
+* **Polymorphism:** TypeScript supports polymorphism, which allows you to treat different types of objects in the same way. This allows you to write more generic and reusable code.
+
+In addition to these core principles, TypeScript also supports a number of other object-oriented features, such as:
+
+* **Decorators:** Decorators can be used to add metadata to classes, methods, and properties. This metadata can be used to modify the behavior of code at runtime.
+* **Generics:** Generics allow you to write code that can be used with different types of data. This makes your code more flexible and reusable.
+* **Modules:** Modules allow you to organize your code into separate units. This makes your code more modular and easier to maintain.
+
+---
+
+**When to use interfaces and when to use classes in typescript?**  
+Interfaces and classes are both powerful tools for object-oriented programming in TypeScript. However, they have different purposes and are best used in different situations.
+
+**When to use interfaces:**
+
+* To define the shape of an object, without providing any implementation.
+* To validate the types of objects passed to functions and methods.
+* To create generic types that can be used with different types of data.
+
+**When to use classes:**
+
+* To define the structure and behavior of objects.
+* To implement abstract classes and interfaces.
+* To create new classes that inherit from existing classes.
+
+---
