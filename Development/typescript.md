@@ -2,11 +2,11 @@
 
 
 **What is typescript and why should we use it?**  
-TypeScript is a superset of JavaScript, which means that it includes all of the features of JavaScript, plus some additional features, such as:
+TypeScript is a superset of JavaScript, which means that it includes all the features of JavaScript, plus some additional features, such as:
 
 * **Type safety:** TypeScript allows developers to specify the types of data that variables and functions can hold. This helps to catch errors early in the development process and prevents bugs from being introduced into the code.
 * **Classes and interfaces:** TypeScript provides support for classes and interfaces, which are fundamental concepts in object-oriented programming. This makes it easier to write and maintain large and complex JavaScript applications.
-* **Modern JavaScript features:** TypeScript supports all of the latest JavaScript features, such as modules, generics, and arrow functions. This allows developers to take advantage of the most powerful features of JavaScript without having to worry about compatibility issues.
+* **Modern JavaScript features:** TypeScript supports all the latest JavaScript features, such as modules, generics, and arrow functions. This allows developers to take advantage of the most powerful features of JavaScript without having to worry about compatibility issues.
 
 There are many reasons why developers should use TypeScript. Some of the key benefits include:
 
@@ -200,7 +200,7 @@ class Employee extends Person {
 const employee = new Employee("John Doe", 100000);
 ```
 
-In the above example, the `Employee` class extends the `Person` class. The `Employee` class constructor calls the `super()` keyword to call the `Person` class constructor. This ensures that the `Employee` class object is initialized with all of the properties of the `Person` class.
+In the above example, the `Employee` class extends the `Person` class. The `Employee` class constructor calls the `super()` keyword to call the `Person` class constructor. This ensures that the `Employee` class object is initialized with all the properties of the `Person` class.
 
 You can also pass arguments to the `super()` keyword to initialize the base class constructor parameters. For example, the following code shows how to pass arguments to the base class constructor:
 
