@@ -1218,3 +1218,29 @@ requestManager("https://foo.net").then(response => {
 ```
 
 ---
+
+32. Design a shallow comparison function?
+```javascript
+function typeOf(input) {
+    const rawObject = Object.prototype.toString.call(input).toLowerCase();
+    const typeOfRx = /\[object (.*)]/g;
+    const type = typeOfRx.exec(rawObject)[1];
+    return type;
+}
+
+function shallowComparison(source, target) {
+    if (typeOf(source) !== typeOf(target)) return false;
+    if (typeOf(source) === "array") {
+        if (source.length !== target.length) return false;
+        return source.every((el, index) => el === target[index]);
+    }
+    if (typeOf(source) === "object") {
+        if (Object.keys(source) !== Object.keys(target).length) return false;
+        return Object.keys(source).every(key => source[key] === target[key]);
+    }
+    if (typeOf(source) === "date") return source.getTime() === target.getTime();
+    return source === target;
+}
+```
+
+---
