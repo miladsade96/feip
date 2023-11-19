@@ -1235,7 +1235,7 @@ function shallowComparison(source, target) {
         return source.every((el, index) => el === target[index]);
     }
     if (typeOf(source) === "object") {
-        if (Object.keys(source) !== Object.keys(target).length) return false;
+        if (Object.keys(source).length !== Object.keys(target).length) return false;
         return Object.keys(source).every(key => source[key] === target[key]);
     }
     if (typeOf(source) === "date") return source.getTime() === target.getTime();
