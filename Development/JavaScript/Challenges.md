@@ -1271,3 +1271,24 @@ function deepComparison(source, target) {
 ```
 
 ---
+
+34. Design a memoization function which adds 10 to provided value and take from  cache if it was already calculated?
+```javascript
+function memoizedAdd() {
+    let cache = {};
+    
+    return (value) => {
+        if (value in cache) {
+            console.log("Fetching from cache");
+            return cache[value];
+        } else {
+            console.log("Calculating the result");
+            const result = 10 + value;
+            cache[value] = result;
+            return result;
+        }
+    }
+}
+```
+
+---
