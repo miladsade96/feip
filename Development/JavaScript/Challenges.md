@@ -1292,3 +1292,48 @@ function memoizedAdd() {
 ```
 
 ---
+
+34. Implement the fibonacci function using iterative and recursive approaches and eventually optimize the recursive
+approach using memoization technique.  
+Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+
+```javascript
+// Iterative approach:
+// Time complexity: O(n)
+function fibIterative(n) {
+    if (n < 0) throw new Error("n must be non-negative value!");
+    if (n < 2) return n;
+    let values = [0, 1];
+    for (let i = 2; i <= n; i++) values.push(values[i - 1] + values[i - 2]);
+    return values.at(-1);
+}
+```
+
+```javascript
+// Recursive approach:
+// Time complexity: O(2^n)
+function fibRecursive(n) {
+    if (n < 0) throw new Error("Invalid input: n must be non-negative");
+    if (n < 2) return n;
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+```
+
+```javascript
+// Memoized recursive approach:
+// Time complexity: O(n)
+
+const cache = {};
+
+function fibRecursiveMemoized(n) {
+    if (n < 0) throw new Error("n must be non-negative value!");
+    if (n in cache) return cache[n];
+    else {
+        if (n < 2) return n;
+        cache[n] = fibRecursiveMemoized(n - 1) + fibRecursiveMemoized(n - 2);
+        return cache[n];
+    }
+}
+```
+
+---
