@@ -1354,3 +1354,37 @@ console.log(isPalindrome("MiladaliM"));     // true
 ```
 
 ---
+
+36. Write a function which checks whether two strings are anagrams or not.  
+Anagrams are words that have the same characters in the same quantity. This means that two strings are anagrams if we
+can rearrange one two get the other one.  
+For example:
+- "listen" and "silent"
+- "rail safety" and "fairy tales"
+- "dormitory" and "dirty room"
+- "the eyes" and "they see"
+- "Anagram" and "anagram"
+
+```javascript
+function isAnagram(str1, str2) {
+	// Removing whitespaces and convert all characters to lower case
+	str1 = str1.replace(/\s/g, "").toLowerCase();
+	str2 = str2.replace(/\s/g, "").toLowerCase();
+
+	// If the length of two strings are not equal
+	if (str1.length !== str2.length) return false;
+
+	// Sort characters of two given string and compare them
+	const sortedStr1 = str1.split("").sort().join("");
+	const sortedStr2 = str2.split("").sort().join("");
+	return sortedStr1 === sortedStr2;
+}
+
+console.log(isAnagram("Si   lenT    ", "Li   STen"));           // true
+console.log(isAnagram("rail safety", "fairy tales"));           // true
+console.log(isAnagram("dormitory", "dirty room"));              // true
+console.log(isAnagram("the eyes", "they see"));                 // true
+console.log(isAnagram("Anagram", "anagram"));                   // true
+```
+
+---
