@@ -1337,3 +1337,20 @@ function fibRecursiveMemoized(n) {
 ```
 
 ---
+
+35. Write a function which checks if a string is palindrome?  
+```javascript
+// Time complexity: O(n)
+
+function isPalindrome(str) {
+    return str === str.split("").reverse().join("");
+}
+
+console.log(isPalindrome("f"));             // true
+console.log(isPalindrome("fo"));            // false
+console.log(isPalindrome("fof"));           // true
+console.log(isPalindrome("Milad"));         // false
+console.log(isPalindrome("MiladaliM"));     // true
+```
+
+---
