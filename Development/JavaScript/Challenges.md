@@ -1388,3 +1388,33 @@ console.log(isAnagram("Anagram", "anagram"));                   // true
 ```
 
 ---
+
+37. Write a function which counts the number of vowels in a string?
+```javascript
+// Regex approach:
+function countVowelsV1(str) {
+	const vowelsRegex = /[aeiouAEIOU]/g;
+	const matches = str.match(vowelsRegex);
+	return matches ? matches.length : 0;
+}
+```
+
+```javascript
+// Iterative approach
+function countVowelsV2(str) {
+	const vowels = "aeiouAEIOU";
+	let vowelCount = 0;
+	for (const char of str) if (vowels.includes(char)) vowelCount++;
+	return vowelCount;
+}
+```
+
+```javascript
+// Functional approach
+function countVowelsV3(str) {
+	const vowels = "aeouiAEOUI";
+    return str.split("").reduce((acc, char) => (vowels.includes(char) ? acc + 1 : acc), 0);
+}
+```
+
+---
