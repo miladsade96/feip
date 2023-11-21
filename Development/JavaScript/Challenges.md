@@ -1418,3 +1418,21 @@ function countVowelsV3(str) {
 ```
 
 ---
+
+38. Write a function to convert given string to title case?
+```javascript
+function toTitleCase(str) {
+    return str
+        .toLowerCase()
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}
+
+console.log(toTitleCase("Milad SADeghi"));			// Milad Sadeghi
+console.log(toTitleCase("I'm a little robot"));		// I'm A Little Robot
+console.log(toTitleCase("HELLO"));					// Hello
+console.log(toTitleCase("dEAr JAVAscripT"));		// Dear Javascript
+```
+
+---
