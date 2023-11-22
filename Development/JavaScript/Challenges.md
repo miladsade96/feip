@@ -1366,6 +1366,12 @@ For example:
 - "Anagram" and "anagram"
 
 ```javascript
+/**
+ * This function checks whether two given strings are anagrams or not
+ * @param str1 first given string
+ * @param str2 seconf given string
+ * @returns {boolean} true or false - two given strings are anagrams
+ */
 function isAnagram(str1, str2) {
 	// Removing whitespaces and convert all characters to lower case
 	str1 = str1.replace(/\s/g, "").toLowerCase();
@@ -1392,6 +1398,11 @@ console.log(isAnagram("Anagram", "anagram"));                   // true
 37. Write a function which counts the number of vowels in a string?
 ```javascript
 // Regex approach:
+/**
+ * This function counts the number of vowels characters in a given string
+ * @param str given string
+ * @returns {*|number} Number of vowels characters in given string 
+ */
 function countVowelsV1(str) {
 	const vowelsRegex = /[aeiouAEIOU]/g;
 	const matches = str.match(vowelsRegex);
@@ -1401,6 +1412,11 @@ function countVowelsV1(str) {
 
 ```javascript
 // Iterative approach
+/**
+ * This function counts the number of vowels characters in a given string
+ * @param str given string
+ * @returns {number} Number of vowels characters in given string
+ */
 function countVowelsV2(str) {
 	const vowels = "aeiouAEIOU";
 	let vowelCount = 0;
@@ -1411,6 +1427,11 @@ function countVowelsV2(str) {
 
 ```javascript
 // Functional approach
+/**
+ * This function counts the number of vowels characters in a given string
+ * @param str given string
+ * @returns {number|number} Number of vowels characters in given string
+ */
 function countVowelsV3(str) {
 	const vowels = "aeouiAEOUI";
     return str.split("").reduce((acc, char) => (vowels.includes(char) ? acc + 1 : acc), 0);
@@ -1421,6 +1442,11 @@ function countVowelsV3(str) {
 
 38. Write a function to convert given string to title case?
 ```javascript
+/**
+ * This function converts given string to title case format
+ * @param str Given string
+ * @returns {string} Corresponding title case format string
+ */
 function toTitleCase(str) {
     return str
         .toLowerCase()
