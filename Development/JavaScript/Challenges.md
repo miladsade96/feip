@@ -1436,3 +1436,30 @@ console.log(toTitleCase("dEAr JAVAscripT"));		// Dear Javascript
 ```
 
 ---
+
+39. Write a function which can convert time input given in 12 hours format to 24 hours format?
+```javascript
+/**
+ * This function converts 12 hours time format to 24 hours format
+ * @param timeText 12 hours time format string
+ * @returns {string} Corresponding 24 hours time format string
+ */
+function timeFormatter(timeText) {
+	const timeTextLower = timeText.toLowerCase();
+	let [hours, minutesPlusAmPm] = timeTextLower.split(":");
+	if (minutesPlusAmPm.endsWith("am")) hours = hours === "12" ? "00" : hours;
+	else if (minutesPlusAmPm.endsWith("pm")) hours = hours === "12" ? hours : `${+hours + 12}`;
+	return `${hours.padStart(2, "0")}:${minutesPlusAmPm.slice(0, -2).padStart(2, "0")}`;
+}
+
+console.log(timeFormatter("00:10AM"));          // 00:10
+console.log(timeFormatter("00:9PM"));           // 12:09
+console.log(timeFormatter("9:45AM"));           // 09:45
+console.log(timeFormatter("8:5PM"));            // 20:05
+console.log(timeFormatter("1:20PM"));           // 13:20
+console.log(timeFormatter("7:59PM"));           // 19:59
+console.log(timeFormatter("06:40PM"));          // 18:40
+console.log(timeFormatter("00:00AM"));          // 00:00
+```
+
+---
