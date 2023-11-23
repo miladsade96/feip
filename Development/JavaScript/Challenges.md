@@ -1489,3 +1489,55 @@ console.log(timeFormatter("00:00AM"));          // 00:00
 ```
 
 ---
+
+40. Map data to frontend format. The main element is location key, and we need to map all data to it.  
+We will have 5 objects at the end.  
+
+Desired output:
+```text
+[
+    { location_key: 32, autoSign: 1, config_key: 100 },
+    { location_key: 22, autoSign: 1, config_key: 100 },
+    { location_key: 11, autoSign: 1, config_key: 100 },
+    { location_key: 41, autoSign: 1, config_key: 200 },
+    { location_key: 42, autoSign: 1, config_key: 200 }
+]
+```
+
+```javascript
+// Input data:
+const loc = [
+	{location_Key: [32, 22, 11], autoAssign: 1},
+	{location_Key: [41, 42], autoAssign: 1},
+];
+
+const bulkConfig = [{dataValues: {config_key: 100}}, {dataValues: {config_key: 200}}];
+
+
+// Solution:
+
+/**
+ * This function maps fetched data fron backend to desired format in frontend
+ * @param locData An array of objects with two properties(location_key, autoSign)
+ * @param configData An array of objects of objects with dataValues and config_key properties
+ * @returns {{config_key: number, autoSign: *, location_key: *}[]} Properly mapped array of objects
+ */
+function dataMapper(locData, configData) {
+    return loc
+        .map((locEl, index) => {
+            return locEl.location_Key.map(locationKey => {
+                return {
+                    location_key: locationKey,
+                    autoSign: locEl.autoAssign,
+                    config_key: bulkConfig[index].dataValues.config_key,
+                };
+            });
+        })
+        .reduce((acc, innerArr) => acc.concat(innerArr), []);
+}
+
+const result = dataMapper(loc, bulkConfig);
+console.log(result);
+```
+
+---
