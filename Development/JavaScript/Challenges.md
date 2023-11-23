@@ -1541,3 +1541,32 @@ console.log(result);
 ```
 
 ---
+
+41. Write a function to replace parameters value in a given url?
+```javascript
+// Input values:
+const initUrl = "https://hereismy.site/posts/:postId/comments/:commentId";
+const replacements = [
+    {from: "postId", to: "8"},
+    {from: "commentId", to: "10"},
+];
+
+
+// Solution:
+/**
+ * This function replace parameters value with given values
+ * @param initialUrl Initial (raw) url as a string
+ * @param replacementParams	List of objects to replace in initial url
+ * @returns {*} New url with replaced parameters value
+ */
+function replaceParamsInUrl(initialUrl, replacementParams) {
+    return replacementParams.reduce(
+        (acc, replacement) => acc.replace(`:${replacement.from}`, replacement.to),
+        initialUrl,
+    );
+}
+
+console.log(replaceParamsInUrl(initUrl, replacements)); // https://hereismy.site/posts/8/comments/10
+```
+
+---
