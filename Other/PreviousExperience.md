@@ -1059,3 +1059,134 @@ Measuring test coverage in a ReactJS web app is crucial for ensuring that the co
 2. **Istanbul:** Istanbul is an open-source code coverage tool that can be integrated with Jest to provide more detailed and granular coverage reports. It supports line, statement, and branch coverage metrics.
 
 ---
+
+**What does this mean? `100% test coverage.`**  
+In the context of software testing, 100% test coverage refers to the ideal scenario where every line of code in a software application is executed by at least one test case. This means that all possible code paths are explored, ensuring that the code behaves as expected under various conditions.
+
+Achieving 100% test coverage is often considered a desirable goal, as it suggests that the codebase is well-tested and protected against potential errors. However, it's important to note that 100% test coverage doesn't guarantee that the code is bug-free, as it's possible for tests to miss certain edge cases or logical flaws.
+
+In practice, 100% test coverage is not always achievable or even necessary. The importance of test coverage varies depending on the complexity of the code, the criticality of the application, and the risk tolerance of the organization.
+
+While 100% test coverage serves as an aspiration for thorough testing, it's crucial to prioritize the quality and effectiveness of tests rather than obsessing over the coverage metric. Focus on writing tests that cover critical code paths, edge cases, and areas with high risk of errors. Utilize test coverage metrics to guide your testing efforts and ensure that your application is well-tested and reliable.
+
+---
+
+**Why did you choose `cypress` in your previous project instead of `playwright`?**  
+The choice between Cypress and Playwright for automated testing depends on the specific needs and preferences of the project. Both tools offer powerful features and capabilities, but they have different strengths and limitations.
+
+**Reasons for choosing Cypress:**
+
+1. **Ease of Use:** Cypress is known for its user-friendly interface and intuitive design, making it accessible to testers with varying levels of experience. Its visual testing capabilities and built-in commands for common tasks simplify the testing process.
+
+2. **Fast and Reliable:** Cypress executes tests within the browser, utilizing the Chrome DevTools protocol for direct communication and control. This results in faster test execution and reduced flakiness compared to other tools that rely on network communication.
+
+3. **End-to-End Testing:** Cypress is well-suited for end-to-end testing, as it seamlessly integrates with the browser environment and allows for testing user interactions, network calls, and backend interactions.
+
+4. **Real-time Feedback:** Cypress provides real-time feedback during test execution, displaying DOM changes, network requests, and error messages. This immediate feedback helps testers quickly identify and debug issues.
+
+**Reasons for choosing Playwright:**
+
+1. **Cross-browser Testing:** Playwright offers native support for multiple browsers, including Chromium, Firefox, and Webkit. This makes it ideal for cross-browser testing and ensuring consistent behavior across different browser environments.
+
+2. **Parallel Testing:** Playwright excels at parallel testing, allowing for running multiple tests simultaneously across different browsers and devices. This significantly improves test execution speed and efficiency.
+
+3. **API Flexibility:** Playwright's API provides more flexibility and control over test execution, enabling developers to customize test configurations and integrate with external tools.
+
+4. **Node.js Integration:** Playwright is well-integrated with the Node.js ecosystem, making it a suitable choice for projects that utilize Node.js for backend development or testing frameworks like Mocha or Jest.
+
+In conclusion, the decision between Cypress and Playwright depends on the specific requirements and preferences of the project. Both tools offer powerful capabilities for automated testing, but their strengths and limitations vary. Carefully evaluate the project's needs, developer experience, and existing tooling before making a choice.
+
+---
+
+**As a frontend software engineer, did you implement the `component library` from scratch or not, you did implement it on top of other `third-party libraries`?**  
+As a frontend software engineer, I have implemented component libraries both from scratch and by extending existing third-party libraries. The decision of whether to start from scratch or leverage existing libraries depends on various factors, including the project's requirements, time constraints, and the desired level of customization.
+
+**Building a Component Library from Scratch:**
+
+Building a component library from scratch offers the following advantages:
+
+1. **Complete Control:** Developers have complete control over the design, implementation, and behavior of the components, ensuring they align perfectly with the project's specific needs and requirements.
+
+2. **Customizable and Reusable:** The components can be tailored to the project's unique UI and UX requirements, making them highly customizable and reusable across different parts of the application.
+
+3. **Lightweight and Optimized:** By starting from scratch, developers can optimize the component library for the specific project's needs, minimizing unnecessary code and dependencies.
+
+**Leveraging Existing Third-party Libraries:**
+
+Utilizing existing third-party libraries for component libraries provides the following benefits:
+
+1. **Faster Development:** Existing libraries offer a solid foundation of pre-built components, reducing development time and effort.
+
+2. **Mature and Tested Components:** Third-party libraries typically undergo rigorous testing and community support, ensuring the components are well-maintained and reliable.
+
+3. **Consistent UI and Accessibility:** Many third-party libraries adhere to established design principles and accessibility guidelines, promoting a consistent and accessible user experience.
+
+**Choosing between Scratch and Third-party Libraries:**
+
+The decision of whether to build a component library from scratch or use an existing library depends on the specific context of the project:
+
+1. **Project Requirements:** If the project has unique UI and UX requirements that existing libraries don't fulfill, building from scratch may be necessary.
+
+2. **Time Constraints:** If time is a critical factor, using an existing library can accelerate development and reduce the overall project timeline.
+
+3. **Customization Needs:** If the project demands a high degree of customization over the components' behavior and styling, starting from scratch may be more suitable.
+
+4. **Community Support:** Consider the availability of community support and documentation for existing libraries to ensure ongoing maintenance and updates.
+
+---
+
+**Explain the React `custom component library` as a `mono repo` and `external repo`?**  
+Whether to organize your React custom component library as a monorepo or a separate repository depends on various factors, including the size and complexity of the library, the number of developers involved, and the desired level of code sharing and collaboration.
+
+**Monorepo Structure:**
+
+In a monorepo structure, all project code, including the component library, is housed in a single repository. This provides several advantages:
+
+1. **Code Sharing:** Developers can easily share and reuse code between the component library and other parts of the application, promoting code consistency and maintainability.
+
+2. **Centralized Dependency Management:** A monorepo simplifies dependency management, as all dependencies are managed within a single repository, reducing conflicts and version mismatches.
+
+3. **Seamless Integration:** Integration between the component library and the application is seamless, as they reside in the same repository, facilitating testing and development workflows.
+
+**Separate Repository Structure:**
+
+Managing the component library as a separate repository also offers certain benefits:
+
+1. **Focused Development:** Developers can focus on the component library's development without being distracted by other application concerns, potentially improving code quality and maintainability.
+
+2. **Independent Releases:** The component library can be independently released and consumed by other projects, promoting its reusability and wider adoption.
+
+3. **Encapsulation:** The component library's code is encapsulated in its own repository, reducing the risk of conflicts or unexpected changes affecting the application's core code.
+
+---
+
+**Tell me about the downsides of reactJS `compound component pattern`?**  
+While the ReactJS compound component pattern offers several advantages, it also has some potential downsides that should be considered when deciding whether to use it:
+
+1. **Increased Prop Drilling:** Compound components can lead to prop drilling, where props are passed down through multiple levels of nested components to reach the desired destination. This can make the code more verbose and difficult to understand, especially for larger nested structures.
+
+2. **Tight Coupling:** Compound components can create tight coupling between components, making it difficult to reuse them independently. Modifying one component in a compound structure may require changes in other components, affecting their reusability.
+
+3. **Styling Challenges:** Styling compound components can become complex, especially when dealing with nested components that have overlapping or conflicting styles. Managing styles across multiple levels of nesting can be challenging and may require additional tooling or styling approaches.
+
+4. **Component Re-usability:** While compound components promote code reuse within the component itself, their reusability across different contexts may be limited due to their tightly coupled nature. Extracting and refactoring reusable components from a compound structure may require additional effort.
+
+5. **Testing Complexity:** Testing complex compound components can be more challenging due to the nested structure and potential interactions between components. Thoroughly testing all possible scenarios and edge cases may require more effort and careful test design.
+
+6. **Performance Overhead:** In some cases, compound components may introduce performance overhead due to the additional layer of nesting and potential re-renders caused by prop changes. This may be a concern for performance-critical applications.
+
+To mitigate these downsides, consider the following strategies:
+
+1. **Limit Nesting Depth:** Keep the nesting depth of compound components manageable to minimize prop drilling and maintain code readability.
+
+2. **Context API for Shared State:** Utilize the React Context API to manage shared state across components, reducing the need for prop drilling.
+
+3. **CSS Modules or Styled Components:** Employ CSS Modules or Styled Components to manage styles more effectively, preventing style conflicts and simplifying styling of nested components.
+
+4. **Refactor for Re-usability:** Extract reusable components from compound structures to enhance their reusability across different contexts.
+
+5. **Modular Testing:** Test compound components using a modular approach, breaking down the component into smaller units for easier testing and isolation of issues.
+
+6. **Measure Performance Impact:** Monitor the performance impact of compound components and optimize them if necessary, especially for performance-critical sections of the application.
+
+---
