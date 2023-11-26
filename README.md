@@ -39,6 +39,7 @@ and boost your confidence in frontend interviews.
   - [Redux](Development/redux.md)
 - **Other:**
   - [Agile](Other/Agile.md)
+  - [Previous Experience](Other/PreviousExperience.md)
 
     
 ## License
