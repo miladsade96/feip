@@ -1273,3 +1273,104 @@ As JavaScript code is executed, the browser maintains a call stack, which keeps 
 JavaScript also has a global execution context, which is an object that contains all of the global variables and functions. The global execution context is created when the JavaScript engine starts up, and it exists for the lifetime of the page.
 
 ---
+
+**How `ReactJS` works behind scenes?**  
+React is a popular JavaScript library for building user interfaces. It's declarative, efficient, and flexible.
+But have you ever wondered how React actually works behind the scenes? Let's take a look at how React operates on a fundamental level.
+React is a JavaScript library that creates and maintains an in-memory representation of a UI. When a user interacts with a React application, React updates the in-memory representation and the changes are reflected in the UI.
+React uses a virtual DOM, which is a JavaScript representation of the actual DOM. The virtual DOM is a lightweight tree that contains only the necessary information to render a UI.
+When a user interacts with a React application, React updates the virtual DOM. React then compares the virtual DOM with the actual DOM. React makes the necessary changes to the actual DOM, which are reflected in the UI.
+The virtual DOM is a JavaScript object. The object is made up of React elements. React elements are the smallest units of React applications.
+React elements are immutable. That means they cannot be changed. Once a React element is created, it cannot be modified.
+This is why React is so fast. React only needs to update the changed element in the virtual DOM. React doesn't need to re-render the entire UI.
+React elements are also lightweight. React elements are just JavaScript objects. They don't have any additional overhead.
+
+React elements can be created with the `React.createElement()` method:
+```javascript
+React.createElement(
+  type,
+  props,
+  children
+);
+```
+
+The type argument specifies the type of element to create. The type can be a HTML tag, a React component, or a function.
+The props argument specifies the element's properties. The props are an object of key-value pairs.
+The children argument specifies the element's children. The children can be React elements or strings.
+
+Here's an example of creating a React element:
+```javascript
+const element = React.createElement(
+  'div',
+  { id: 'container' },
+  'Hello, world!'
+);
+```
+
+The above code creates a React element of type 'div'. The element has an id property of 'container' and a child of 'Hello, world!'.
+
+React elements are just JavaScript objects. They can be stored in variables and passed around like any other object.
+React components are functions or classes that return React elements:
+```javascript
+function Welcome(props) {
+  return React.createElement(
+    'h1',
+    null,
+    'Hello, ' + props.name + '!'
+  );
+}
+
+class Welcome extends React.Component {
+  render() {
+    return React.createElement(
+      'h1',
+      null,
+      'Hello, ' + this.props.name + '!'
+    );
+  }
+}
+```
+
+The above code defines a Welcome component. The Welcome component returns a React element.
+
+When a React element is created, React assigns a key to the element. The key is used to uniquely identify the element.
+The key is used by React to keep track of the element's position in the virtual DOM. When a user interacts with a React application, React uses the key to quickly find the changed element in the virtual DOM.
+React only updates the changed element in the virtual DOM and it doesn't need to re-render the entire UI.
+The key is also used by React to figure out which DOM nodes to update. React uses the key to match the virtual DOM node with the actual DOM node.
+React uses a diffing algorithm to find the changed element. The diffing algorithm is a clever way to figure out which element has changed.
+React updates the actual DOM by making changes to the DOM nodes and only updates the changed DOM nodes.
+
+---
+
+**Explain `css specificity` and `selectors order`?**  
+
+**CSS Specificity**
+
+CSS specificity is a system for determining which of multiple CSS rules applies to a given HTML element. When two or more CSS rules select the same element, the rule with the higher specificity wins.
+
+The specificity of a CSS rule is calculated based on the following factors:
+
+* **ID selectors:** ID selectors have the highest specificity, with a value of 100.
+* **Class selectors, attribute selectors, and pseudo-classes:** These selectors have a specificity of 10.
+* **Element selectors and pseudo-elements:** These selectors have a specificity of 1.
+
+The specificity of a rule is calculated by adding up the values of each of these factors. For example, the rule `#my-id p` has a specificity of 110 because it has one ID selector and one element selector.
+
+**Selector Order**
+
+When two or more CSS rules have the same specificity, the rule that appears later in the CSS file wins. This is known as the "cascade" in CSS.
+
+However, there are a few exceptions to this rule. For example, `!important` declarations always win, regardless of their specificity or order. Additionally, certain CSS properties have their own specificity rules, such as `z-index` for positioning elements.
+
+**Using Specificity and Selector Order**
+
+In general, you should try to write your CSS rules in a way that minimizes specificity conflicts. This will make your code easier to maintain and debug. However, there are some cases where you may need to use specificity or selector order to override other rules.
+
+Here are some tips for using specificity and selector order effectively:
+
+* Use ID selectors sparingly. ID selectors are very specific, so they can be useful for overriding other rules. However, if you use them too often, your code will become difficult to maintain.
+* Use class selectors and attribute selectors for more general styling. Class selectors and attribute selectors are less specific than ID selectors, but they are still more specific than element selectors. This makes them a good choice for styling groups of elements.
+* Use element selectors for the most general styling. Element selectors are the least specific type of selector. They should only be used for styling elements that do not have any ID or class attributes.
+* Use `!important` sparingly. The `!important` declaration overrides all other rules, regardless of their specificity or order. It should only be used as a last resort.
+
+---
