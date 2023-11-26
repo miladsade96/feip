@@ -910,3 +910,152 @@ console.log(`body: ${firstPost.body}`);         // body: quia et suscipit\nsusci
 ```
 
 ---
+
+**Explain `omit` , `partial` and `optional` in the typescript?**  
+`Omit`, `Partial`, and `Optional` are utility types in TypeScript that provide specific functionalities related to object types. They allow you to modify or refine existing object types by adding, removing, or making properties optional.
+
+**Omit**
+
+The `Omit` utility type removes specified properties from an existing object type. It takes two type arguments: the original object type and a union of property keys to remove.
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type UserWithoutEmail = Omit<User, 'email'>; // Removes the 'email' property
+```
+
+**Partial**
+
+The `Partial` utility type makes all properties of an existing object type optional. It takes a single type argument: the original object type.
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type PartialUser = Partial<User>; // All properties become optional
+```
+
+**Optional**
+
+The `Optional` utility type makes a specific property of an existing object type optional. It takes two type arguments: the original object type and the property key to make optional.
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type UserWithOptionalEmail = Optional<User, 'email'>; // Makes 'email' optional
+```
+
+**Relationship between Omit, Partial, and Optional:**
+
+- `Omit` removes properties explicitly, while `Partial` makes all properties optional implicitly.
+
+- `Optional` makes a specific property optional, while `Partial` makes all properties optional.
+
+---
+
+**Explain the `steps` and `strategies` for migrating `javascript` react app codebase to `typescript`?**  
+Migrating a JavaScript React application to TypeScript can be a worthwhile endeavor, enhancing type safety, improving code maintainability, and catching errors early on. However, it's crucial to approach the migration process strategically to minimize disruption and ensure a smooth transition.
+
+**Planning and Preparation:**
+
+1. **Assess the Project Scope:** Evaluate the size and complexity of the project to determine the scope of the migration. Consider the number of files, the usage of third-party libraries, and the level of testing coverage.
+
+2. **Set Realistic Goals:** Establish clear goals for the migration, such as improving type coverage, reducing runtime errors, or enhancing developer experience.
+
+3. **Choose a Migration Strategy:** Select a suitable migration strategy based on the project's needs and preferences. Common strategies include:
+    - **Top-down:** Migrate components from the top of the component hierarchy down.
+    - **Bottom-up:** Migrate components from the bottom of the component hierarchy up.
+    - **File-by-file:** Migrate one file at a time, focusing on isolated areas.
+
+4. **Establish a Testing Plan:** Determine the testing strategy to ensure that the migration doesn't introduce regressions. Consider using unit tests, integration tests, and end-to-end tests.
+
+**Migration Process:**
+
+1. **Start Small:** Begin with a small, isolated part of the codebase to gain experience and identify potential challenges.
+
+2. **Utilize TypeScript Tools:** Leverage TypeScript tools like `tsc` and type checkers to identify and resolve type errors.
+
+3. **Use Type Declarations:** Utilize existing type declarations for third-party libraries to avoid manual type definitions.
+
+4. **Refactor Code:** Refactor code while migrating to TypeScript, taking advantage of TypeScript's features to improve code structure and maintainability.
+
+5. **Update Tests:** Update existing tests to ensure they work with TypeScript and cover the migrated code.
+
+**Gradual Migration:**
+
+1. **Migrate Gradually:** Migrate the codebase in stages, gradually increasing the portion of code converted to TypeScript.
+
+2. **Validate Changes:** Thoroughly test each migrated section before moving on to the next.
+
+3. **Refactor and Improve:** Utilize the migration process as an opportunity to refactor and improve the overall codebase.
+
+4. **Address Common Issues:** Be prepared to address common migration challenges, such as handling legacy code, dealing with third-party libraries, and managing type errors.
+
+---
+
+**What did motivate you as a frontend software engineer to migrate `javascript` based react app to `typescript`?**  
+As a frontend software engineer, there are several compelling reasons to migrate a JavaScript-based React app to TypeScript. Here are some of the key motivations:
+
+1. **Enhanced Type Safety:** TypeScript's static type system helps prevent runtime errors and ensures that data is handled correctly. This can significantly improve the robustness and reliability of the application.
+
+2. **Improved Developer Experience:** TypeScript's type annotations and code completion features provide a more streamlined and productive development experience. Developers can easily understand the structure and expected behavior of components and data, reducing the time spent debugging and refactoring.
+
+3. **Maintainable Codebase:** TypeScript's type system helps maintain a consistent and well-structured codebase. By enforcing type compatibility and preventing unexpected data types, TypeScript promotes code consistency and makes it easier for developers to understand and modify code without introducing errors.
+
+4. **Early Error Detection:** TypeScript's type checker flags type errors during compilation, catching errors early on in the development process rather than during runtime. This can save significant time and effort in debugging and fixing errors.
+
+5. **Self-Documenting Code:** TypeScript's type annotations serve as documentation, making it easier for developers to understand the code and its intended behavior. This is particularly helpful when onboarding new developers or revisiting code after a long period.
+
+6. **Improved Test Coverage:** TypeScript's type system can be leveraged to improve test coverage. By ensuring that tests cover all possible type combinations, developers can have greater confidence in the overall stability of the application.
+
+7. **Future-Proofing Code:** Migrating to TypeScript can future-proof the codebase, making it easier to adapt to new technologies and frameworks. As TypeScript becomes more widely adopted, developers with TypeScript experience will be in high demand.
+
+8. **Enhanced Tooling Support:** TypeScript integrates seamlessly with popular development tools, providing features like type checking, code completion, and refactorings that enhance the development experience.
+
+---
+
+**Is only `typescript` type safety enough to start migration from `javascript` to `typescript`?**  
+While TypeScript's type safety is a significant advantage over plain JavaScript, it is not the sole reason to migrate a JavaScript-based React app to TypeScript. TypeScript offers various benefits that collectively contribute to a more robust, maintainable, and developer-friendly codebase.
+
+1. **Improved Code Readability and Understanding:** TypeScript's type annotations provide clear descriptions of the expected data types for variables, function arguments, and return values. This enhances code readability and makes it easier for developers to understand the intended behavior of the code.
+
+2. **Reduced Runtime Errors:** TypeScript's static type checking identifies type errors during compilation, preventing them from causing runtime crashes and unexpected behavior. This can significantly improve the stability and reliability of the application.
+
+3. **Refactoring Confidence:** TypeScript's type system provides a safety net when refactoring code. As developers modify the code structure or behavior, TypeScript checks for type compatibility and ensures that changes don't introduce new errors.
+
+4. **Better Code Organization and Structure:** TypeScript's type annotations help enforce consistent coding conventions and promote well-structured code. This makes the codebase easier to navigate and understand, especially for new contributors.
+
+5. **Self-Documenting Code:** TypeScript's type annotations serve as embedded documentation, providing clear explanations of the expected data flow and usage of components and functions. This reduces the need for external documentation and makes the code more self-explanatory.
+
+6. **Integration with Development Tools:** TypeScript integrates seamlessly with popular development tools, providing features like code completion, refactorings, and type checking that enhance the development experience and streamline code editing.
+
+7. **Future-Proofing Code:** Migrating to TypeScript makes the codebase more adaptable to future technologies and frameworks. As TypeScript becomes more widely adopted, developers with TypeScript experience will be in high demand.
+
+---
+
+**What does this mean? `When we write an app with typescript we also write tests at the same time.`**  
+The statement "When we write an app with TypeScript, we are also writing tests at the same time" highlights the symbiotic relationship between TypeScript and testing. TypeScript's type system and static type checking provide a solid foundation for thorough and effective testing, making it natural to integrate testing practices into the TypeScript development process.
+
+---
+
+**How to measure `test coverage` in a reactJS web app?**  
+Measuring test coverage in a ReactJS web app is crucial for ensuring that the codebase is adequately tested and protected against potential errors. Test coverage metrics provide insights into the proportion of code that is covered by automated tests, helping developers identify areas that require additional testing.
+
+**Tools for Measuring Test Coverage in ReactJS:**
+
+1. **Jest:** Jest is a popular testing framework for JavaScript and ReactJS applications. It provides built-in test coverage functionality, generating reports on the percentage of code covered by tests.
+
+2. **Istanbul:** Istanbul is an open-source code coverage tool that can be integrated with Jest to provide more detailed and granular coverage reports. It supports line, statement, and branch coverage metrics.
+
+---
