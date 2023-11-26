@@ -1190,3 +1190,86 @@ To mitigate these downsides, consider the following strategies:
 6. **Measure Performance Impact:** Monitor the performance impact of compound components and optimize them if necessary, especially for performance-critical sections of the application.
 
 ---
+
+**Why did you use `graphQl` in your previous `React` project?**  
+There are several compelling reasons to utilize GraphQL in a React project, including:
+
+1. **Flexible Data Fetching:** GraphQL provides a flexible and declarative approach to data fetching, allowing developers to specify the exact data they need for a particular component or UI element. This eliminates the need for over-fetching and reduces the amount of data transferred between the client and server.
+
+2. **Improved Developer Experience:** GraphQL's type system and schema make it easier for developers to understand the structure and relationships of data, reducing the time spent debugging and refactoring. The schema provides a clear contract between the client and server, ensuring data consistency and type safety.
+
+3. **Strong Client-Server Separation:** GraphQL promotes a clear separation between the client and server, allowing for independent development and evolution of both layers. This decoupling simplifies development and enables the server to evolve without breaking existing client applications.
+
+4. **Efficient Data Caching:** GraphQL's client-side caching capabilities allow for efficient data caching, reducing the number of network requests and improving performance. The normalized data structure in the cache facilitates efficient data retrieval and updates.
+
+5. **Support for Multiple Clients:** GraphQL supports a variety of clients, including React, native mobile apps, and web browsers. This flexibility makes it a suitable choice for building applications that need to interact with different platforms and devices.
+
+6. **Future-Proofing:** GraphQL has gained significant traction and adoption in the industry, making it a future-proof choice for building modern applications. Its widespread adoption and community support ensure its continued development and evolution.
+
+---
+
+**Tell me about testing costs of `cypress`?**  
+The testing costs of Cypress can vary depending on the size and complexity of the project, the team's experience with Cypress, and the level of test coverage required. However, in general, Cypress is a relatively affordable testing tool, especially when compared to other end-to-end testing frameworks.
+
+**Factors that Affect Cypress Testing Costs:**
+
+1. **Project Size and Complexity:** Larger and more complex projects will require more time and resources to test, increasing the overall cost.
+
+2. **Team Experience:** Teams with experience in Cypress will be able to test more efficiently, reducing the overall cost.
+
+3. **Test Coverage:** The desired level of test coverage will impact the cost. More comprehensive test suites will require more time and resources.
+
+**Cost Breakdown of Cypress Testing:**
+
+1. **Tooling Costs:** Cypress itself is an open-source tool, so there are no licensing fees. However, there may be costs associated with additional tools or services used for testing, such as cloud-based test runners or continuous integration (CI) platforms.
+
+2. **Developer Time:** The primary cost of Cypress testing is the time spent by developers writing and maintaining test scripts. This time can vary depending on the factors mentioned above.
+
+3. **Infrastructure Costs:** If using cloud-based test runners or CI platforms, there will be infrastructure costs associated with running the tests.
+
+---
+
+**Explain `testing pyramid` in frontend web development?**  
+The testing pyramid is a conceptual model that describes the ideal distribution of different types of automated tests in a software application. It suggests that the majority of tests should be unit tests, followed by integration tests, and a small number of end-to-end (E2E) tests. This distribution is intended to maximize test coverage and minimize maintenance costs.
+
+---
+
+**Compare `writing yml files` manually for pipelines and using tools like `jenkins`?**  
+Whether to write a YAML file or use Jenkins depends on the specific task at hand. Both YAML and Jenkins have their own strengths and weaknesses, and the best choice will vary depending on the situation.
+
+**YAML files** are a simple and lightweight way to store data in a human-readable format. They are often used for configuration files, as they are easy to read and write and can be parsed by a variety of tools. However, YAML files are not well-suited for storing large amounts of data or for complex data structures.
+
+**Jenkins** is a continuous integration and continuous delivery (CI/CD) tool that can be used to automate the process of building, testing, and deploying software. It is a powerful tool that can be used to manage complex projects, but it can also be a bit overwhelming for beginners.
+
+Here is a table summarizing the strengths and weaknesses of each approach:
+
+| Approach   | Strengths                               | Weaknesses                                                           |
+|------------|-----------------------------------------|----------------------------------------------------------------------|
+| YAML files | Simple, lightweight, human-readable     | Not well-suited for large amounts of data or complex data structures |
+| Jenkins    | Powerful, can automate complex projects | Can be overwhelming for beginners                                    |
+
+**In general, you should use a YAML file if:**
+
+* You need to store a small amount of data in a human-readable format.
+* You need a simple and lightweight way to store data.
+* You do not need to automate any complex processes.
+
+**You should use Jenkins if:**
+
+* You need to automate the process of building, testing, and deploying software.
+* You need to manage a complex project.
+* You are comfortable using a command-line interface (CLI).
+
+---
+
+**How `javascript` works behind scenes?**  
+
+JavaScript is a single-threaded, interpreted language that runs on the client-side, inside the user's web browser. This means that JavaScript code is executed line by line, and the browser waits for each line to finish executing before moving on to the next. JavaScript is also dynamically typed, meaning that variables do not need to be declared with a specific type before they are used.
+
+When you load a JavaScript file in a web browser, the browser's JavaScript engine first parses the code and converts it into an intermediate representation called an abstract syntax tree (AST). The AST is then used to generate machine code that can be executed by the computer's CPU.
+
+As JavaScript code is executed, the browser maintains a call stack, which keeps track of the currently executing functions. When a function is called, a new frame is added to the call stack. The frame contains the function's local variables, the values of the arguments passed to the function, and the location of the next line of code to be executed. When the function returns, its frame is removed from the call stack.
+
+JavaScript also has a global execution context, which is an object that contains all of the global variables and functions. The global execution context is created when the JavaScript engine starts up, and it exists for the lifetime of the page.
+
+---
