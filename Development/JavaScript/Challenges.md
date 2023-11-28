@@ -1570,3 +1570,56 @@ console.log(replaceParamsInUrl(initUrl, replacements)); // https://hereismy.site
 ```
 
 ---
+
+42. Write a function to format backend validation messages to frontend format?
+```javascript
+// Input value:
+const backendErrors = {
+    email: {
+        errors: [{message: "can't be blank"}],
+    },
+    password: {
+        errors: [
+            {
+                message: "must contain symbols in different case",
+            },
+            {
+                message: "must be at least 8 symbols length",
+            },
+        ],
+    },
+    passwordConfirmation: {
+        errors: [{message: "must match with password"}],
+    },
+};
+
+// Desired output:
+/*
+    [
+        "Email: Can't be blank",
+        "Password: Must contain symbols in different case, must be at least 8 symbols length",
+        "PasswordConfirmation: Must match with password"
+    ]
+ */
+
+/**
+ * This function formats backend validation messages to frontend format
+ * @param containerObj Objects which is fetched from backend and contains error messages
+ * @returns {string[]} Array of strings in based on frontend format
+ */
+function formatBackToFront(containerObj) {
+    return Object.entries(containerObj).map(([keyField, value]) => {
+        const fieldMessages = value.errors
+            .map((err, index) =>
+                index === 0
+                    ? `${err.message.charAt(0).toUpperCase()}${err.message.slice(1)}`
+                    : err.message,
+            )
+            .join(", ");
+        const capitalizedKeyField = `${keyField.charAt(0).toUpperCase()}${keyField.slice(1)}`;
+        return `${capitalizedKeyField}: ${fieldMessages}`;
+    });
+}
+```
+
+---
