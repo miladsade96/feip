@@ -1,5 +1,38 @@
 # Agile Methodologies
 
+
+**What is sprint in scrum?**  
+A sprint is a fixed-length iteration, typically lasting one to four weeks, in which a Scrum team works to complete a set of predefined tasks and deliver a potentially shippable increment of product. Sprints are the fundamental building blocks of Scrum, providing a structured and iterative approach to software development.
+
+---
+
+**What is user stories?**  
+In software development, a user story is a concise description of a software feature from the perspective of the user. It captures the user's goal and need, and provides a basis for discussion and collaboration between stakeholders. User stories are often written in a simple, natural language format, making them easy to understand for both technical and non-technical audiences.
+
+```text
+As a [User Role], I want to [Action] so that [Benefit].
+```
+
+---
+
+**What is an agile iteration?**  
+In agile software development, an iteration is a fixed-length timebox, typically one to four weeks long, during which a team works to complete a set of predefined tasks and deliver a potentially shippable increment of product. Iterations are the fundamental building blocks of agile methodologies, providing a structured and iterative approach to software development.
+
+---
+
+**Name roles in scrum?**  
+Scrum is an agile framework that utilizes three distinct roles to effectively manage and deliver projects:
+
+1. **Product Owner (PO):** The product owner is responsible for defining and prioritizing the product vision and ensuring that the team delivers the desired value to the customer. They act as the voice of the customer, gathering and refining product requirements, and communicating the product's direction to the team.
+
+2. **Scrum Master (SM):** The scrum master facilitates the Scrum process and ensures that the team adheres to agile principles and practices. They remove impediments that hinder the team's progress, coach the team in self-organization and continuous improvement, and help resolve conflicts.
+
+3. **Development Team (DT):** The development team is responsible for transforming product requirements into working software. They consist of skilled software developers, testers, and other relevant contributors who collaborate to deliver the product increment within each sprint.
+
+These three roles work together to create a self-organizing and high-performing team that delivers value iteratively and incrementally. The product owner provides direction, the scrum master guides the process, and the development team executes the work. This collaborative approach allows the team to adapt to changing requirements, deliver high-quality software, and meet the needs of the customer.
+
+---
+
 ### Teams may encounter the need for "technical" user stories. Who decides the priority of these?
 The tech lead or architect can work with the product owner to determine priority based on upcoming roadmap
 needs and dependencies. The key is communication between the PO and tech team leads to ensure technical needs
