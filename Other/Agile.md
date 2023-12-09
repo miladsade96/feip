@@ -33,6 +33,88 @@ These three roles work together to create a self-organizing and high-performing 
 
 ---
 
+**What is an `epic`, `user stories` and `task`?**  
+In Scrum, an epic, user story, and task are three key elements that help define and organize the work of a development team. They represent different levels of detail and granularity, providing a structured approach to managing the product backlog and delivering value incrementally.
+
+**Epic:**
+
+An epic is a large, complex body of work that cannot be completed in a single sprint. It represents a significant piece of functionality or a major goal that the team aims to achieve. Epics are typically broken down into smaller, more manageable user stories.
+
+**User Story:**
+
+A user story is a concise description of a software feature from the perspective of the user. It captures the user's goal, need, and the value they expect from the feature. User stories are written in a simple, natural language format, making them easy to understand for both technical and non-technical audiences.
+
+**Task:**
+
+A task is a specific, actionable item that contributes to the completion of a user story. It represents a small, well-defined piece of work that can be completed by a single team member within a sprint. Tasks are often estimated in terms of effort or time required.
+
+The relationship between epics, user stories, and tasks can be illustrated as follows:
+
+**Epic** → **User Stories** → **Tasks**
+
+---
+
+**What is scrum?**  
+
+Scrum is a popular agile framework used for managing and delivering software projects. It emphasizes iterative and incremental development, enabling teams to adapt to changing requirements and deliver working software frequently.
+
+---
+
+**Explain what is refactoring?**  
+
+In software development, refactoring is the process of improving the internal structure of existing code without changing its external behavior. It is an essential practice for maintaining code quality, enhancing readability, and simplifying maintenance. Refactoring is often performed to make code more understandable, easier to modify, and less prone to errors.
+
+---
+
+**Mention what should a `burn-down` chart highlight?**  
+A burn-down chart is a valuable tool for visualizing and tracking the progress of a project or sprint in Scrum. It should highlight the following key elements:
+
+1. **Remaining Work:** The burn-down chart should clearly show the amount of work remaining to be completed at each point in time. This helps the team understand how much work is left and whether they are on track to complete the sprint goals.
+
+2. **Ideal Burn Rate:** The chart should display an ideal burn rate line, which represents the expected rate at which the team should complete the work. This line serves as a reference point for assessing the team's actual progress.
+
+3. **Actual Burn Rate:** The actual burn rate line represents the team's actual progress in completing the work. Deviations from the ideal burn rate indicate whether the team is ahead of, behind, or on track.
+
+4. **Sprint Duration:** The burn-down chart should clearly indicate the duration of the sprint, allowing the team to track their progress within the allotted time frame.
+
+5. **Sprint Goals:** The chart should be linked to the sprint goals or deliverables, providing context for the work being tracked.
+
+6. **Team Velocity:** The burn-down chart can help establish the team's velocity, which is the average amount of work they can complete in a given time period. This information can be used to forecast future sprints and make adjustments as needed.
+
+7. **Impediments and Risks:** The burn-down chart can be used to identify potential impediments or risks that may affect the team's progress. Sudden changes in the burn rate can be a sign of underlying issues that need to be addressed.
+
+---
+
+**Name some types of meetings or ceremonies in scrum?**  
+Scrum utilizes a set of meetings or ceremonies to structure the development process and promote collaboration among team members. These events provide opportunities for planning, inspecting progress, and adapting to changing requirements. Here are the five main Scrum ceremonies:
+
+1. **Sprint Planning:** This meeting is held at the beginning of each sprint to select and plan the work to be completed during the sprint. The product owner presents the product backlog, and the team selects a subset of items to commit to completing.
+
+2. **Daily Scrum:** Also known as a daily stand-up, this brief meeting is held every day of the sprint to discuss progress, identify impediments, and plan for the next day. Each team member answers three questions:
+
+* What did I accomplish yesterday?
+* What will I accomplish today?
+* Are there any impediments to my progress?
+
+3. **Sprint Review:** This meeting is held at the end of each sprint to demonstrate the completed sprint increment to stakeholders and gather feedback. The team showcases the work they have done, and stakeholders provide feedback and suggestions for future iterations.
+
+4. **Sprint Retrospective:** This meeting is held immediately after the sprint review to reflect on the sprint, identify areas for improvement, and commit to actions for the next sprint. The team discusses what went well, what could be improved, and how they can make the next sprint even more successful.
+
+5. **Product Backlog Refinement:** This meeting is held regularly, usually once or twice a week, to refine the product backlog and ensure that it is up-to-date, prioritized, and ready for sprint planning. The product owner presents new backlog items, and the team discusses them, estimates them, and prioritizes them.
+
+---
+
+**Explain the differences between a `product backlog` and a `sprint backlog`?**  
+- **Product Backlog:** The product backlog is a prioritized list of features, requirements, and other work items that represent the desired functionality of the product. It serves as a single source of truth for what needs to be built to achieve the product's overall goals and vision. The product owner is responsible for maintaining the product backlog, ensuring that it is up-to-date, prioritized, and refined regularly.
+- **Sprint Backlog:** The sprint backlog is a subset of the product backlog selected for a specific sprint. It represents the specific work that the team commits to completing during the sprint. The sprint backlog is created during sprint planning, where the team selects items from the product backlog, estimates their effort, and breaks them down into actionable tasks.
+
+---
+
+**If a timebox plan needs to be reprioritized, who should re-prioritize it?**  
+The reprioritization of a timebox plan should typically involve a collaborative effort between the product owner and the development team in Scrum. The product owner, as the voice of the customer and responsible for product vision, provides insights into the evolving needs and priorities. The development team, with their expertise in technical feasibility and effort estimation, contributes their understanding of the work involved and the team's capacity.
+
+---
+
 ### Teams may encounter the need for "technical" user stories. Who decides the priority of these?
 The tech lead or architect can work with the product owner to determine priority based on upcoming roadmap
 needs and dependencies. The key is communication between the PO and tech team leads to ensure technical needs
