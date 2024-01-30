@@ -1703,3 +1703,27 @@ function titleCase(str) {
 ```
 
 ---
+
+46. Write a function called `reverseString` that takes in a string and returns the reverse of that string.
+
+```javascript
+/**
+ * Returns the reverse of a string.
+ * @param {string} str - The string to reverse.
+ * @returns {string} - The reverse of the string.
+ */
+
+// Solution:
+
+function reverseStringV1(str) {
+    return str.split("").reverse().join("");
+}
+
+function reverseStringV2(str) {
+    let reversed = "";
+    for (let i = str.length - 1; i >= 0; i--) reversed += str[i];
+    return reversed;
+}
+```
+
+---
