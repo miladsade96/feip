@@ -1655,3 +1655,29 @@ function countOccurrencesV3(totalString, desiredChar) {
 ```
 
 ---
+
+44. Write a function called `findMaxNumber` that takes in an array of numbers and returns the largest number in the array.
+
+```javascript
+/**
+ * Returns the largest number in an array.
+ * @param {number[]} arrayOfNums - The array of numbers.
+ * @returns {number} - The largest number in the array.
+ */
+
+// Solution:
+
+function findMaxNumberV1(arrayOfNums) {
+    return Math.max(...arrayOfNums);
+}
+
+function findMaxNumberV2(arrayOfNums) {
+    let max = arrayOfNums[0];
+    for (let i = 1; i < arrayOfNums.length; i++) {
+        if (arrayOfNums[i] > max) max = arrayOfNums[i];
+    }
+    return max;
+}
+```
+
+---
