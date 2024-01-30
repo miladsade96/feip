@@ -583,7 +583,7 @@ There are a few different ways to use TypeScript on the backend. One way is to u
 
 ---
 
-**What is the difference between `types String` and `string` in typescript?**  
+**What is the difference between types `String` and `string` in typescript?**  
 The difference between the types `String` and `string` in TypeScript is that `String` is a wrapper object, while `string` is a primitive type.
 
 **Wrapper objects** are objects that wrap around primitive types and provide additional functionality. For example, the `String` object provides methods for manipulating strings, such as `charAt()`, `indexOf()`, and `substring()`.
