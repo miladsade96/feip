@@ -961,7 +961,7 @@ paragraph.innerHTML = paragraph.innerHTML.split(/\.[^.|<]/).join(".</p><p>") + "
 23. Implement an efficient click event on todo items as fast as possible?
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Fast click event implementation</title>
     </head>
@@ -1677,6 +1677,28 @@ function findMaxNumberV2(arrayOfNums) {
         if (arrayOfNums[i] > max) max = arrayOfNums[i];
     }
     return max;
+}
+```
+
+---
+
+45. Write a function called `titleCase` that takes in a string and returns the string with the first letter of each word capitalized.
+
+```javascript
+/**
+ * Returns a string with the first letter of each word capitalized.
+ * @param {string} str - The string to capitalize.
+ * @returns {string} - The string with the first letter of each word capitalized.
+ */
+
+// Solution:
+
+function titleCase(str) {
+    return str
+        .toLowerCase()
+        .split(" ")
+        .map(subStr => `${subStr[0].toUpperCase()}${subStr.slice(1)}`)
+        .join(" ");
 }
 ```
 
