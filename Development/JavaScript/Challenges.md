@@ -1727,3 +1727,22 @@ function reverseStringV2(str) {
 ```
 
 ---
+
+47. Write a function called `isPalindrome` that takes in a string and returns `true` if the string is a palindrome and `false` if it is not.
+
+```javascript
+/**
+ * Returns true if the string is a palindrome.
+ * @param {string} str - The string to check.
+ * @returns {boolean} - True if the string is a palindrome, false otherwise.
+ */
+
+// Solution:
+
+function isPalindrome(str) {
+    const formattedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+    return formattedStr === formattedStr.split("").reverse().join("");
+}
+```
+
+---
