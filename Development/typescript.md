@@ -593,3 +593,49 @@ The difference between the types `String` and `string` in TypeScript is that `St
 In general, it is recommended to use the `string` type instead of the `String` type, unless you need to use the additional functionality provided by the `String` object. This is because primitive types are more efficient and have fewer associated overhead costs.
 
 ---
+
+**What is Type Erasure in TypeScript?**  
+In TypeScript, type erasure refers to the process of removing type annotations during compilation. This means that the extra information you provide about the data types of variables, functions, and other elements in your TypeScript code gets stripped away when it's converted into JavaScript.
+
+---
+
+**How can we create an enum with string values?**  
+```typescript
+enum Color {
+  Red = "RED",
+  Green = "GREEN",
+  Blue = "BLUE",
+}
+
+console.log(Color.Red);
+console.log(Color.Green);
+console.log(Color.Blue);
+```
+
+---
+
+**What does the pipe(|) mean in typescript?**  
+The pipe (|) symbol in TypeScript itself doesn't directly relate to function composition, unlike some other languages. However, it is used to define **union types**.
+
+A union type describes a variable that can hold one of several different types. The pipe (|) separates each type in the union.
+
+Here's an example:
+
+```typescript
+let value: string | number;
+
+value = "hello"; // Ok, value is a string
+value = 10;       // Ok, value is a number
+
+value = true;   // Error: Type 'boolean' is not assignable to type 'string | number'
+```
+
+In this example:
+
+* We define a variable `value` with a union type `string | number`. This means `value` can be either a string or a number, but not both at the same time.
+* Assigning a string or a number to `value` is valid.
+* Assigning a boolean value results in a compilation error because it's not one of the allowed types in the union.
+
+Union types provide flexibility in your code by allowing a variable to hold different data types depending on the situation.
+
+---
